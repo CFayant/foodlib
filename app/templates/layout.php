@@ -39,10 +39,22 @@
 						<a href="#"></a>
 					</li>
 					<li class="page-scroll">
+						<a href="#">Donner</a>
+					</li>
+					<li class="page-scroll">
+						<a href="#">Chercher</a>
+					</li>
+					<li class="page-scroll">
 						<a href="#">Inscription</a>
 					</li>
 					<li class="page-scroll">
 						<a href="#">Connexion</a>
+					</li>
+					<li class="page-scroll">
+						<a href="#">Deconnexion</a>
+					</li>
+					<li class="page-scroll">
+						<a href="#">Profil</a>
 					</li>
 				</ul>
 			</div>
