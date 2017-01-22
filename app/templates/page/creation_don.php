@@ -2,7 +2,7 @@
 
 <?php $this->start('main_content') ?>
 
-<section id="portfolio" class="padding">
+<section class="padding">
 
   <div class="container">
     <h2 class="text-center">Je fais un don:</h2>
