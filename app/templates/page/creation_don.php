@@ -6,7 +6,7 @@
 
   <div class="container">
     <h2 class="text-center">Je fais un don:</h2>
-    <form>
+    <form class="col-lg-6 margin-auto">
 
       <div class="form-group form_center">
         <label for="dons">Je donne:</label>
@@ -30,11 +30,11 @@
 
       <div class="form-group form_center text-center">
         <label class="radio-inline">
-          <input type="radio" name="borne" id="borne" value="borne"> Sélectionner une borne réfrigérée
+          <input type="radio" name="adress" value="borne"> Sélectionner une borne réfrigérée
         </label>
 
         <label class="radio-inline">
-          <input type="radio" name="adressePerso" id="adressePerso" value="adresse"> Mon adresse
+          <input type="radio" name="adress" value="adresse"> Mon adresse
         </label>
       </div>
 
@@ -77,8 +77,9 @@
         <input type="date" id="date_consommation">
       </div>
 
-
-      <button type="submit" class="btn btn-default">Je donne</button>
+      <div class="col-md-12 text-center">
+        <button type="submit" class="btn btn-default donner">Je donne</button>
+      </div>
 
     </form>
 
