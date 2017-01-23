@@ -6,7 +6,7 @@
 
   <div class="container">
     <h2 class="text-center">Je fais un don:</h2>
-    <form class="col-lg-6 margin-auto">
+    <form method="POST" class="col-lg-6 margin-auto">
 
       <div class="form-group form_center">
         <label for="dons">Je donne:</label>
@@ -85,5 +85,6 @@
   </div>
 
 </section>
+
 
 <?php $this->stop('main_content') ?>

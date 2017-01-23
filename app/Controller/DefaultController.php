@@ -51,11 +51,6 @@ class DefaultController extends Controller
         $this->show('page/detail_offre');
     }
 
-    public function inscription()
-    {
-        $this->show('page/inscription');
-    }
-
 }
 
 
