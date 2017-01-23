@@ -608,7 +608,6 @@ a.info:hover span {
   padding-right: 0;
 }
 
-<<<<<<< HEAD
 .descriptif{
   width: 70%;
 }
@@ -651,31 +650,16 @@ a.info:hover span {
   padding: 0;
 }
 
-.margin-auto{
-=======
 .margin-auto {
-
->>>>>>> 2c1332ee85dc84a96f5f8d30c84074299ec6225d
   margin: auto;
   float: none;
 }
 
-<<<<<<< HEAD
-.donner{
-=======
 .donner {
-
->>>>>>> 2c1332ee85dc84a96f5f8d30c84074299ec6225d
   text-transform: uppercase;
   font-weight: 900;
 }
 
-<<<<<<< HEAD
-.donner:hover{
-  background-color:#18BC9C;
-=======
 .donner:hover {
-
   background-color: #18BC9C;
->>>>>>> 2c1332ee85dc84a96f5f8d30c84074299ec6225d
 }
