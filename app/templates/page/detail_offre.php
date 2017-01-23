@@ -42,7 +42,7 @@
     </div>
 
     <div class="col-sm-12 text-center">
-      <button type="submit">Réserver !</button>
+      <button type="submit" class="btn btn-default donner">Réserver !</button>
     </div>
 
 
