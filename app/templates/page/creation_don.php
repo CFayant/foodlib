@@ -15,12 +15,12 @@
 
       <div class="form-group form_center">
         <label for="tags">La carégories:</label>
-        <select class="form-control">
+        <select class="form-control" name="tags">
           <option>Mots clés:</option>
-          <option>Fruits</option>
-          <option>Légumes</option>
-          <option>Boissons</option>
-          <option>Produits laitiers</option>
+          <option value="fruits">Fruits</option>
+          <option value="légumes">Légumes</option>
+          <option value="boissons">Boissons</option>
+          <option value="produits laitiers">Produits laitiers</option>
         </select>
       </div>
 
@@ -38,15 +38,14 @@
         </label>
       </div>
 
-
       <div class="form-group form_center text-center">
         <h3>Mon adresse :</h3>
       </div>
 
       <div class="form-group form_center text-center">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58547.93527301496!2d2.3465382607150715!3d48.856049443109214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis!5e0!3m2!1sfr!2sfr!4v1485169092765" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
         <p>Adresse du donneur</p>
       </div>
-
 
       <div class="form-group form_center">
         <label for="acces">Jours et horaires d'accés:</label>
@@ -67,14 +66,14 @@
         <label for="type_date">Le type de date de consommation:</label>
         <select class="form-control">
           <option>Type de date:</option>
-          <option>Date de durabilité minimale</option>
-          <option>Date limite de consommation</option>
+          <option value="durabilité minimale">Date de durabilité minimale</option>
+          <option value="limite de consommation">Date limite de consommation</option>
         </select>
       </div>
 
       <div class="form-group form_center">
         <label for="date_consommation">Date de consommation:</label>
-        <input type="date" id="date_consommation">
+        <input type="date" id="date_consommation" name="date_consommation">
       </div>
 
       <div class="col-md-12 text-center">
