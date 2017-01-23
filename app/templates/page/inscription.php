@@ -87,7 +87,7 @@
 		<input type="text" name="password2" class="form-control"><br>
 
 		<label for="password_confirm">Confirmez Mot de Passe</label>
-		<input type="text" name="password_confirm" class="form-control"><br>
+		<input type="text" name="passwordConfirm" class="form-control"><br>
 
 		<div class="col-md-12 text-center">
 			<input type="submit" value="M'inscrire" class="btn btn-default donner">
