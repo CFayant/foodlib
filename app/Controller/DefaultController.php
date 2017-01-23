@@ -14,6 +14,7 @@ class DefaultController extends Controller
     	$this->show('page/home');
     }
 
+<<<<<<< HEAD
     public function creationDon()
     {
 
@@ -52,3 +53,11 @@ class DefaultController extends Controller
     }
 
 }
+=======
+	public function inscription()
+	{
+		$this->show('page/inscription');
+	}
+
+}
+>>>>>>> 2c1332ee85dc84a96f5f8d30c84074299ec6225d
