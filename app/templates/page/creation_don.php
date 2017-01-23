@@ -58,8 +58,8 @@
       </div>
 
       <div class="form-group form_center">
-        <label for="images">Charger une image du produit:</label>
-        <input type="file" id="images">
+        <label for="image">Charger une image du produit:</label>
+        <input type="file" id="images" name="image">
       </div>
 
       <div class="form-group form_center">
