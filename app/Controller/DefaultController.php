@@ -15,4 +15,9 @@ class DefaultController extends Controller
 		$this->show('page/home');
 	}
 
+	public function inscription()
+	{
+		$this->show('page/inscription');
+	}
+
 }
