@@ -90,7 +90,7 @@
         <div class="modal-body">
           <div class="container">
 
-            <div><p>ATTENTION veulliez prendre note de votre code de retrait unique !!!</p></div>
+            <div class="text-center"><p class="text-danger">ATTENTION veulliez prendre note de votre code de retrait unique !!!</p></div>
             <div class="text-center"><p>code de retrait unique</p></div>
 
               <div class="col-md-11 text-center">
