@@ -17,10 +17,10 @@
 
       <div class="form-group form_center">
         <label for="dons">Je donne:</label>
-        <textarea type="text" name="dons" class="form-control" id="dons" placeholder="Ex: Une barquette de 4 tomates."></textarea>
         <?php if(isset($erreurs['Dons'])) : ?>
           <span style="color: red;"><?= $erreurs['Dons'] ?></span>
         <?php endif ?>
+        <textarea type="text" name="dons" class="form-control" id="dons" placeholder="Ex: Une barquette de 4 tomates."></textarea>
       </div>
 
       <div class="form-group form_center">
@@ -53,7 +53,13 @@
       </div>
 
       <div class="form-group form_center text-center">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58547.93527301496!2d2.3465382607150715!3d48.856049443109214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis!5e0!3m2!1sfr!2sfr!4v1485169092765" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <select class="form-control">
+          <option>Les bornes:</option>
+          <option value="borne1">Borne 1</option>
+          <option value="borne2">Borne 2</option>
+          <option value="borne3">Borne 3</option>
+          <option value="borne4">Borne 4</option>
+        </select>
         <p>Adresse du donneur</p>
       </div>
 
