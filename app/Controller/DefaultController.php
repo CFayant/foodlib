@@ -18,6 +18,48 @@ class DefaultController extends Controller
 
 	public function inscription()
 	{
+		$this->show('page/inscription');
+
+	}
+
+	public function inscription_b()
+	{
+		$erreurs = [];
+		$gump = new GUMP();
+
+		if(isset($_POST['inscrire_b'])){
+			$_POST = $gump->sanitize($_POST);
+			$gump->validation_rules(array(
+		    'username'    => 'required|alpha_numeric|max_len,100|min_len,6',
+		    'password'    => 'required|max_len,100|min_len,6',
+		    'passwordConfirm'    => 'required|max_len,100|min_len,6'
+
+			));
+
+
+			$gump->filter_rules(array(
+		    'username' => 'trim|sanitize_string',
+		    'password' => 'trim',
+			));
+
+			$validated_data = $gump->run($_POST);
+
+			if($validated_data === false)
+      {
+        $erreurs = $gump->get_errors_array();
+      }
+      else
+      {
+        print_r($validated_data); // validation successful
+      }
+
+		}
+
+		$this->show('page/inscription_b', ['erreurs' => $erreurs]);
+	}
+
+	public function inscription_d()
+	{
 		$erreurs = [];
 		$gump = new GUMP();
 
@@ -58,9 +100,8 @@ class DefaultController extends Controller
 
 		}
 
-		$this->show('page/inscription', ['erreurs' => $erreurs]);
+		$this->show('page/inscription_d', ['erreurs' => $erreurs]);
 	}
-
 
 
 }
