@@ -18,7 +18,7 @@
       <div class="form-group form_center">
         <label for="dons">Je donne:</label>
         <?php if(isset($erreurs['Dons'])) : ?>
-          <span style="color: red;"><?= $erreurs['Dons'] ?></span>
+          <span class="text-danger"><?= $erreurs['Dons'] ?></span>
         <?php endif ?>
         <textarea type="text" name="dons" class="form-control" id="dons" placeholder="Ex: Une barquette de 4 tomates."></textarea>
       </div>
@@ -30,7 +30,7 @@
           <option value="fruits">Fruits</option>
           <option value="légumes">Légumes</option>
           <option value="boissons">Boissons</option>
-          <option value="produits laitiers">Produits laitiers</option>
+          <option value="laitiers">Produits laitiers</option>
         </select>
       </div>
 
@@ -54,7 +54,7 @@
 
       <div class="form-group form_center text-center">
         <select class="form-control">
-          <option>Les bornes:</option>
+          <option value="">Les bornes:</option>
           <option value="borne1">Borne 1</option>
           <option value="borne2">Borne 2</option>
           <option value="borne3">Borne 3</option>
@@ -65,11 +65,17 @@
 
       <div class="form-group form_center">
         <label for="acces">Jours et horaires d'accés:</label>
+        <?php if(isset($erreurs['Acces'])) : ?>
+          <span class="text-danger"><?= $erreurs['Acces'] ?></span>
+        <?php endif ?>
         <textarea type="text" name="acces" class="form-control" id="acces" placeholder="Ex: Lundi, Mardi, Mercredi, etc..."></textarea>
       </div>
 
       <div class="form-group form_center">
         <label for="numero">Numéro de téléphone:</label>
+        <?php if(isset($erreurs['Numero'])) : ?>
+          <span class="text-danger"><?= $erreurs['Numero'] ?></span>
+        <?php endif ?>
         <input type="text" name="numero" class="form-control" id="numero" placeholder="Ex: 01 02 03 04 05">
       </div>
 
@@ -89,6 +95,9 @@
 
       <div class="form-group form_center">
         <label for="date_consommation">Date de consommation:</label>
+        <?php if(isset($erreurs['Date Consommation'])) : ?>
+          <span class="text-danger"><?= $erreurs['Date Consommation'] ?></span>
+        <?php endif ?>
         <input type="date" id="date_consommation" name="date_consommation">
       </div>
 
