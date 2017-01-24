@@ -27,7 +27,7 @@ class DefaultController extends Controller
         'dons'                => 'required|alpha_numeric|max_len,500|min_len,6',
         'acces'               => 'required|alpha_numeric|max_len,500|min_len,6',
         'numero'              => 'required|numeric|exact_len,10',
-        'date_consommation'   => 'required|date',
+        'date_consommation'   => 'required|date'
 
         //'image'   => 'required_file|extension,png;jpg'
         ));
