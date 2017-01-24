@@ -20,4 +20,9 @@ class DefaultController extends Controller
 		$this->show('page/inscription');
 	}
 
+	public function profil_b()
+	{
+		$this->show('page/profil_b');
+	}
+
 }
