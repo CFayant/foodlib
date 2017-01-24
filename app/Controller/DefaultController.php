@@ -20,10 +20,11 @@ class DefaultController extends Controller
 	{
 		$erreurs = [];
 		$gump = new GUMP();
+		$_POST = $gump->sanitize($_POST);
+
 
 		if(isset($_POST['inscrire'])){
 
-			$_POST = $gump->sanitize($_POST);
 
 			$gump->validation_rules(array(
 		    'username'    => 'required|alpha_numeric|max_len,100|min_len,6',
