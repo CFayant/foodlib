@@ -10,7 +10,7 @@
 
 	<caption class="">
 		
-		<img src="" alt="img_profil">
+		<img class="img-rounded" src="" alt="img_profil">
 
 	</caption>
 
