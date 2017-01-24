@@ -2,26 +2,6 @@
 
 <?php $this->start('main_content') ?>
 
-<section class="text-center padding form-check container">
-
-	<label for="cbox1">
-
-		<input type="checkbox" id="cbox1" class="form-check" checked>
-		Bénéficiaire
-
-	</label>
-
-
-	<label for="cbox2">
-
-		<input type="checkbox" id="cbox2" class="form-check">
-		Donneur
-
-	</label>
-
-
-</section>
-
 <section class=" container">
 
 	<form action="" class="col-lg-6 margin-auto">
