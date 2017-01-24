@@ -48,7 +48,7 @@
 						<a href="#">Inscription</a>
 					</li>
 					<li class="page-scroll">
-						<a href="#">Connexion</a>
+						<a href="#" data-toggle="modal" data-target="#connexion">Connexion</a>
 					</li>
 					<li class="page-scroll">
 						<a href="#">Deconnexion</a>
@@ -93,7 +93,7 @@
 							</li>
 
 							<li>
-								<a href="#" class="btn-social btn-outline info"><span>Signaler un problème</span><i class="fa fa-fw fa-exclamation"></i></a>
+								<a href="#" class="btn-social btn-outline info" data-toggle="modal" data-target="#signaler"><span>Signaler un problème</span><i class="fa fa-fw fa-exclamation"></i></a>
 							</li>
 
 						</ul>
@@ -115,12 +115,13 @@
 	</div>
 </div>
 
-<!-- Portfolio Modals -->
+
+<!-- contact Modals -->
 <div class="modal fade" tabindex="-1" role="dialog" id="contacter" aria-labelledby="myModalLabel">
 	<div class="vertical-alignment-helper ">
 	  <div class="modal-dialog vertical-align-center" role="document">
 	    <div class="modal-content">
-	      <div class="modal-header">
+	      <div class="modal-header fond">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	        <h4 class="modal-title">Nous contacter</h4>
 	      </div>
@@ -148,6 +149,80 @@
   </div>
 </div><!-- /.modal -->
 
+
+<!-- Signalement Modals -->
+<div class="modal fade" tabindex="-1" role="dialog" id="signaler" aria-labelledby="myModalLabel">
+	<div class="vertical-alignment-helper ">
+	  <div class="modal-dialog vertical-align-center" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header fond">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Signaler un problème</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<div class="container">
+		        <form method="POST" class="col-lg-6 margin-auto">
+
+		        	<div class="form-group form_center">
+			        	<label for="pseudo">Pseudo</label>
+			        	<input type="text" name="pseudo" class="form-control" placeholder="Votre pseudo">
+			        </div>
+
+		        	<div class="form-group form_center">
+			        	<label for="signalement">Type de signalement</label>
+			        	<input type="text" name="signalement" class="form-control" placeholder="Quel est l'origine du problème?">
+			        </div>
+
+		        	<div class="form-group form_center">
+			        	<label for="message">Je Signal</label>
+			        		<textarea name="message" class="form-control" placeholder="Votre message"></textarea>
+			        </div>
+
+							<div class="col-md-11 text-center">
+		        		<input type="submit" name="envoyer" class="btn btn-default donner">
+		        	</div>
+		        </form>
+	      	</div>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+  </div>
+</div><!-- /.modal -->
+
+
+<!-- Connexion Modals -->
+<div class="modal fade" tabindex="-1" role="dialog" id="connexion" aria-labelledby="myModalLabel">
+	<div class="vertical-alignment-helper ">
+	  <div class="modal-dialog vertical-align-center" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header fond">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Connexion</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<div class="container">
+		        <form method="POST" class="col-lg-6 margin-auto">
+
+		        	<div class="form-group form_center">
+			        	<label for="pseudo">Pseudo</label>
+			        	<input type="text" name="pseudo" class="form-control" placeholder="Votre pseudo">
+			        </div>
+
+		        	<div class="form-group form_center">
+			        	<label for="mdp">Password</label>
+			        	<input type="password" name="mdp" class="form-control" placeholder="Mot de passe">
+			        </div>
+
+							<div class="col-md-11 text-center">
+		        		<input type="submit" name="Connecter" class="btn btn-default donner" value="Se connecter">
+		        	</div>
+		        </form>
+	      	</div>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+  </div>
+</div><!-- /.modal -->
 
 
 
