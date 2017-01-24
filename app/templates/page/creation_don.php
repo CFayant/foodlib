@@ -6,17 +6,27 @@
 
   <div class="container">
     <h2 class="text-center">Je fais un don:</h2>
-    <form method="POST" class="col-lg-6 margin-auto">
+
+      <?php if(!empty($erreurs)) { ?>
+
+      <?php print_r($erreurs) ?>
+          erreurs...
+      <?php } ?>
+
+    <form method="POST" class="col-lg-6 margin-auto" enctype="multipart/form-data">
 
       <div class="form-group form_center">
         <label for="dons">Je donne:</label>
         <textarea type="text" name="dons" class="form-control" id="dons" placeholder="Ex: Une barquette de 4 tomates."></textarea>
+        <?php if(isset($erreurs['Dons'])) : ?>
+          <span style="color: red;"><?= $erreurs['Dons'] ?></span>
+        <?php endif ?>
       </div>
 
       <div class="form-group form_center">
         <label for="tags">La carégories:</label>
         <select class="form-control" name="tags">
-          <option>Mots clés:</option>
+          <option value="">Mots clés:</option>
           <option value="fruits">Fruits</option>
           <option value="légumes">Légumes</option>
           <option value="boissons">Boissons</option>
@@ -77,7 +87,7 @@
       </div>
 
       <div class="col-md-12 text-center">
-        <button type="submit" class="btn btn-default donner">Je donne</button>
+        <button type="submit" name="donner" class="btn btn-default donner">Je donne</button>
       </div>
 
     </form>
