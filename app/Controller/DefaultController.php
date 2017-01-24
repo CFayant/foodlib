@@ -30,4 +30,9 @@ class DefaultController extends Controller
 		$this->show('page/profil_d');
 	}
 
+	public function edition_p()
+	{
+		$this->show('page/profil_d');
+	}
+
 }
