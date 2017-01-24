@@ -20,12 +20,9 @@ class DefaultController extends Controller
 	{
 		$erreurs = [];
 		$gump = new GUMP();
-		$_POST = $gump->sanitize($_POST);
 
-
-		if(isset($_POST['inscrire'])){
-
-
+		if(isset($_POST['inscrire_d'])){
+			$_POST = $gump->sanitize($_POST);
 			$gump->validation_rules(array(
 		    'username'    => 'required|alpha_numeric|max_len,100|min_len,6',
 		    'first_name'    => 'required|alpha_numeric|max_len,100|min_len,6',
@@ -61,7 +58,7 @@ class DefaultController extends Controller
 
 		}
 
-		$this->show('page/inscription');
+		$this->show('page/inscription', ['erreurs' => $erreurs]);
 	}
 
 

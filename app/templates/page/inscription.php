@@ -4,7 +4,7 @@
 
 
 
-<section class="text-center padding form-check container">
+<!-- <section class="text-center padding form-check container">
 
 	<label for="statut">
 
@@ -25,19 +25,13 @@
 </section>
 
 <section class=" container">
-	<?php if(!empty($erreurs)) { ?>
 
-	<?php print_r($erreurs) ?>
-	    erreurs...
-	<?php } ?>
 
 	<form method="POST" class="col-lg-6 margin-auto form-group">
 
 		<div class="form-group">
 			<label for="username" class="">Votre Pseudo</label>
-		<?php if(isset($erreurs['Username'])) : ?>
-		  <span class="text-danger"><?= $erreurs['Username'] ?></span>
-		<?php endif ?>
+
 		<input type="text" name="username" class="form-control">
 		</div>
 
@@ -57,9 +51,14 @@
 
 	</form>
 
-</section>
+</section> -->
 
-<section class=" container">
+<section class="padding container">
+	<?php if(!empty($erreurs)) { ?>
+
+	<?php print_r($erreurs) ?>
+	    erreurs...
+	<?php } ?>
 
 	<form method="POST" class="col-lg-6 margin-auto" enctype="multipart/form-data">
 
@@ -132,7 +131,7 @@
 		</div>
 
 		<div class="col-md-12 text-center">
-			<input type="submit" name="inscrire" value="M'inscrire" class="btn btn-default donner">
+			<input type="submit" name="inscrire_d" value="M'inscrire" class="btn btn-default donner">
 		</div>
 
 	</form>
