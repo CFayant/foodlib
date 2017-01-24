@@ -2,6 +2,12 @@
 
 <?php $this->start('main_content') ?>
 
+
+<?php if(!empty($erreurs)) { ?>
+
+<?php print_r($erreurs) ?>
+    erreurs...
+<?php } ?>
 <section class="text-center padding form-check container">
 
 	<label for="cbox1">
@@ -24,9 +30,12 @@
 
 <section class=" container">
 
-	<form action="" class="col-lg-6 margin-auto">
+	<form method="POST" class="col-lg-6 margin-auto">
 
 		<label for="username" class="">Votre Pseudo</label>
+		<?php if(isset($erreurs['Username'])) : ?>
+		  <span class="text-danger"><?= $erreurs['Username'] ?></span>
+		<?php endif ?>
 		<input type="text" name="username" class="form-control"><br>
 
 		<label for="password">Votre Mot de Passe</label>
@@ -36,7 +45,7 @@
 		<input type="password" name="passwordConfirm" class="form-control"><br>
 
 		<div class="col-md-12 text-center">
-			<input type="submit" value="M'inscrire" class="btn btn-default donner">
+			<input type="submit"  name="inscrire" value="M'inscrire" class="btn btn-default donner">
 		</div>
 
 	</form>
@@ -45,7 +54,7 @@
 
 <section class=" container">
 
-	<form action="" class="col-lg-6 margin-auto">
+	<form method="POST" class="col-lg-6 margin-auto">
 
 		<label for="statut">Vous êtes : </label>
 		<input type="radio" name="statut" value="restaurant" class="form-check"> Un Restaurant
@@ -90,7 +99,7 @@
 		<input type="text" name="passwordConfirm" class="form-control"><br>
 
 		<div class="col-md-12 text-center">
-			<input type="submit" value="M'inscrire" class="btn btn-default donner">
+			<input type="submit" name="inscrire" value="M'inscrire" class="btn btn-default donner">
 		</div>
 
 	</form>
