@@ -13,4 +13,15 @@ class DefaultController extends Controller
 		$this->show('page/home');
 	}
 
+  public function listeOffres()
+  {
+    $this->show('page/listeOffres');
+  }
+
+  public function cgu()
+  {
+    $this->show('page/cgu');
+  }
+
+
 }
