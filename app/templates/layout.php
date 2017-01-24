@@ -28,7 +28,7 @@
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
 				</button>
-				<a class="titre" href="#"> FoodLib </a>
+				<a class="titre" href="<?= $this->url("home") ?>"> FoodLib </a>
 				<p class="slogan">Dites non au gâchis !</p>
 			</div>
 
@@ -39,7 +39,7 @@
 						<a href="#"></a>
 					</li>
 					<li class="page-scroll">
-						<a href="#">Donner</a>
+						<a href="<?= $this->url("creationDon") ?>">Donner</a>
 					</li>
 					<li class="page-scroll">
 						<a href="#">Chercher</a>
