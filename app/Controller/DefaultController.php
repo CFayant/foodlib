@@ -32,7 +32,7 @@ class DefaultController extends Controller
 
 	public function edition_p()
 	{
-		$this->show('page/profil_d');
+		$this->show('page/edition_p');
 	}
 
 }
