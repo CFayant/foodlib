@@ -89,7 +89,7 @@
 							</li>
 
 							<li>
-								<a href="#" class="btn-social btn-outline info" data-toggle="modal" data-target="#myModal"><span>Nous contacter</span><i class="fa fa-fw fa-envelope"></i></a>
+								<a href="#" class="btn-social btn-outline info" data-toggle="modal" data-target="#contacter"><span>Nous contacter</span><i class="fa fa-fw fa-envelope"></i></a>
 							</li>
 
 							<li>
@@ -116,27 +116,36 @@
 </div>
 
 <!-- Portfolio Modals -->
-<div class="modal fade" tabindex="-1" role="dialog" id="myModal" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Nous contacter</h4>
-      </div>
-      <div class="modal-body">
-        <form method="POST">
-        	<label for="pseudo">Pseudo</label>
-        	<input type="text" name="pseudo" placeholder="Votre pseudo">
+<div class="modal fade" tabindex="-1" role="dialog" id="contacter" aria-labelledby="myModalLabel">
+	<div class="vertical-alignment-helper ">
+	  <div class="modal-dialog vertical-align-center" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Nous contacter</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<div class="container">
+		        <form method="POST" class="col-lg-6 margin-auto">
 
-        	<label for="message">
-        		<textarea name="message"></textarea>
-        	</label>
+		        	<div class="form-group form_center">
+			        	<label for="pseudo">Pseudo</label>
+			        	<input type="text" name="pseudo" class="form-control" placeholder="Votre pseudo">
+			        </div>
 
-        	<input type="submit" name="envoyer">
-        </form>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
+		        	<div class="form-group form_center">
+			        	<label for="message">Votre message</label>
+			        		<textarea name="message" class="form-control" placeholder="Votre message"></textarea>
+			        </div>
+							<div class="col-md-11 text-center">
+		        		<input type="submit" name="envoyer" class="btn btn-default donner">
+		        	</div>
+		        </form>
+	      	</div>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+  </div>
 </div><!-- /.modal -->
 
 
