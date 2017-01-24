@@ -42,12 +42,66 @@
     </div>
 
     <div class="col-sm-12 text-center">
-      <button type="submit" class="btn btn-default donner">Réserver !</button>
+      <button type="submit" class="btn btn-default donner" data-toggle="modal" data-target="#confirmation">Réserver !</button>
     </div>
 
 
   </div>
 
 </section>
+
+
+<!-- confirmation Modals -->
+<div class="modal fade" tabindex="-1" role="dialog" id="confirmation" aria-labelledby="myModalLabel">
+  <div class="vertical-alignment-helper ">
+    <div class="modal-dialog vertical-align-center" role="document">
+      <div class="modal-content">
+        <div class="modal-header fond">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Confirmation</h4>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+
+              <div class="form-group form_center">
+                <label for="confirmation">Je confirme vouloir bénéficier de ce don</label>
+                <input type="checkbox" name="confirmation" class="form-control">
+              </div>
+
+              <div class="col-md-11 text-center">
+                <button type="button" name="Confirmation" class="btn btn-default donner" data-toggle="modal" data-target="#code" data-dismiss="modal" aria-label="Close">Je confirme</button>
+              </div>
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>
+</div><!-- /.modal -->
+
+<!-- Code de retrait Modals -->
+<div class="modal fade" tabindex="-1" role="dialog" id="code" aria-labelledby="myModalLabel">
+  <div class="vertical-alignment-helper ">
+    <div class="modal-dialog vertical-align-center" role="document">
+      <div class="modal-content">
+        <div class="modal-header fond">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Code de retrait</h4>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+
+            <div><p>ATTENTION veulliez prendre note de votre code de retrait unique !!!</p></div>
+            <div class="text-center"><p>code de retrait unique</p></div>
+
+              <div class="col-md-11 text-center">
+                  <button type="submit" name="ok" class="btn btn-default donner" data-dismiss="modal" aria-label="Close">J'ai pris note</button>
+              </div>
+
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>
+</div><!-- /.modal -->
 
 <?php $this->stop('main_content') ?>
