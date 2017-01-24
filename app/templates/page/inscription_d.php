@@ -12,38 +12,41 @@
 
 	<form method="POST" class="col-lg-6 margin-auto" enctype="multipart/form-data">
 
-		<label for="statut">Vous êtes : </label>
-		<input type="radio" name="statut" value="restaurant" class="form-check"> Un Restaurant
-		<input type="radio" name="statut" value="association" class="form-check"> Une Association
-		<input type="radio" name="statut" value="entreprise" class="form-check"> Une entreprise
+		<div class=" text-center row">
+			<label for="statut">Vous êtes : </label>
+			<input type="radio" name="statut" value="particulier" class="form-check" checked> Un particulier
+			<input type="radio" name="statut" value="restaurant" class="form-check"> Un restaurant
+			<input type="radio" name="statut" value="association" class="form-check"> Une association
+			<input type="radio" name="statut" value="entreprise" class="form-check"> Une entreprise
+		</div><br>
 
 	<div class="form-group">
-		<label for="username">Votre Pseudo</label>
+		<label for="username">Votre pseudo</label>
 		<input type="text" name="username" class="form-control">
 	</div>
 
 		<div class="form-group">
-			<label for="last_name">Votre Nom</label>
+			<label for="last_name">Votre nom</label>
 			<input type="text" name="last_name" class="form-control">
 		</div>
 
 		<div class="form-group">
-			<label for="first_name">Votre Prénom</label>
+			<label for="first_name">Votre prénom</label>
 			<input type="text" name="first_name" class="form-control">
 		</div>
 
 		<div class="form-group">
-			<label for="adress">Votre Adresse</label>
+			<label for="adress">Votre adresse</label>
 			<input type="text" name="adress" class="form-control">
 		</div>
 
 		<div class="form-group">
-			<label for="e_mail">Votre Email</label>
+			<label for="e_mail">Votre email</label>
 			<input type="email" name="e_mail" class="form-control">
 		</div>
 
 		<div class="form-group">
-			<label for="phone">Votre Numéro de Téléphone</label>
+			<label for="phone">Votre numéro de téléphone</label>
 			<input type="text" name="phone" class="form-control">
 		</div>
 
@@ -58,23 +61,23 @@
 		</div>
 
 		<div class="form-group">
-			<label for="img">Votre Image de profil</label>
+			<label for="img">Votre image de profil</label>
 			<input type="file" name="img">
 		</div>
 
 		<div class="form-group">
-			<label for="comment">Vos Commentaires</label>
+			<label for="comment">Vos commentaires</label>
 			<textarea name="comment" class="form-control"></textarea>
 
 		</div>
 
 		<div class="form-group">
-			<label for="password">Votre Mot de Passe</label>
+			<label for="password">Votre mot de passe</label>
 			<input type="text" name="password" class="form-control">
 		</div>
 
 		<div class="form-group">
-			<label for="passwordConfirm">Confirmez Mot de Passe</label>
+			<label for="passwordConfirm">Confirmez votre mot de passe</label>
 			<input type="text" name="passwordConfirm" class="form-control">
 		</div>
 

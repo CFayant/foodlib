@@ -6,11 +6,11 @@
 
 <section class="text-center padding form-check container">
 
-	<div class="row well">		
+	<div class="well">		
 		<a href="">Je suis bénéficiaire</a>
 	</div>
 	
-	<div class="row well">
+	<div class="well">
 		<a href="">Je suis donneur</a>
 	</div>
 
