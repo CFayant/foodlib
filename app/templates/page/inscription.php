@@ -6,7 +6,7 @@
 
 	<label for="cbox1">
 
-		<input type="checkbox" id="cbox1" class="form-check" checked>
+		<input type="radio" name="statut" id="radio1" class="form-check" checked>
 		Bénéficiaire
 
 	</label>
@@ -14,7 +14,7 @@
 
 	<label for="cbox2">
 
-		<input type="checkbox" id="cbox2" class="form-check">
+		<input type="radio" name="statut" id="radio2" class="form-check">
 		Donneur
 
 	</label>
