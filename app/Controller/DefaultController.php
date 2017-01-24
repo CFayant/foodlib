@@ -27,13 +27,15 @@ class DefaultController extends Controller
 	    'username'    => 'required|alpha_numeric|max_len,100|min_len,6',
 	    'first_name'    => 'required|alpha_numeric|max_len,100|min_len,6',
 	    'last_name'    => 'required|alpha_numeric|max_len,100|min_len,6',
-	    'adress'    => 'required|alpha_numeric|max_len,100|min_len,6',
+	    'adress'    => 'alpha_numeric|max_len,100|min_len,6',
 	    'password'    => 'required|max_len,100|min_len,6',
 	    'email'       => 'required|valid_email',
-	    'phone'    => 'required|alpha_numeric|max_len,10|min_len,10',
-	    'password2'    => 'required|max_len,100|min_len,6',
+      'phone'    => 'alpha_numeric|exact_len,10',
+      'access'    => 'alpha_numeric|max_len,600|min_len,6',
+      'access_time'    => 'alpha_numeric|max_len,100|min_len,6',
+	    'comment'    => 'alpha_numeric|max_len,500|min_len,6',
 	    'passwordConfirm'    => 'required|max_len,100|min_len,6'
-	    
+
 		));
 
 		$gump->filter_rules(array(
@@ -55,6 +57,6 @@ class DefaultController extends Controller
 		$this->show('page/inscription');
 	}
 
-	
+
 
 }

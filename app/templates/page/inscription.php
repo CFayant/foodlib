@@ -32,10 +32,10 @@
 		<label for="password">Votre Mot de Passe</label>
 		<input type="password" name="password" class="form-control"><br>
 
-		<label for="password">Confirmez Mot de Passe</label>
-		<input type="password" name="password" class="form-control"><br>
+		<label for="passwordConfirm">Confirmez Mot de Passe</label>
+		<input type="password" name="passwordConfirm" class="form-control"><br>
 
-		<div class="col-md-12 text-center">	
+		<div class="col-md-12 text-center">
 			<input type="submit" value="M'inscrire" class="btn btn-default donner">
 		</div>
 
@@ -48,8 +48,8 @@
 	<form action="" class="col-lg-6 margin-auto">
 
 		<label for="statut">Vous êtes : </label>
-		<input type="radio" name="statut" value="restaurant" class="form-check"> Un Restaurant 
-		<input type="radio" name="statut" value="association" class="form-check"> Une Association 
+		<input type="radio" name="statut" value="restaurant" class="form-check"> Un Restaurant
+		<input type="radio" name="statut" value="association" class="form-check"> Une Association
 		<input type="radio" name="statut" value="entreprise" class="form-check"> Une entreprise
 		<br>
 
@@ -83,10 +83,10 @@
 		<label for="comment">Vos Commentaires</label>
 		<textarea name="comment" class="form-control"></textarea><br>
 
-		<label for="password2">Votre Mot de Passe</label>
-		<input type="text" name="password2" class="form-control"><br>
+		<label for="password">Votre Mot de Passe</label>
+		<input type="text" name="password" class="form-control"><br>
 
-		<label for="password_confirm">Confirmez Mot de Passe</label>
+		<label for="passwordConfirm">Confirmez Mot de Passe</label>
 		<input type="text" name="passwordConfirm" class="form-control"><br>
 
 		<div class="col-md-12 text-center">
