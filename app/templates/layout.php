@@ -89,7 +89,7 @@
 							</li>
 
 							<li>
-								<a href="#" class="btn-social btn-outline info"><span>Nous contacter</span><i class="fa fa-fw fa-envelope"></i></a>
+								<a href="#" class="btn-social btn-outline info" data-toggle="modal" data-target="#myModal"><span>Nous contacter</span><i class="fa fa-fw fa-envelope"></i></a>
 							</li>
 
 							<li>
@@ -114,6 +114,34 @@
 		</a>
 	</div>
 </div>
+
+<!-- Portfolio Modals -->
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Nous contacter</h4>
+      </div>
+      <div class="modal-body">
+        <form method="POST">
+        	<label for="pseudo">Pseudo</label>
+        	<input type="text" name="pseudo" placeholder="Votre pseudo">
+
+        	<label for="message">
+        		<textarea name="message"></textarea>
+        	</label>
+
+        	<input type="submit" name="envoyer">
+        </form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
 </body>
