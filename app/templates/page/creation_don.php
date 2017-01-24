@@ -102,7 +102,7 @@
       </div>
 
       <div class="col-md-12 text-center">
-        <button type="submit" name="donner" class="btn btn-default donner">Je donne</button>
+        <button type="submit" name="donner" class="btn btn-default donner" data-toggle="modal" data-target="#donner">Je donne</button>
       </div>
 
     </form>
@@ -110,6 +110,38 @@
   </div>
 
 </section>
+
+
+
+<!-- Signalement Modals -->
+<div class="modal fade" tabindex="-1" role="dialog" id="donner" aria-labelledby="myModalLabel">
+  <div class="vertical-alignment-helper ">
+    <div class="modal-dialog vertical-align-center" role="document">
+      <div class="modal-content">
+        <div class="modal-header fond">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Confirmation d'ajout du don</h4>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <form method="POST" class="col-lg-6 margin-auto">
+
+              <div class="form-group form_center">
+                <label for="confirmation">Confirmer mon don</label>
+                <input type="checkbox" name="confirmation" class="form-control" value="Confirmation">
+              </div>
+
+              <div class="col-md-11 text-center">
+                <input type="submit" name="envoyer" class="btn btn-default donner">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>
+</div><!-- /.modal -->
+
 
 
 <?php $this->stop('main_content') ?>
