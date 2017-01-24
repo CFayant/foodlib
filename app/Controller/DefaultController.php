@@ -40,12 +40,11 @@ class DefaultController extends Controller
 
 			));
 
+
 			$gump->filter_rules(array(
 		    'username' => 'trim|sanitize_string',
 		    'password' => 'trim',
-		    'email'    => 'trim|sanitize_email',
-		    'gender'   => 'trim',
-		    'bio'      => 'noise_words'
+		    'email'    => 'trim|sanitize_email'
 			));
 
 			$validated_data = $gump->run($_POST);

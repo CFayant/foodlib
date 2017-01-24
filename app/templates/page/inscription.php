@@ -3,14 +3,10 @@
 <?php $this->start('main_content') ?>
 
 
-<?php if(!empty($erreurs)) { ?>
 
-<?php print_r($erreurs) ?>
-    erreurs...
-<?php } ?>
 <section class="text-center padding form-check container">
 
-	<label for="cbox1">
+	<label for="statut">
 
 		<input type="radio" name="statut" id="radio1" class="form-check" checked>
 		Bénéficiaire
@@ -18,9 +14,9 @@
 	</label>
 
 
-	<label for="cbox2">
+	<label for="statut2">
 
-		<input type="radio" name="statut" id="radio2" class="form-check">
+		<input type="radio" name="statut2" id="radio2" class="form-check">
 		Donneur
 
 	</label>
@@ -29,6 +25,11 @@
 </section>
 
 <section class=" container">
+	<?php if(!empty($erreurs)) { ?>
+
+	<?php print_r($erreurs) ?>
+	    erreurs...
+	<?php } ?>
 
 	<form method="POST" class="col-lg-6 margin-auto">
 
@@ -54,7 +55,7 @@
 
 <section class=" container">
 
-	<form method="POST" class="col-lg-6 margin-auto">
+	<form method="POST" class="col-lg-6 margin-auto" enctype="multipart/form-data">
 
 		<label for="statut">Vous êtes : </label>
 		<input type="radio" name="statut" value="restaurant" class="form-check"> Un Restaurant
