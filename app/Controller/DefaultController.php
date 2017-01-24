@@ -14,8 +14,8 @@ class DefaultController extends Controller
    $this->show('page/home');
   }
 
- public function creationDon()
- {
+  public function creationDon()
+  {
     $erreurs = [];
     $gump = new GUMP();
 
@@ -51,15 +51,15 @@ class DefaultController extends Controller
 
     }
 
-     $this->show('page/creation_don', ['erreurs' => $erreurs]);
+    $this->show('page/creation_don', ['erreurs' => $erreurs]);
   }
 
-      public function detailOffre()
-      {
-        $this->show('page/detail_offre');
-      }
+  public function detailOffre()
+  {
+    $this->show('page/detail_offre');
+  }
 
-    }
+}
 
 
 
