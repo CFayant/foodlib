@@ -1,0 +1,71 @@
+MISE EN PLACE DU PROJET (WIP)
+=======================
+
+1- Github
+   - décider qui devra "héberger" le projet sur son compte github
+   - l' "hébergeur" crée un dépôt sur son compte :
+     - repository name
+     - description
+     - public
+     - initialize this repository with a README
+     - add .gitignore (laravel par exemple)
+
+2- VM
+   - en local, mise en place de l'environnement de développement
+   $ cd Desktop
+   $ git clone https://github.com/scotch-io/scotch-box.git vm_tmp
+   - cloner le projet depuis github
+   $ git clone https://github.com/nom_du_compte/nom_du_projet
+   - copier le VagrantFile et le répertoire public de vm_tmp/ vers nom_du_projet/ (via explorer ou en ligne de commande)
+   $ cd nom_du_projet/
+   $ vagrant up
+   - le site est accessible sur http://192.168.33.10
+
+3- Framework CSS
+   Exemple avec semantic-ui (http://semantic-ui.com/)
+   Deux méthodes :
+   - avec npm
+     pré-requis :
+     $ npm install -g gulp
+     cd nom_du_projet/
+     $ npm install semantic-ui --save
+     > Automatic
+     > Yes
+     ? semantic/
+     $ cd semantic
+     $ gulp build
+     (voir dans dist/ les fichiers produits)
+
+   - download zip : https://github.com/Semantic-Org/Semantic-UI-CSS/archive/master.zip
+
+4- Layout et pages
+
+   Mise en place du layout de base et de quelques pages
+   a- layout dans index.html
+   exemple : http://semantic-ui.com/examples/homepage.html
+   $ mkdir public/css
+   $ mkdir public/js
+   $ cp semantic/dist/semantic.css public/css
+   $ cp semantic/dist/semantic.js public/js
+   - copier semantic/dist/themes dans public/css/
+
+   b- pages
+   voir http://semantic-ui.com/examples/theming.html
+
+   => voir le projet zeblog pour l'intégration de semantic-ui (branche dev) : https://github.com/laudesj/zeblog/tree/dev
+
+
+5- Navigation
+
+6- Commit en dev
+   $ git checkout -b dev
+   $ git add -A
+   $ git commit -m "init env dev"
+   $ git push origin dev
+
+7- Les collaborateurs clonent le projet de base et peuvent contribuer
+   $ git clone https://github.com/nom_du_compte/nom_du_projet
+   $ cd nom_du_projet/
+   $ git checkout -b dev
+   $ git checkout -b dev_01
+
