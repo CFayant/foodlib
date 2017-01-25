@@ -4,7 +4,7 @@
 
 
 
-		['GET', '/home/', 'Default#home', 'home']
+		['GET', '/home/', 'Default#home', 'home'],
     ['GET|POST', '/creationDon/', 'Default#creationDon', 'creationDon'],
 		['GET', '/detailOffre/', 'Default#detailOffre', 'detailOffre'],
 
