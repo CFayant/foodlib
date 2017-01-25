@@ -51,7 +51,7 @@
 						<a href="#" data-toggle="modal" data-target="#connexion">Connexion</a>
 					</li>
 					<li class="page-scroll">
-						<a href="#">Deconnexion</a>
+						<a href="#" data-toggle="modal" data-target="#deconnecter">Deconnexion</a>
 					</li>
 					<li class="page-scroll">
 						<a href="#">Profil</a>
@@ -126,7 +126,7 @@
 	        <h4 class="modal-title">Nous contacter</h4>
 	      </div>
 	      <div class="modal-body">
-	      	<div class="container">
+
 		        <form method="POST" class="col-lg-6 margin-auto">
 
 		        	<div class="form-group form_center">
@@ -138,11 +138,11 @@
 			        	<label for="message">Votre message</label>
 			        		<textarea name="message" class="form-control" placeholder="Votre message"></textarea>
 			        </div>
-							<div class="col-md-11 text-center">
+							<div class="text-center">
 		        		<input type="submit" name="envoyer" class="btn btn-default donner">
 		        	</div>
 		        </form>
-	      	</div>
+
 	      </div>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
@@ -160,7 +160,7 @@
 	        <h4 class="modal-title">Signaler un problème</h4>
 	      </div>
 	      <div class="modal-body">
-	      	<div class="container">
+
 		        <form method="POST" class="col-lg-6 margin-auto">
 
 		        	<div class="form-group form_center">
@@ -178,11 +178,11 @@
 			        		<textarea name="message" class="form-control" placeholder="Votre message"></textarea>
 			        </div>
 
-							<div class="col-md-11 text-center">
+							<div class="text-center">
 		        		<input type="submit" name="envoyer" class="btn btn-default donner">
 		        	</div>
 		        </form>
-	      	</div>
+
 	      </div>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
@@ -200,7 +200,7 @@
 	        <h4 class="modal-title">Connexion</h4>
 	      </div>
 	      <div class="modal-body">
-	      	<div class="container">
+
 		        <form method="POST" class="col-lg-6 margin-auto">
 
 		        	<div class="form-group form_center">
@@ -213,11 +213,40 @@
 			        	<input type="password" name="mdp" class="form-control" placeholder="Mot de passe">
 			        </div>
 
-							<div class="col-md-11 text-center">
+							<div class="text-center">
 		        		<input type="submit" name="Connecter" class="btn btn-default donner" value="Se connecter">
 		        	</div>
 		        </form>
-	      	</div>
+
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+  </div>
+</div><!-- /.modal -->
+
+
+<!-- deconnexion Modals -->
+<div class="modal fade" tabindex="-1" role="dialog" id="deconnecter" aria-labelledby="myModalLabel">
+	<div class="vertical-alignment-helper ">
+	  <div class="modal-dialog vertical-align-center" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header fond">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Connexion</h4>
+	      </div>
+	      <div class="modal-body">
+
+		        <form method="POST" class="col-lg-6 margin-auto">
+
+		        	<div class="text-center">
+								<h4>Je me deconnecte !</h4>
+			        </div>
+
+							<div class="text-center">
+		        		<input type="submit" name="Connecter" class="btn btn-default donner" value="Se connecter">
+		        	</div>
+		        </form>
+
 	      </div>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->

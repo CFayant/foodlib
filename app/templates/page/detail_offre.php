@@ -61,23 +61,21 @@
           <h4 class="modal-title">Confirmation</h4>
         </div>
         <div class="modal-body">
-          <div class="container">
 
               <div class="form-group form_center">
                 <label for="confirmation">Je confirme vouloir bénéficier de ce don</label>
-                <input type="checkbox" name="confirmation" class="form-control">
+                <input type="checkbox" name="confirmation">
               </div>
 
-              <div class="col-md-11 text-center">
+              <div class="text-center">
                 <button type="button" name="Confirmation" class="btn btn-default donner" data-toggle="modal" data-target="#code" data-dismiss="modal" aria-label="Close">Je confirme</button>
               </div>
-          </div>
+
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div>
 </div><!-- /.modal -->
-
 <!-- Code de retrait Modals -->
 <div class="modal fade" tabindex="-1" role="dialog" id="code" aria-labelledby="myModalLabel">
   <div class="vertical-alignment-helper ">
@@ -88,16 +86,14 @@
           <h4 class="modal-title">Code de retrait</h4>
         </div>
         <div class="modal-body">
-          <div class="container">
 
             <div class="text-center"><p class="text-danger">ATTENTION veulliez prendre note de votre code de retrait unique !!!</p></div>
             <div class="text-center"><p>code de retrait unique</p></div>
 
-              <div class="col-md-11 text-center">
+              <div class="text-center">
                   <button type="submit" name="ok" class="btn btn-default donner" data-dismiss="modal" aria-label="Close">J'ai pris note</button>
               </div>
 
-          </div>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

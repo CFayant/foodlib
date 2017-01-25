@@ -131,19 +131,19 @@
           <h4 class="modal-title">Confirmation d'ajout du don</h4>
         </div>
         <div class="modal-body">
-          <div class="container">
+
             <form method="POST" class="col-lg-6 margin-auto">
 
               <div class="form-group form_center">
                 <label for="confirmation">Confirmer mon don</label>
-                <input type="checkbox" name="confirmation" class="form-control" value="Confirmation">
+                <input type="checkbox" name="confirmation" value="Confirmation">
               </div>
 
               <div class="col-md-11 text-center">
                 <input type="submit" name="envoyer" class="btn btn-default donner">
               </div>
             </form>
-          </div>
+
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
