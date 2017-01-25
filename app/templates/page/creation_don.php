@@ -19,13 +19,11 @@
 
       <div class="form-group form_center">
         <label for="tags">La catégories:</label>
-        <select class="form-control" name="tags">
-          <!-- TODO : foreach avec table tags -->
+        <select class="form-control" name="tagform[tags]">
           <option value="">Mots clés:</option>
-          <option value="1">Fruits</option>
-          <option value="2">Légumes</option>
-          <option value="3">Boissons</option>
-          <option value="4">Produits laitiers</option>
+          <?php foreach ($tags as $tag): ?>
+          <option value="<?= $tag['id'] ?>"><?= $tag['libelle_tag'] ?></option>
+          <?php endforeach ?>
         </select>
       </div>
 
@@ -53,8 +51,8 @@
           <?php foreach ($bornes as $borne): ?>
             <option value="<?= $borne['id'] ?>"><?= $borne['adresse_borne'] . " " . $borne['cp_borne'] ?></option>
           <?php endforeach ?>
-          
-          
+
+
         </select>
         <p>Adresse du donneur</p>
       </div>
