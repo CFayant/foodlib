@@ -608,3 +608,58 @@ a.info:hover span {
   padding-right: 0;
 }
 
+.descriptif{
+  width: 70%;
+}
+
+.descriptif p{
+  padding: 0 50px 0 0;
+}
+
+.relative{
+  position: relative;
+}
+
+.pseudo{
+  position: absolute;
+  right: 0;
+}
+
+.relative-padding{
+  position: relative;
+  padding-top: 30px;
+}
+
+.float-right{
+  float: right;
+  right: 0;
+  margin-bottom: 50px;
+}
+
+.descriptif_adresse{
+  width: 60%;
+}
+
+.descriptif_adresse p{
+  padding: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.no-merge{
+  padding: 0;
+}
+
+.margin-auto{
+  margin: auto;
+  float: none;
+}
+
+.donner{
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.donner:hover{
+  background-color:#18BC9C;
+}
