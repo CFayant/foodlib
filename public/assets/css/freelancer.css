@@ -608,3 +608,26 @@ a.info:hover span {
   padding-right: 0;
 }
 
+.margin-auto {
+
+  margin: auto;
+  float: none;
+}
+
+.donner {
+
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.donner:hover {
+
+  background-color: #18BC9C;
+}
+
+.statut {
+
+  max-width: 75%;
+  text-decoration: none;
+}
+
