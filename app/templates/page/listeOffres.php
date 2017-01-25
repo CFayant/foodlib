@@ -9,14 +9,14 @@
   </div>
 
   <?php ?>
-  <div class="container well">
+  <div class="padding container well">
     
       <div class="col-xs-3">
         <img src="#" alt="photoDon">
       </div>
 
       <div class="col-xs-4">
-        <p>titre</p>
+        <h4>titre</h4>
       </div>
 
       <div class="col-xs-3">

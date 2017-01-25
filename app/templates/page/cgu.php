@@ -8,7 +8,7 @@
     <h2>Conditions Générales d'Utilisation</h2>
   </div>
 
-  <div class="text-left">
+  <div class="padding text-left">
     
     <div>
       <p>Les Conditions Générales d'Utilisation (CGU) s'applique à tout utilisateur, à savoir toute personne qui s'est inscrite sur la présente application web, nommée "FoodLib" :</p>
