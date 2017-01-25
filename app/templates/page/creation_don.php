@@ -6,19 +6,29 @@
 
   <div class="container">
     <h2 class="text-center">Je fais un don:</h2>
-    <form class="col-lg-6 margin-auto">
+
+      <?php if(!empty($erreurs)) { ?>
+
+      <?php print_r($erreurs) ?>
+          erreurs...
+      <?php } ?>
+
+    <form method="POST" class="col-lg-6 margin-auto" enctype="multipart/form-data">
 
       <div class="form-group form_center">
         <label for="dons">Je donne:</label>
+        <?php if(isset($erreurs['Dons'])) : ?>
+          <span class="text-danger"><?= $erreurs['Dons'] ?></span>
+        <?php endif ?>
         <textarea type="text" name="dons" class="form-control" id="dons" placeholder="Ex: Une barquette de 4 tomates."></textarea>
       </div>
 
       <div class="form-group form_center">
         <label for="tags">La carégories:</label>
-        <select class="form-control">
-          <option>Mots clés:</option>
+        <select class="form-control" name="tags">
+          <option value="">Mots clés:</option>
           <option value="fruits">Fruits</option>
-          <option value="legumes">Légumes</option>
+          <option value="légumes">Légumes</option>
           <option value="boissons">Boissons</option>
           <option value="laitiers">Produits laitiers</option>
         </select>
@@ -38,12 +48,18 @@
         </label>
       </div>
 
-
       <div class="form-group form_center text-center">
         <h3>Mon adresse :</h3>
       </div>
 
       <div class="form-group form_center text-center">
+        <select class="form-control">
+          <option value="">Les bornes:</option>
+          <option value="borne1">Borne 1</option>
+          <option value="borne2">Borne 2</option>
+          <option value="borne3">Borne 3</option>
+          <option value="borne4">Borne 4</option>
+        </select>
         <p>Adresse du donneur</p>
         <select class="form-control">
           <option>Les bornes:</option>
@@ -54,38 +70,48 @@
         </select>
       </div>
 
-
       <div class="form-group form_center">
         <label for="acces">Jours et horaires d'accés:</label>
+        <?php if(isset($erreurs['Acces'])) : ?>
+          <span class="text-danger"><?= $erreurs['Acces'] ?></span>
+        <?php endif ?>
         <textarea type="text" name="acces" class="form-control" id="acces" placeholder="Ex: Lundi, Mardi, Mercredi, etc..."></textarea>
       </div>
 
       <div class="form-group form_center">
         <label for="numero">Numéro de téléphone:</label>
+        <?php if(isset($erreurs['Numero'])) : ?>
+          <span class="text-danger"><?= $erreurs['Numero'] ?></span>
+        <?php endif ?>
         <input type="text" name="numero" class="form-control" id="numero" placeholder="Ex: 01 02 03 04 05">
       </div>
 
       <div class="form-group form_center">
-        <label for="images">Charger une image du produit:</label>
-        <input type="file" id="images">
+        <label for="image">Charger une image du produit:</label>
+        <input type="file" id="images" name="image">
       </div>
 
       <div class="form-group form_center">
         <label for="type_date">Le type de date de consommation:</label>
         <select class="form-control">
           <option>Type de date:</option>
-          <option>Date de durabilité minimale</option>
-          <option>Date limite de consommation</option>
+          <option value="durabilité minimale">Date de durabilité minimale</option>
+          <option value="limite de consommation">Date limite de consommation</option>
         </select>
       </div>
 
       <div class="form-group form_center">
         <label for="date_consommation">Date de consommation:</label>
-        <input type="date" id="date_consommation">
+        <?php if(isset($erreurs['Date Consommation'])) : ?>
+          <span class="text-danger"><?= $erreurs['Date Consommation'] ?></span>
+        <?php endif ?>
+        <input type="date" id="date_consommation" name="date_consommation">
       </div>
 
       <div class="col-md-12 text-center">
-        <button type="submit" class="btn btn-default donner">Je donne</button>
+        <button type="submit" name="donner" class="btn btn-default donner" >Je donne</button>
+
+        <!-- data-toggle="modal" data-target="#donner" -->
       </div>
 
     </form>
@@ -93,5 +119,36 @@
   </div>
 
 </section>
+
+
+<!-- Signalement Modals -->
+<div class="modal fade" tabindex="-1" role="dialog" id="donner" aria-labelledby="myModalLabel">
+  <div class="vertical-alignment-helper ">
+    <div class="modal-dialog vertical-align-center" role="document">
+      <div class="modal-content">
+        <div class="modal-header fond">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Confirmation d'ajout du don</h4>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <form method="POST" class="col-lg-6 margin-auto">
+
+              <div class="form-group form_center">
+                <label for="confirmation">Confirmer mon don</label>
+                <input type="checkbox" name="confirmation" class="form-control" value="Confirmation">
+              </div>
+
+              <div class="col-md-11 text-center">
+                <input type="submit" name="envoyer" class="btn btn-default donner">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>
+</div><!-- /.modal -->
+
 
 <?php $this->stop('main_content') ?>
