@@ -17,10 +17,10 @@
         <label for="tags">La carégories:</label>
         <select class="form-control">
           <option>Mots clés:</option>
-          <option>Fruits</option>
-          <option>Légumes</option>
-          <option>Boissons</option>
-          <option>Produits laitiers</option>
+          <option value="fruits">Fruits</option>
+          <option value="legumes">Légumes</option>
+          <option value="boissons">Boissons</option>
+          <option value="laitiers">Produits laitiers</option>
         </select>
       </div>
 
@@ -45,6 +45,13 @@
 
       <div class="form-group form_center text-center">
         <p>Adresse du donneur</p>
+        <select class="form-control">
+          <option>Les bornes:</option>
+          <option value="borne1">Borne 1</option>
+          <option value="borne2">Borne 2</option>
+          <option value="borne3">Borne 3</option>
+          <option value="borne4">Borne 4</option>
+        </select>
       </div>
 
 
