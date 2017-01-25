@@ -672,9 +672,11 @@ a.info:hover span {
 
   max-width: 75%;
   text-decoration: none;
+}
 
 .donner:hover{
   background-color:#18BC9C;
+}
 
 .vertical-alignment-helper {
     display:table;
