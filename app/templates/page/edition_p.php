@@ -2,7 +2,7 @@
 
 <?php $this->start('main_content') ?>
 
-<section class=" container">
+<section class=" padding container">
 
 	<form action="" class="col-lg-6 margin-auto">
 
