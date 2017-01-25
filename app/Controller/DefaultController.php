@@ -103,5 +103,19 @@ class DefaultController extends Controller
 		$this->show('page/inscription_d', ['erreurs' => $erreurs]);
 	}
 
+	public function profil_b()
+	{
+		$this->show('page/profil_b');
+	}
+
+	public function profil_d()
+	{
+		$this->show('page/profil_d');
+	}
+
+	public function edition_p()
+	{
+		$this->show('page/edition_p');
+	}
 
 }
