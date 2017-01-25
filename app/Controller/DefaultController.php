@@ -16,7 +16,6 @@ class DefaultController extends Controller
 		$this->show('page/home');
 	}
 
-
 	public function inscription()
 	{
 		$this->show('page/inscription');
@@ -95,12 +94,21 @@ public function creationDon()
 		else
 		{
         print_r($validated_data); // validation successful
-    }
-    
+    	}
+	}
+
+	$this->show('page/creation_don', ['erreurs' => $erreurs]);
+
 }
 
-$this->show('page/creation_don', ['erreurs' => $erreurs]);
+public function listeOffres()
+{
+$this->show('page/listeOffres');
+}
 
+public function cgu()
+{
+$this->show('page/cgu');
 }
 
 		public function inscription_d()
@@ -168,7 +176,6 @@ $this->show('page/creation_don', ['erreurs' => $erreurs]);
 			$this->show('page/detail_offre');
 		}
 
-
-		}
+	}
 
 
