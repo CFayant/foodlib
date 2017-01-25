@@ -20,12 +20,12 @@
         <?php if(isset($erreurs['Dons'])) : ?>
           <span class="text-danger"><?= $erreurs['Dons'] ?></span>
         <?php endif ?>
-        <textarea type="text" name="dons" class="form-control" id="dons" placeholder="Ex: Une barquette de 4 tomates."></textarea>
+        <textarea type="text" name="myform[dons]" class="form-control" id="dons" placeholder="Ex: Une barquette de 4 tomates."></textarea>
       </div>
 
       <div class="form-group form_center">
-        <label for="tags">La carégories:</label>
-        <select class="form-control" name="tags">
+        <label for="tags">La catégories:</label>
+        <select class="form-control" name="myform[tags]">
           <option value="">Mots clés:</option>
           <option value="fruits">Fruits</option>
           <option value="légumes">Légumes</option>
@@ -40,11 +40,11 @@
 
       <div class="form-group form_center text-center">
         <label class="radio-inline">
-          <input type="radio" name="adress" value="borne"> Sélectionner une borne réfrigérée
+          <input type="radio" name="myform[adress]" value="borne"> Sélectionner une borne réfrigérée
         </label>
 
         <label class="radio-inline">
-          <input type="radio" name="adress" value="adresse"> Mon adresse
+          <input type="radio" name="myform[adress]" value="adresse"> Mon adresse
         </label>
       </div>
 
@@ -61,13 +61,6 @@
           <option value="borne4">Borne 4</option>
         </select>
         <p>Adresse du donneur</p>
-        <select class="form-control">
-          <option>Les bornes:</option>
-          <option value="borne1">Borne 1</option>
-          <option value="borne2">Borne 2</option>
-          <option value="borne3">Borne 3</option>
-          <option value="borne4">Borne 4</option>
-        </select>
       </div>
 
       <div class="form-group form_center">
@@ -75,7 +68,7 @@
         <?php if(isset($erreurs['Acces'])) : ?>
           <span class="text-danger"><?= $erreurs['Acces'] ?></span>
         <?php endif ?>
-        <textarea type="text" name="acces" class="form-control" id="acces" placeholder="Ex: Lundi, Mardi, Mercredi, etc..."></textarea>
+        <textarea type="text" name="myform[acces]" class="form-control" id="acces" placeholder="Ex: Lundi, Mardi, Mercredi, etc..."></textarea>
       </div>
 
       <div class="form-group form_center">
@@ -83,12 +76,12 @@
         <?php if(isset($erreurs['Numero'])) : ?>
           <span class="text-danger"><?= $erreurs['Numero'] ?></span>
         <?php endif ?>
-        <input type="text" name="numero" class="form-control" id="numero" placeholder="Ex: 01 02 03 04 05">
+        <input type="text" name="myform[numero]" class="form-control" id="numero" placeholder="Ex: 01 02 03 04 05">
       </div>
 
       <div class="form-group form_center">
         <label for="image">Charger une image du produit:</label>
-        <input type="file" id="images" name="image">
+        <input type="file" id="images" name="myform[image]">
       </div>
 
       <div class="form-group form_center">
@@ -105,11 +98,11 @@
         <?php if(isset($erreurs['Date Consommation'])) : ?>
           <span class="text-danger"><?= $erreurs['Date Consommation'] ?></span>
         <?php endif ?>
-        <input type="date" id="date_consommation" name="date_consommation">
+        <input type="date" id="date_consommation" name="myform[date_consommation]">
       </div>
 
       <div class="col-md-12 text-center">
-        <button type="submit" name="donner" class="btn btn-default donner" >Je donne</button>
+        <button type="submit" name="myform[donner]" class="btn btn-default donner" >Je donne</button>
 
         <!-- data-toggle="modal" data-target="#donner" -->
       </div>
@@ -136,7 +129,7 @@
 
               <div class="form-group form_center">
                 <label for="confirmation">Confirmer mon don</label>
-                <input type="checkbox" name="confirmation" value="Confirmation">
+                <input type="checkbox" name="myform[confirmation]" value="Confirmation">
               </div>
 
               <div class="col-md-11 text-center">
