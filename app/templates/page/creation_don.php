@@ -102,7 +102,9 @@
       </div>
 
       <div class="col-md-12 text-center">
-        <button type="submit" name="donner" class="btn btn-default donner" data-toggle="modal" data-target="#donner">Je donne</button>
+        <button type="submit" name="donner" class="btn btn-default donner" >Je donne</button>
+
+        <!-- data-toggle="modal" data-target="#donner" -->
       </div>
 
     </form>
@@ -110,7 +112,6 @@
   </div>
 
 </section>
-
 
 
 <!-- Signalement Modals -->
@@ -141,7 +142,6 @@
     </div><!-- /.modal-dialog -->
   </div>
 </div><!-- /.modal -->
-
 
 
 <?php $this->stop('main_content') ?>
