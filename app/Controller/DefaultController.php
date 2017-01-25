@@ -25,4 +25,9 @@ class DefaultController extends Controller
 		$this->show('page/profil_b');
 	}
 
+	public function profil_d()
+	{
+		$this->show('page/profil_d');
+	}
+
 }
