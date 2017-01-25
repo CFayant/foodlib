@@ -10,7 +10,7 @@
 
   <?php ?>
   <div class="padding container well">
-    
+
       <div class="col-xs-3">
         <img src="#" alt="photoDon">
       </div>
@@ -29,7 +29,7 @@
       </div>
 
       <div class="col-xs-12 text-right">
-        <a href="#">Détails</a>
+        <a href="<?= $this->url("detailOffre") ?>">Détails</a>
       </div>
 
   </div>

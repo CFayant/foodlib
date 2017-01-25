@@ -702,3 +702,9 @@ a.info:hover span {
 .fond{
   background-color: #18BC9C;
 }
+
+.sizeLimit {
+
+  width: 150px;
+  height: 150px;
+}

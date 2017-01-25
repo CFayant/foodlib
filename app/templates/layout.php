@@ -42,10 +42,10 @@
 						<a href="<?= $this->url("creationDon") ?>">Donner</a>
 					</li>
 					<li class="page-scroll">
-						<a href="#">Chercher</a>
+						<a href="<?= $this->url("listeOffres") ?>">Chercher</a>
 					</li>
 					<li class="page-scroll">
-						<a href="#">Inscription</a>
+						<a href="<?= $this->url("inscription") ?>">Inscription</a>
 					</li>
 					<li class="page-scroll">
 						<a href="#" data-toggle="modal" data-target="#connexion">Connexion</a>
@@ -54,7 +54,7 @@
 						<a href="#" data-toggle="modal" data-target="#deconnecter">Deconnexion</a>
 					</li>
 					<li class="page-scroll">
-						<a href="#">Profil</a>
+						<a href="<?= $this->url("profil_b") ?>">Profil</a>
 					</li>
 				</ul>
 			</div>
@@ -71,7 +71,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="footer-col col-md-4 left">
-						<h3><a href="#">CGU</a></h3>
+						<h3><a href="<?= $this->url("cgu") ?>">CGU</a></h3>
 					</div>
 
 					<div class="footer-col col-md-4 icone">

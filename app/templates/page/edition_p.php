@@ -15,8 +15,8 @@
 		<label for="password">Confirmez Mot de Passe</label>
 		<input type="password" name="password" class="form-control"><br>
 
-		<div class="col-md-12 text-center">	
-			<input type="submit" value="M'inscrire" class="btn btn-default donner">
+		<div class="col-md-12 text-center">
+			<input type="submit" value="Valider" class="btn btn-default donner">
 		</div>
 
 	</form>
@@ -28,8 +28,8 @@
 	<form action="" class="col-lg-6 margin-auto">
 
 		<label for="statut">Vous êtes : </label>
-		<input type="radio" name="statut" value="restaurant" class="form-check"> Un Restaurant 
-		<input type="radio" name="statut" value="association" class="form-check"> Une Association 
+		<input type="radio" name="statut" value="restaurant" class="form-check"> Un Restaurant
+		<input type="radio" name="statut" value="association" class="form-check"> Une Association
 		<input type="radio" name="statut" value="entreprise" class="form-check"> Une entreprise
 		<br>
 
@@ -70,7 +70,7 @@
 		<input type="text" name="password_confirm" class="form-control"><br>
 
 		<div class="col-md-12 text-center">
-			<input type="submit" value="M'inscrire" class="btn btn-default donner">
+			<input type="submit" value="Valider" class="btn btn-default donner">
 		</div>
 
 	</form>

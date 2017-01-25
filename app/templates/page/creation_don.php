@@ -140,7 +140,7 @@
               </div>
 
               <div class="col-md-11 text-center">
-                <input type="submit" name="envoyer" class="btn btn-default donner">
+                <input type="submit" name="envoyer" class="btn btn-default donner" >
               </div>
             </form>
 

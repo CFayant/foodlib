@@ -6,12 +6,12 @@
 
 <section class="text-center padding form-check container">
 
-	<div class="well">		
-		<a href="">Je suis bénéficiaire</a>
-	</div>
-	
 	<div class="well">
-		<a href="">Je suis donneur</a>
+		<a href="<?= $this->url("inscription_b") ?>">Je suis bénéficiaire</a>
+	</div>
+
+	<div class="well">
+		<a href="<?= $this->url("inscription_d") ?>">Je suis donneur</a>
 	</div>
 
 </section>
