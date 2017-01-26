@@ -17,7 +17,7 @@
         <textarea type="text" name="myform[titre]" class="form-control" id="titre" placeholder="Ex: Une barquette de 4 tomates."></textarea>
       </div>
 
-      <div class="form-group form_center">
+<!--       <div class="form-group form_center">
         <label for="tags">La catégories:</label>
         <select class="form-control" name="tagform[tags]">
           <option value="">Mots clés:</option>
@@ -25,7 +25,7 @@
           <option value="<?= $tag['id'] ?>"><?= $tag['libelle_tag'] ?></option>
           <?php endforeach ?>
         </select>
-      </div>
+      </div> -->
 
       <div class="form-group form_center text-center">
         <h3>Sélectionner une adresse:</h3>
@@ -42,10 +42,6 @@
       </div>
 
       <div class="form-group form_center text-center">
-        <h3>Mon adresse :</h3>
-      </div>
-
-      <div class="form-group form_center text-center">
         <select class="form-control" name="myform[borne_id]">
           <option value="">Les bornes:</option>
           <?php foreach ($bornes as $borne): ?>
@@ -57,21 +53,27 @@
         <p>Adresse du donneur</p>
       </div>
 
-     <!--  <div class="form-group form_center">
-        <label for="acces">Jours et horaires d'accés:</label>
-        <?php if(isset($erreurs['Acces'])) : ?>
-          <span class="text-danger"><?= $erreurs['Acces'] ?></span>
-        <?php endif ?>
-        <textarea type="text" name="myform[acces]" class="form-control" id="acces" placeholder="Ex: Lundi, Mardi, Mercredi, etc..."></textarea>
-      </div>
+      <!-- div adresse perso -->
+      <!-- <div>
 
-      <div class="form-group form_center">
-        <label for="numero">Numéro de téléphone:</label>
-        <?php if(isset($erreurs['Numero'])) : ?>
-          <span class="text-danger"><?= $erreurs['Numero'] ?></span>
-        <?php endif ?>
-        <input type="text" name="myform[numero]" class="form-control" id="numero" placeholder="Ex: 01 02 03 04 05">
+        <div class="form-group form_center">
+          <label for="acces">Jours et horaires d'accés:</label>
+          <?php if(isset($erreurs['Acces'])) : ?>
+            <span class="text-danger"><?= $erreurs['Acces'] ?></span>
+          <?php endif ?>
+          <textarea type="text" name="myform[acces]" class="form-control" id="acces" placeholder="Ex: Lundi, Mardi, Mercredi, etc..."></textarea>
+        </div>
+
+        <div class="form-group form_center">
+          <label for="numero">Numéro de téléphone:</label>
+          <?php if(isset($erreurs['Numero'])) : ?>
+            <span class="text-danger"><?= $erreurs['Numero'] ?></span>
+          <?php endif ?>
+          <input type="text" name="myform[numero]" class="form-control" id="numero" placeholder="Ex: 01 02 03 04 05">
+        </div>
+
       </div> -->
+
 
       <div class="form-group form_center">
         <label for="image">Charger une image du produit:</label>
@@ -82,10 +84,9 @@
         <label for="type_date">Le type de date de consommation:</label>
         <select class="form-control" name="myform[type_id]">
           <option>Type de date:</option>
-          <!-- todo foreach sur la table type_date -->
           <?php foreach($liste_type_date as $type): ?>
-          <option value="<?= $type['id'] ?>"><?= $type['libelle_date']?></option>
-         <? endforeach ?>
+            <option value="<?= $type['id'] ?>"><?= $type['libelle_date']?></option>
+          <? endforeach ?>
         </select>
       </div>
 
@@ -101,6 +102,7 @@
         <button type="submit" name="donner" class="btn btn-default donner" >Je donne</button>
 
         <!-- data-toggle="modal" data-target="#donner" -->
+
       </div>
 
     </form>
