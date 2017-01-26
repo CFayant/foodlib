@@ -17,16 +17,6 @@
         <textarea type="text" name="myform[titre]" class="form-control" id="titre" placeholder="Ex: Une barquette de 4 tomates."></textarea>
       </div>
 
-<!--       <div class="form-group form_center">
-        <label for="tags">La catégories:</label>
-        <select class="form-control" name="tagform[tags]">
-          <option value="">Mots clés:</option>
-          <?php foreach ($tags as $tag): ?>
-          <option value="<?= $tag['id'] ?>"><?= $tag['libelle_tag'] ?></option>
-          <?php endforeach ?>
-        </select>
-      </div> -->
-
       <div class="form-group form_center text-center">
         <h3>Sélectionner une adresse:</h3>
       </div>
@@ -54,7 +44,7 @@
       </div>
 
       <!-- div adresse perso -->
-      <!-- <div>
+      <div class="adresse_perso">
 
         <div class="form-group form_center">
           <label for="acces">Jours et horaires d'accés:</label>
@@ -72,7 +62,7 @@
           <input type="text" name="myform[numero]" class="form-control" id="numero" placeholder="Ex: 01 02 03 04 05">
         </div>
 
-      </div> -->
+      </div>
 
 
       <div class="form-group form_center">
