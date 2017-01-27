@@ -708,3 +708,8 @@ a.info:hover span {
   width: 150px;
   height: 150px;
 }
+
+.bordureRouge {
+
+  border-color: red;
+}
