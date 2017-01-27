@@ -6,6 +6,7 @@ use \W\Controller\Controller;
 use \Manager\TypeDateManager;
 use \Manager\BorneManager;
 use \Manager\DonManager;
+use \Manager\DetailTitreManager;
 use \GUMP;
 
 class DefaultController extends Controller
@@ -190,7 +191,12 @@ class DefaultController extends Controller
 
 	public function detailOffre()
 	{
-		$this->show('page/detail_offre');
+		$titre_don_manager = new DetailTitreManager();
+		$titre_don_manager->setTable('titre');
+		$titre_don = $titre_don_manager->findAll();
+
+
+		$this->show('page/detail_offre', ['titre' => $titre_don]);
 	}
 
 

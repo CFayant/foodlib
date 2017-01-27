@@ -123,8 +123,6 @@
 </div><!-- /.modal -->
 
 
-
-
 <?php $this->stop('main_content') ?>
 
 
