@@ -104,10 +104,10 @@ class DefaultController extends Controller
 
 
 				$dons_manager = new DonManager();
-				$dons_manager->insert(array_merge($_POST['myform'],['image' => $name]));
+				$dons_manager->insert(array_merge($_POST['myform']));
 		}
 
-		$this->show('page/creation_don', ['erreurs' => $erreurs, 'form' => $form, 'liste_type_date' => $liste_type_date, 'bornes' => $bornes]);
+		$this->show('page/creation_don', ['liste_type_date' => $liste_type_date, 'bornes' => $bornes]);
 
 	}
 

@@ -243,7 +243,7 @@
 			        </div>
 
 							<div class="text-center">
-		        		<input type="submit" name="Connecter" class="btn btn-default donner" value="Se connecter">
+		        		<input type="submit" name="deconnecter" class="btn btn-default donner" value="Se deconnecter">
 		        	</div>
 		        </form>
 

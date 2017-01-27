@@ -10,16 +10,13 @@
     <form method="POST" class="col-lg-6 margin-auto" enctype="multipart/form-data">
 
       <div class="form-group form_center">
-        <label for="titre">Je donne:</label>
-        <?php if(isset($erreurs['Titre'])) : ?>
-          <span class="text-danger"><?= $erreurs['Titre'] ?></span>
-        <?php endif ?>
+        <label for="titre">Je donne: <span class="text-danger"></span></label>
         <textarea type="text" name="myform[titre]" class="form-control" id="titre" placeholder="Ex: Une barquette de 4 tomates."
-        value=" <?= isset($form['titre']) ? $form['titre'] : "" ?> "><?= isset($form['titre']) ? $form['titre'] : "" ?></textarea>
+        value=" <?= isset($form['titre']) ? $form['titre'] : "" ?> " ></textarea>
       </div>
 
       <div class="form-group form_center text-center">
-        <h3>Sélectionner une adresse:</h3>
+        <h3>Sélectionner une adresse: <span class="text-danger"></span></h3>
       </div>
 
       <div class="form-group form_center text-center">
@@ -33,16 +30,11 @@
       </div>
 
       <div class="form-group form_center text-center">
-        <?php if(isset($erreurs['Borne Id'])) : ?>
-          <span class="text-danger"><?= $erreurs['Borne Id'] ?></span>
-        <?php endif ?>
-        <select class="form-control" name="myform[borne_id]">
+        <select class="form-control" name="myform[borne_id]" id="borne_id" >
           <option value="">Les bornes:</option>
           <?php foreach ($bornes as $borne): ?>
             <option value="<?= $borne['id'] ?>"><?= $borne['adresse_borne'] . " " . $borne['cp_borne'] ?></option>
           <?php endforeach ?>
-
-
         </select>
       </div>
 
@@ -69,19 +61,13 @@
 
 
       <div class="form-group form_center">
-        <label for="image">Charger une image du produit:</label>
-        <?php if(isset($erreurs['Image'])) : ?>
-          <span class="text-danger"><?= $erreurs['Image'] ?></span>
-        <?php endif ?>
-        <input type="file" id="image" name="myform[image]" value=" <?= isset($form['image']) ? $form['image'] : "" ?> ">
+        <label for="image">Charger une image du produit: <span class="text-danger"></span></label>
+        <input type="file" id="image" name="myform[image]" value=" <?= isset($form['image']) ? $form['image'] : "" ?> " >
       </div>
 
       <div class="form-group form_center">
-        <label for="type_date">Le type de date de consommation:</label>
-        <?php if(isset($erreurs['Type Id'])) : ?>
-          <span class="text-danger"><?= $erreurs['Type Id'] ?></span>
-        <?php endif ?>
-        <select class="form-control" name="myform[type_id]">
+        <label for="type_date">Le type de date de consommation: <span class="text-danger"></span></label>
+        <select class="form-control" name="myform[type_id]" id="type_date" >
           <option>Type de date:</option>
           <?php foreach($liste_type_date as $type): ?>
             <option value="<?= $type['id'] ?>"><?= $type['libelle_date']?></option>
@@ -90,16 +76,15 @@
       </div>
 
       <div class="form-group form_center">
-        <label for="date_consommation">Date de consommation:</label>
-        <?php if(isset($erreurs['Date Consommation'])) : ?>
-          <span class="text-danger"><?= $erreurs['Date Consommation'] ?></span>
-        <?php endif ?>
-        <input type="date" id="date_consommation" name="myform[date_consommation]" value=" <?= isset($form['date_consommation']) ? $form['date_consommation'] : "" ?> ">
+        <label for="date_consommation">Date de consommation: <span class="text-danger"></span></label>
+        <input type="date" id="date_consommation" name="myform[date_consommation]" value=" <?= isset($form['date_consommation']) ? $form['date_consommation'] : "" ?> " >
       </div>
 
       <div class="col-md-12 text-center">
-        <button type="submit" name="donner" class="btn btn-default donner" data-toggle="modal" data-target="#donner">Je donne</button>
+        <button type="submit" name="donner" class="btn btn-default donner" >Je donne</button>
       </div>
+
+      <!-- data-toggle="modal" data-target="#donner" -->
 
     </form>
 
@@ -138,4 +123,126 @@
 </div><!-- /.modal -->
 
 
+
+
 <?php $this->stop('main_content') ?>
+
+
+<script>
+
+  // Attendre le chargement du DOM
+  $(document).ready( function(){
+
+    // Supprimer les messages d'erreurs
+    $('select, textarea, input').focus(function(){
+
+      // Pour que les span soit en display none
+      $('span').fadeOut();
+
+      // Pour que les bordures rouges soient retirés
+      $(this).removeClass('bordureRouge');
+
+    });
+
+    // Validation d'un formulaire
+    $('form').submit(function(event){ // On capte la soumission du formulaire
+
+      event.preventDefault(); // On bloque l'envoie du formulaire
+
+      // Définir une variable pour la validation du formulaire
+      var formScore = 0;
+
+      // On vérifie le champ titre
+      if( $('#titre').val().length < 6 ){
+
+        // Afficher un message d'erreur
+        $('[for="titre"] span').text('Minimum 6 caractères').fadeIn();
+        $('textarea').addClass('bordureRouge');
+
+        // Ramener la valeur de formScore à 0
+        formScore = 0;
+
+      } else{
+        // Incrémenter formScore de 1
+        formScore ++;
+      };
+
+
+      // On vérifie le champ borne_id
+      if( $('#borne_id').val() == "null" ){
+
+        // Afficher un message d'erreur
+        $('h3 span').text('Veuillez sélectionner une borne').fadeIn();
+        $('#borne_id').addClass('bordureRouge');
+
+        // Ramener la valeur de formScore à 0
+        formScore = 0;
+
+      } else{
+        // Incrémenter formScore de 1
+        formScore ++;
+      };
+
+
+      // On vérifie le champ image
+      if( $('#image').val() == "null" ){
+
+        // Afficher un message d'erreur
+        $('[for="image"] span').text('Veuillez Charger une photo').fadeIn();
+        $('[type="file"]').addClass('bordureRouge');
+
+        // Ramener la valeur de formScore à 0
+        formScore = 0;
+
+      } else{
+        // Incrémenter formScore de 1
+        formScore ++;
+      };
+
+
+      // On vérifie le champ type_date
+      if( $('#type_date').val() == "null" ){
+
+        // Afficher un message d'erreur
+        $('[for="type_date"] span').text('Veuillez sélectionner le type de date').fadeIn();
+        $('#type_date').addClass('bordureRouge');
+
+        // Ramener la valeur de formScore à 0
+        formScore = 0;
+
+      } else{
+        // Incrémenter formScore de 1
+        formScore ++;
+      };
+
+
+      // On vérifie le champ date_consommation
+      if( $('#date_consommation').val() == "null" ){
+
+        // Afficher un message d'erreur
+        $('[for="date_consommation"] span').text('Veuillez indiquer la date de consommation').fadeIn();
+        $('#date_consommation').addClass('bordureRouge');
+
+        // Ramener la valeur de formScore à 0
+        formScore = 0;
+
+      } else{
+        // Incrémenter formScore de 1
+        formScore ++;
+      };
+
+      // Validation du formulaire
+      if( formScore == 5 ){
+
+        // On vide le champ message
+        $('input').val('');
+
+        // On remet le champ chat à la valeur null
+        $('select').val('null');
+
+      };
+
+    });
+
+  });  // Fin du chargement du DOM
+</script>
