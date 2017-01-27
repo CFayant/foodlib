@@ -14,7 +14,8 @@
         <?php if(isset($erreurs['Titre'])) : ?>
           <span class="text-danger"><?= $erreurs['Titre'] ?></span>
         <?php endif ?>
-        <textarea type="text" name="myform[titre]" class="form-control" id="titre" placeholder="Ex: Une barquette de 4 tomates."></textarea>
+        <textarea type="text" name="myform[titre]" class="form-control" id="titre" placeholder="Ex: Une barquette de 4 tomates."
+        value=" <?= isset($form['titre']) ? $form['titre'] : "" ?> "><?= isset($form['titre']) ? $form['titre'] : "" ?></textarea>
       </div>
 
       <div class="form-group form_center text-center">
@@ -32,6 +33,9 @@
       </div>
 
       <div class="form-group form_center text-center">
+        <?php if(isset($erreurs['Borne Id'])) : ?>
+          <span class="text-danger"><?= $erreurs['Borne Id'] ?></span>
+        <?php endif ?>
         <select class="form-control" name="myform[borne_id]">
           <option value="">Les bornes:</option>
           <?php foreach ($bornes as $borne): ?>
@@ -40,11 +44,10 @@
 
 
         </select>
-        <p>Adresse du donneur</p>
       </div>
 
       <!-- div adresse perso -->
-      <div class="adresse_perso">
+<!--       <div class="adresse_perso">
 
         <div class="form-group form_center">
           <label for="acces">Jours et horaires d'accés:</label>
@@ -62,16 +65,22 @@
           <input type="text" name="myform[numero]" class="form-control" id="numero" placeholder="Ex: 01 02 03 04 05">
         </div>
 
-      </div>
+      </div> -->
 
 
       <div class="form-group form_center">
         <label for="image">Charger une image du produit:</label>
-        <input type="file" id="image" name="myform[image]">
+        <?php if(isset($erreurs['Image'])) : ?>
+          <span class="text-danger"><?= $erreurs['Image'] ?></span>
+        <?php endif ?>
+        <input type="file" id="image" name="myform[image]" value=" <?= isset($form['image']) ? $form['image'] : "" ?> ">
       </div>
 
       <div class="form-group form_center">
         <label for="type_date">Le type de date de consommation:</label>
+        <?php if(isset($erreurs['Type Id'])) : ?>
+          <span class="text-danger"><?= $erreurs['Type Id'] ?></span>
+        <?php endif ?>
         <select class="form-control" name="myform[type_id]">
           <option>Type de date:</option>
           <?php foreach($liste_type_date as $type): ?>
@@ -85,14 +94,11 @@
         <?php if(isset($erreurs['Date Consommation'])) : ?>
           <span class="text-danger"><?= $erreurs['Date Consommation'] ?></span>
         <?php endif ?>
-        <input type="date" id="date_consommation" name="myform[date_consommation]">
+        <input type="date" id="date_consommation" name="myform[date_consommation]" value=" <?= isset($form['date_consommation']) ? $form['date_consommation'] : "" ?> ">
       </div>
 
       <div class="col-md-12 text-center">
-        <button type="submit" name="donner" class="btn btn-default donner" >Je donne</button>
-
-        <!-- data-toggle="modal" data-target="#donner" -->
-
+        <button type="submit" name="donner" class="btn btn-default donner" data-toggle="modal" data-target="#donner">Je donne</button>
       </div>
 
     </form>
@@ -102,7 +108,7 @@
 </section>
 
 
-<!-- Signalement Modals -->
+<!-- Donner Modals -->
 <div class="modal fade" tabindex="-1" role="dialog" id="donner" aria-labelledby="myModalLabel">
   <div class="vertical-alignment-helper ">
     <div class="modal-dialog vertical-align-center" role="document">
