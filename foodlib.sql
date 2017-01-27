@@ -24,14 +24,17 @@ CREATE TABLE IF NOT EXISTS `bornes` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- Export de données de la table foodlib.bornes : ~4 rows (environ)
+-- Export de données de la table foodlib.bornes : ~7 rows (environ)
 DELETE FROM `bornes`;
 /*!40000 ALTER TABLE `bornes` DISABLE KEYS */;
 INSERT INTO `bornes` (`id`, `adresse_borne`, `cp_borne`) VALUES
 	(1, '82 av Denfert Rochereau', '75014'),
 	(2, '15 rue Daguerre', '75014'),
 	(3, '2 place d\'Italie', '75013'),
-	(4, '6 rue des Saussaies', '75008');
+	(4, '6 rue des Saussaies', '75008'),
+	(5, '38 rue des Abbesses', '75018'),
+	(6, '33 rue de Maubeuge', '75009'),
+	(7, '93 rue de Rivoli', '75001');
 /*!40000 ALTER TABLE `bornes` ENABLE KEYS */;
 
 -- Export de la structure de la table foodlib. donneurs
@@ -53,11 +56,12 @@ CREATE TABLE IF NOT EXISTS `donneurs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Export de données de la table foodlib.donneurs : ~1 rows (environ)
+-- Export de données de la table foodlib.donneurs : ~2 rows (environ)
 DELETE FROM `donneurs`;
 /*!40000 ALTER TABLE `donneurs` DISABLE KEYS */;
 INSERT INTO `donneurs` (`id`, `wuser_id`, `type_donneur_id`, `nom`, `prenom`, `denomination_sociale`, `adresse_donneur`, `cp_donneur`, `mail`, `telephone`, `acces`, `horaires`, `photo_profil`, `commentaire`) VALUES
-	(1, 1, 0, 'Martin', 'Marc', 'Restaurant Pizzeria Michel-Angelo', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL);
+	(1, 1, 2, 'Martin', 'Marc', 'Restaurant Pizzeria Michel-Angelo', '4 rue de la Chine', '75020', '', NULL, NULL, NULL, NULL, NULL),
+	(2, 2, 3, 'Dupont', 'Luc', 'Resto du coeur Nation', '11 place de la Nation', '75011', '', NULL, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `donneurs` ENABLE KEYS */;
 
 -- Export de la structure de la table foodlib. dons
@@ -85,7 +89,8 @@ CREATE TABLE IF NOT EXISTS `dons` (
 DELETE FROM `dons`;
 /*!40000 ALTER TABLE `dons` DISABLE KEYS */;
 INSERT INTO `dons` (`id`, `donneur_id`, `disponible`, `enleve`, `titre`, `date_consommation`, `type_id`, `beneficiaire_id`, `adresse_retrait`, `borne_id`, `code_pin`, `heure_resa`, `note`, `signalement`, `image`, `adress`) VALUES
-	(3, 1, 1, 0, 'dfssdfsf', '2017-01-01', 1, NULL, 0, 1, NULL, '2017-01-25 16:46:35', NULL, 0, '', 'borne');
+	(3, 1, 1, 0, '2 parts d\'un framboisier fait maison', '2017-01-01', 1, NULL, 1, 2, NULL, '2017-01-27 16:05:43', NULL, 0, '', 'borne'),
+	(4, 1, 1, 0, '3 tomates', '2017-02-10', 1, NULL, 0, NULL, NULL, '2017-01-27 16:03:20', NULL, 0, '', '');
 /*!40000 ALTER TABLE `dons` ENABLE KEYS */;
 
 -- Export de la structure de la table foodlib. dons_tags
@@ -119,9 +124,14 @@ CREATE TABLE IF NOT EXISTS `structures` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Export de données de la table foodlib.structures : ~0 rows (environ)
+-- Export de données de la table foodlib.structures : ~4 rows (environ)
 DELETE FROM `structures`;
 /*!40000 ALTER TABLE `structures` DISABLE KEYS */;
+INSERT INTO `structures` (`id`, `libelle_structure`) VALUES
+	(1, 'particulier'),
+	(2, 'restaurant'),
+	(3, 'association'),
+	(4, 'entreprise');
 /*!40000 ALTER TABLE `structures` ENABLE KEYS */;
 
 -- Export de la structure de la table foodlib. tags
