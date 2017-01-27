@@ -8,7 +8,8 @@
     <h2>Liste des dons disponibles</h2>
   </div>
 
-  <?php ?>
+ 
+  <?php foreach ($dons as $don): ?>
   <div class="padding container well">
 
       <div class="col-xs-3">
@@ -16,12 +17,12 @@
       </div>
 
       <div class="col-xs-4">
-        <h4>titre</h4>
+        <h4><?= $don['titre'] ?></h4>
       </div>
 
       <div class="col-xs-3">
-        <p>id_type</p>
-        <p>date</p>
+        <p><?= $type_dates['libelle_date'] ?></p>
+        <p><?= $don['date_consommation'] ?></p>
       </div>
 
       <div class="col-xs-1">
@@ -33,6 +34,8 @@
       </div>
 
   </div>
+  <?php endforeach ?>
+
 </section>
 
 <?php $this->stop('main_content') ?>

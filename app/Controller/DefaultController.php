@@ -5,7 +5,9 @@ namespace Controller;
 use \W\Controller\Controller;
 use \Manager\TypeDateManager;
 use \Manager\BorneManager;
+use \Manager\DonneurManager;
 use \Manager\DonManager;
+use \Manager\PhotoManager;
 use \GUMP;
 
 class DefaultController extends Controller
@@ -132,13 +134,36 @@ public function creationDon()
 
 public function listeOffres()
 {
-$this->show('page/listeOffres');
+	$donneurs_manager = new DonneurManager();
+	$donneurs_manager->setTable('donneurs');
+	$donneurs = $donneurs_manager->findAll();
+
+	$dons_manager = new DonManager();
+	$dons_manager->setTable('dons');
+	$dons = $dons_manager->findAll();
+
+	$type_date_manager = new TypeDateManager();
+	$type_date_manager->setTable('type_date');
+	$type_dates = $type_date_manager->findAll();
+
+	$photos_manager = new PhotoManager();
+	$photos_manager->setTable('photos');
+	$photos = $photos_manager->findAll();
+
+
+
+	$this->show('page/listeOffres', ['donneurs' => $donneurs, 'dons' => $dons, 'type_dates' => $type_dates, 'photos' => $photos]);
 }
+
+
 
 public function cgu()
 {
 $this->show('page/cgu');
 }
+
+
+
 
 		public function inscription_d()
 		{
