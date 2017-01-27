@@ -11,6 +11,7 @@
 		<div class="sizeLimit img-centered">
 			<img class="img-rounded sizeLimit" src="<?= $this->assetUrl('img/portfolio/cabin.png') ?>" alt="img_profil">
 		</div>
+
 </section>
 
 <section class="container text-center">
