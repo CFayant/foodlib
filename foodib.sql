@@ -69,21 +69,22 @@ CREATE TABLE IF NOT EXISTS `dons` (
   `date_consommation` date NOT NULL,
   `type_id` int(11) DEFAULT NULL,
   `beneficiaire_id` int(11) DEFAULT NULL,
+  `adresse_retrait` tinyint(4) NOT NULL,
   `borne_id` int(5) DEFAULT NULL,
   `code_pin` varchar(4) DEFAULT NULL,
   `heure_resa` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `note` decimal(10,0) DEFAULT NULL,
-  `signalement` tinyint(4) DEFAULT '0',
+  `signalement` tinyint(4) NOT NULL,
   `image` varchar(255) NOT NULL,
   `adress` tinytext NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Export de données de la table foodlib.dons : ~0 rows (environ)
+-- Export de données de la table foodlib.dons : ~1 rows (environ)
 DELETE FROM `dons`;
 /*!40000 ALTER TABLE `dons` DISABLE KEYS */;
-INSERT INTO `dons` (`id`, `donneur_id`, `disponible`, `enleve`, `titre`, `date_consommation`, `type_id`, `beneficiaire_id`, `borne_id`, `code_pin`, `heure_resa`, `note`, `signalement`, `image`, `adress`) VALUES
-	(3, 1, 1, 0, 'dfssdfsf', '2017-01-01', 1, NULL, 1, NULL, '2017-01-25 16:46:35', NULL, 0, '', 'borne');
+INSERT INTO `dons` (`id`, `donneur_id`, `disponible`, `enleve`, `titre`, `date_consommation`, `type_id`, `beneficiaire_id`, `adresse_retrait`, `borne_id`, `code_pin`, `heure_resa`, `note`, `signalement`, `image`, `adress`) VALUES
+	(3, 1, 1, 0, 'dfssdfsf', '2017-01-01', 1, NULL, 0, 1, NULL, '2017-01-25 16:46:35', NULL, 0, '', 'borne');
 /*!40000 ALTER TABLE `dons` ENABLE KEYS */;
 
 -- Export de la structure de la table foodlib. dons_tags
