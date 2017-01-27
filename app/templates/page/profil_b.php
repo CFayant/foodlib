@@ -8,7 +8,7 @@
 
 	<span><a href="<?= $this->url("edition_p") ?>">Editer</a></span>
 
-		<div class="sizeLimit img-centered">
+		<div class="img-centered">
 			<img class="img-rounded sizeLimit" src="<?= $this->assetUrl('img/portfolio/cabin.png') ?>" alt="img_profil">
 		</div>
 

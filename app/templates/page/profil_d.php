@@ -6,11 +6,9 @@
 
 	<h1>Mon Profil</h1>
 
-	<caption class="">
-		
-		<img class="img-rounded" src="" alt="img_profil">
-
-	</caption>
+	<div class="img-centered">
+		<img class="img-rounded sizeLimit" src="<?= $this->assetUrl('img/portfolio/cabin.png') ?>" alt="img_profil">
+	</div>
 
 </section>
 
