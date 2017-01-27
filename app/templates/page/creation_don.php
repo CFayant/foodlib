@@ -16,7 +16,7 @@
       </div>
 
       <div class="form-group form_center text-center">
-        <h3>Sélectionner une adresse: <span class="text-danger"></span></h3>
+        <h3>Sélectionner une adresse: <span class="text-danger borne"></span></h3>
       </div>
 
       <div class="form-group form_center text-center">
@@ -31,7 +31,7 @@
 
       <div class="form-group form_center text-center">
         <select class="form-control" name="myform[borne_id]" id="borne_id" >
-          <option value="">Les bornes:</option>
+          <option value="null">Les bornes:</option>
           <?php foreach ($bornes as $borne): ?>
             <option value="<?= $borne['id'] ?>"><?= $borne['adresse_borne'] . " " . $borne['cp_borne'] ?></option>
           <?php endforeach ?>
@@ -39,30 +39,29 @@
       </div>
 
       <!-- div adresse perso -->
-<!--       <div class="adresse_perso">
+      <div class="adressePerso">
+
+        <div class="form-group form_center">
+          <label for="adresse_donneur">Adresse: <span class="text-danger"></span></label>
+          <input type="text" name="myform[adresse_donneur]" class="form-control" id="adresse_donneur" value="<?= $donneurs['for="adresse_donneur"'] ?>">
+        </div>
 
         <div class="form-group form_center">
           <label for="acces">Jours et horaires d'accés:</label>
-          <?php if(isset($erreurs['Acces'])) : ?>
-            <span class="text-danger"><?= $erreurs['Acces'] ?></span>
-          <?php endif ?>
           <textarea type="text" name="myform[acces]" class="form-control" id="acces" placeholder="Ex: Lundi, Mardi, Mercredi, etc..."></textarea>
         </div>
 
         <div class="form-group form_center">
           <label for="numero">Numéro de téléphone:</label>
-          <?php if(isset($erreurs['Numero'])) : ?>
-            <span class="text-danger"><?= $erreurs['Numero'] ?></span>
-          <?php endif ?>
           <input type="text" name="myform[numero]" class="form-control" id="numero" placeholder="Ex: 01 02 03 04 05">
         </div>
 
-      </div> -->
+      </div>
 
 
       <div class="form-group form_center">
         <label for="image">Charger une image du produit: <span class="text-danger"></span></label>
-        <input type="file" id="image" name="myform[image]" value=" <?= isset($form['image']) ? $form['image'] : "" ?> " >
+        <input type="file" id="image" name="myform[image]">
       </div>
 
       <div class="form-group form_center">
@@ -122,125 +121,9 @@
   </div>
 </div><!-- /.modal -->
 
-
 <?php $this->stop('main_content') ?>
 
+<?php $this->start('script') ?>
+  <script src="<?= $this->assetUrl('js/script_creation.js') ?>"></script>
+<?php $this->stop('script') ?>
 
-<script>
-
-  // Attendre le chargement du DOM
-  $(document).ready( function(){
-
-    // Supprimer les messages d'erreurs
-    $('select, textarea, input').focus(function(){
-
-      // Pour que les span soit en display none
-      $('span').fadeOut();
-
-      // Pour que les bordures rouges soient retirés
-      $(this).removeClass('bordureRouge');
-
-    });
-
-    // Validation d'un formulaire
-    $('form').submit(function(event){ // On capte la soumission du formulaire
-
-      event.preventDefault(); // On bloque l'envoie du formulaire
-
-      // Définir une variable pour la validation du formulaire
-      var formScore = 0;
-
-      // On vérifie le champ titre
-      if( $('#titre').val().length < 6 ){
-
-        // Afficher un message d'erreur
-        $('[for="titre"] span').text('Minimum 6 caractères').fadeIn();
-        $('textarea').addClass('bordureRouge');
-
-        // Ramener la valeur de formScore à 0
-        formScore = 0;
-
-      } else{
-        // Incrémenter formScore de 1
-        formScore ++;
-      };
-
-
-      // On vérifie le champ borne_id
-      if( $('#borne_id').val() == "null" ){
-
-        // Afficher un message d'erreur
-        $('h3 span').text('Veuillez sélectionner une borne').fadeIn();
-        $('#borne_id').addClass('bordureRouge');
-
-        // Ramener la valeur de formScore à 0
-        formScore = 0;
-
-      } else{
-        // Incrémenter formScore de 1
-        formScore ++;
-      };
-
-
-      // On vérifie le champ image
-      if( $('#image').val() == "null" ){
-
-        // Afficher un message d'erreur
-        $('[for="image"] span').text('Veuillez Charger une photo').fadeIn();
-        $('[type="file"]').addClass('bordureRouge');
-
-        // Ramener la valeur de formScore à 0
-        formScore = 0;
-
-      } else{
-        // Incrémenter formScore de 1
-        formScore ++;
-      };
-
-
-      // On vérifie le champ type_date
-      if( $('#type_date').val() == "null" ){
-
-        // Afficher un message d'erreur
-        $('[for="type_date"] span').text('Veuillez sélectionner le type de date').fadeIn();
-        $('#type_date').addClass('bordureRouge');
-
-        // Ramener la valeur de formScore à 0
-        formScore = 0;
-
-      } else{
-        // Incrémenter formScore de 1
-        formScore ++;
-      };
-
-
-      // On vérifie le champ date_consommation
-      if( $('#date_consommation').val() == "null" ){
-
-        // Afficher un message d'erreur
-        $('[for="date_consommation"] span').text('Veuillez indiquer la date de consommation').fadeIn();
-        $('#date_consommation').addClass('bordureRouge');
-
-        // Ramener la valeur de formScore à 0
-        formScore = 0;
-
-      } else{
-        // Incrémenter formScore de 1
-        formScore ++;
-      };
-
-      // Validation du formulaire
-      if( formScore == 5 ){
-
-        // On vide le champ message
-        $('input').val('');
-
-        // On remet le champ chat à la valeur null
-        $('select').val('null');
-
-      };
-
-    });
-
-  });  // Fin du chargement du DOM
-</script>

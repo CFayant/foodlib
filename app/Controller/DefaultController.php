@@ -65,9 +65,7 @@ class DefaultController extends Controller
 	public function creationDon()
 	{
 
-		$erreurs = [];
 		$form = [];
-
 
 		$type_date_manager = new TypeDateManager();
 		$type_date_manager->setTable('type_date');
@@ -76,10 +74,8 @@ class DefaultController extends Controller
 		$bornes_manager = new BorneManager();
 		$bornes = $bornes_manager->findAll();
 
-
 		if(isset($_POST['donner'])) {
 
-			$erreurs=[];
 			$gump = new GUMP();
 
 			$_POST['myform'] = $gump->sanitize($_POST['myform']); // You don't have to sanitize, but it's safest to do so.
@@ -88,21 +84,20 @@ class DefaultController extends Controller
 					'titre'               => 'required|alpha_numeric|max_len,500|min_len,6',
 					'borne_id'            => 'required',
 					'date_consommation'   => 'required|date',
-					'type_id'            	=> 'required',
+					'type_id'            	=> 'required'
 			));
 
 			$gump->filter_rules(array(
 				'titre'    => 'trim|sanitize_string'
 			));
 
-			$validated_data = $gump->run( array_merge( $_POST['myform'], $_FILES['myform'], ['donneur_id' => 1] ) ); // TODO : $_SESSION['user']['id']
+			$validated_data = $gump->run( array_merge( $_POST['myform'], ['donneur_id' => 1] ) ); // TODO : $_SESSION['user']['id']
 
 			if($validated_data === false) {
 
 				$erreurs = $gump->get_errors_array();
 				$form = $_POST['myform'];
 			}
-
 
 				$dons_manager = new DonManager();
 				$dons_manager->insert(array_merge($_POST['myform']));
