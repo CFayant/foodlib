@@ -12,7 +12,11 @@
 
     <div class="col-sm-9 relative">
       <div class="col-sm-5 descriptif">
-        <p>Le produit à donner et sa quantité (Ex: Tomates, une barquette de 6.)</p>
+        <p>
+            <?php foreach ($titre_don as $titre): ?>
+              <?= $titre['titre'] ?>
+            <?php endforeach ?>
+        </p>
 
         <p>Le type de date de consommation (Ex: Date conseillée ou date de fin de consommation.)</p>
         <p>La date de consommation (Ex: 15 Janvier 2017.)</p>
