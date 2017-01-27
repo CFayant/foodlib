@@ -37,26 +37,27 @@ INSERT INTO `bornes` (`id`, `adresse_borne`, `cp_borne`) VALUES
 -- Export de la structure de la table foodlib. donneurs
 CREATE TABLE IF NOT EXISTS `donneurs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_wuser` int(11) DEFAULT NULL,
-  `type` varchar(25) DEFAULT 'particulier',
-  `nom` varchar(50) DEFAULT NULL,
-  `prenom` varchar(50) DEFAULT NULL,
+  `wuser_id` int(11) NOT NULL,
+  `type_donneur_id` int(5) NOT NULL,
+  `nom` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
   `denomination_sociale` varchar(80) DEFAULT NULL,
   `adresse_donneur` varchar(120) DEFAULT NULL,
   `cp_donneur` varchar(5) DEFAULT NULL,
-  `mail` varchar(60) DEFAULT NULL,
+  `mail` varchar(60) NOT NULL,
   `telephone` varchar(10) DEFAULT NULL,
   `acces` varchar(200) DEFAULT NULL,
   `horaires` varchar(150) DEFAULT NULL,
   `photo_profil` varchar(255) DEFAULT NULL,
   `commentaire` text,
-  `nombre_dons` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Export de données de la table foodlib.donneurs : ~0 rows (environ)
+-- Export de données de la table foodlib.donneurs : ~1 rows (environ)
 DELETE FROM `donneurs`;
 /*!40000 ALTER TABLE `donneurs` DISABLE KEYS */;
+INSERT INTO `donneurs` (`id`, `wuser_id`, `type_donneur_id`, `nom`, `prenom`, `denomination_sociale`, `adresse_donneur`, `cp_donneur`, `mail`, `telephone`, `acces`, `horaires`, `photo_profil`, `commentaire`) VALUES
+	(1, 1, 0, 'Martin', 'Marc', 'Restaurant Pizzeria Michel-Angelo', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `donneurs` ENABLE KEYS */;
 
 -- Export de la structure de la table foodlib. dons
@@ -101,8 +102,7 @@ DELETE FROM `dons_tags`;
 -- Export de la structure de la table foodlib. photos
 CREATE TABLE IF NOT EXISTS `photos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `don_id` int(12) DEFAULT NULL,
-  `libelle_photo` varchar(140) NOT NULL,
+  `don_id` int(12) NOT NULL,
   `chemin` varchar(500) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -111,6 +111,18 @@ CREATE TABLE IF NOT EXISTS `photos` (
 DELETE FROM `photos`;
 /*!40000 ALTER TABLE `photos` DISABLE KEYS */;
 /*!40000 ALTER TABLE `photos` ENABLE KEYS */;
+
+-- Export de la structure de la table foodlib. structures
+CREATE TABLE IF NOT EXISTS `structures` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `libelle_structure` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Export de données de la table foodlib.structures : ~0 rows (environ)
+DELETE FROM `structures`;
+/*!40000 ALTER TABLE `structures` DISABLE KEYS */;
+/*!40000 ALTER TABLE `structures` ENABLE KEYS */;
 
 -- Export de la structure de la table foodlib. tags
 CREATE TABLE IF NOT EXISTS `tags` (
