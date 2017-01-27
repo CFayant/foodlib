@@ -6,12 +6,11 @@
 
 	<h1>Mon Profil</h1>
 
-	<caption class="">
-		
-		<img class="img-rounded" src="" alt="img_profil">
+	<span><a href="<?= $this->url("edition_p") ?>">Editer</a></span>
 
-	</caption>
-
+		<div class="sizeLimit img-centered">
+			<img class="img-rounded sizeLimit" src="<?= $this->assetUrl('img/portfolio/cabin.png') ?>" alt="img_profil">
+		</div>
 </section>
 
 <section class="container text-center">
@@ -19,9 +18,9 @@
 <h3>Mes Dons</h3><br>
 
 	<table class="table">
-		
+
 		<tr>
-			
+
 			<th>Date d'acquisition</th>
 
 			<th>Descriptif du produit</th>
@@ -29,14 +28,14 @@
 		</tr>
 
 		<tr>
-			
+
 			<td>Lorem ipsum dolor sit amet.</td>
 			<td>Lorem ipsum dolor sit amet.</td>
 
 		</tr>
 
 	</table>
-	
+
 
 </section>
 
