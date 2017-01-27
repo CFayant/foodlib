@@ -77,7 +77,7 @@
 
       <div class="form-group form_center">
         <label for="date_consommation">Date de consommation: <span class="text-danger"></span></label>
-        <input type="date" id="date_consommation" name="myform[date_consommation]" value=" <?= isset($form['date_consommation']) ? $form['date_consommation'] : "" ?> " >
+        <input type="date" id="date_consommation" name="myform[date_consommation]"  >
       </div>
 
       <div class="col-md-12 text-center">
