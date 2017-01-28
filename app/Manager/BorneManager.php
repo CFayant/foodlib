@@ -8,6 +8,4 @@ namespace Manager;
 class BorneManager extends \W\Manager\Manager
 {
 
-	
-
 }

@@ -67,17 +67,22 @@ class DefaultController extends Controller
 
 	}
 
+	private $data;
+
 	public function creationDon()
 	{
 
+		$this->data = new BorneManager();
+
+
 		$form = [];
 
-		$type_date_manager = new TypeDateManager();
-		$type_date_manager->setTable('type_date');
-		$liste_type_date = $type_date_manager->findAll();
+		$this->data_2 = new TypeDateManager();
+		// $type_date_manager->setTable('type_date');
+		// $liste_type_date = $type_date_manager->findAll();
 
-		$bornes_manager = new BorneManager();
-		$bornes = $bornes_manager->findAll();
+		// $bornes_manager = new BorneManager();
+		// $bornes = $bornes_manager->findAll();
 
 		if(isset($_POST['donner'])) {
 
@@ -108,14 +113,7 @@ class DefaultController extends Controller
 				$dons_manager->insert(array_merge($_POST['myform']));
 		}
 
-
-			$this->show('page/creation_don', ['erreurs' => $erreurs, 'liste_type_date' => $liste_type_date, 'bornes' => $bornes]);
-
-			$dons_manager->insert($data);
-
-			// $this->redirectToRoute('profil_d');
-
-		}
+	}
 
 public function listeOffres()
 {
@@ -217,12 +215,11 @@ $this->show('page/cgu');
 
 	public function detailOffre()
 	{
-		$titre_don_manager = new DetailTitreManager();
-		$titre_don_manager->setTable('titre');
-		$titre_don = $titre_don_manager->findAll();
+		$don_manager = new DonManager();
+		$don = $don_manager->findAll();
 
 
-		$this->show('page/detail_offre', ['titre' => $titre_don]);
+		$this->show('page/detail_offre', ['don' => $don]);
 	}
 
 
