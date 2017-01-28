@@ -6,7 +6,7 @@
 
 	<form method="POST" class="col-lg-6 margin-auto" enctype="multipart/form-data" id="form_i_d">
 
-		<div class=" text-center row">
+		<div class="text-center row">
 			<label for="statut">Vous êtes : </label>
 			<input type="radio" name="myform_i[statut]" value="particulier" class="form-check" checked> Un particulier
 			<input type="radio" name="myform_i[statut]" value="restaurant" class="form-check"> Un restaurant
@@ -62,7 +62,6 @@
 		<div class="form-group">
 			<label for="comment">Vos commentaires <span></span></label>
 			<textarea name="myform_i[comment]" class="form-control" id="comment_i_d"></textarea>
-
 		</div>
 
 		<div class="form-group">
