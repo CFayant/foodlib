@@ -2,9 +2,9 @@
 
 <?php $this->start('main_content') ?>
 
-<section class="padding container">
+<section class="padding container form-center">
 
-	<form method="POST" class="col-lg-6 margin-auto form-group">
+	<form  method="POST" class="col-lg-6 margin-auto form-group">
 
 		<div class="form-group">
 			<label for="username" class="">Votre Pseudo <span></span></label>
@@ -30,6 +30,12 @@
 </section>
 
 <?php $this->stop('main_content') ?>
+
+<?php $this->start('style') ?>
+
+<link href="<?= $this->assetUrl('css/inscription_b.css') ?>" rel="stylesheet">
+
+<?php $this->stop('style') ?>
 
 <?php $this->start('script') ?>
 

@@ -1,0 +1,23 @@
+.TextDecoration {
+
+	text-decoration: none !important;
+	color: black; 
+}
+
+.TextDecoration:hover {
+
+	color: black;
+}
+
+.width-limit {
+
+	width: 300px;
+	margin: 300px auto;
+}
+
+footer {
+
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}

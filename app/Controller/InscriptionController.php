@@ -108,4 +108,5 @@ class InscriptionController extends Controller
     $this->show('page/inscription_d', ['erreurs' => $erreurs]);
     
   }
+  
 }
