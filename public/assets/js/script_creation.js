@@ -37,7 +37,7 @@ $(document).ready( function(){
     if( $('#titre').val().length < 6 ){
 
       // Afficher un message d'erreur
-      $('[for="titre"] span').text('Minimum 6 caractères').fadeIn();
+      $('[for="titre"] span').text('Minimum 6 caractères').css("color", "red").fadeIn();
       $('[name="myform[titre]"]').addClass('bordureRouge');
 
       // Ramener la valeur de formScore à 0
@@ -53,7 +53,7 @@ $(document).ready( function(){
     if( $('#borne_id').val() == "null" ){
 
       // Afficher un message d'erreur
-      $('.borne').text('Veuillez sélectionner une borne').fadeIn();
+      $('.borne').text('Veuillez sélectionner une borne').css("color", "red").fadeIn();
       $('#borne_id').addClass('bordureRouge');
 
       // Ramener la valeur de formScore à 0
@@ -69,7 +69,7 @@ $(document).ready( function(){
     if( $('#adresse_donneur').val().length < 6){
 
       // Afficher un message d'erreur
-      $('for="adresse_donneur"').text('Veuillez indiquer votre adresse').fadeIn();
+      $('for="adresse_donneur"').text('Veuillez indiquer votre adresse').css("color", "red").fadeIn();
       $('[name="myform[adresse_donneur]"]').addClass('bordureRouge');
 
       // Ramener la valeur de formScore à 0
@@ -85,7 +85,7 @@ $(document).ready( function(){
     if( $('#type_date').val() == "null" ){
 
       // Afficher un message d'erreur
-      $('[for="type_date"] span').text('Veuillez sélectionner le type de date').fadeIn();
+      $('[for="type_date"] span').text('Veuillez sélectionner le type de date').css("color", "red").fadeIn();
       $('#type_date').addClass('bordureRouge');
 
       // Ramener la valeur de formScore à 0
@@ -101,7 +101,7 @@ $(document).ready( function(){
     if( $('#date_consommation').val() == "null" ){
 
       // Afficher un message d'erreur
-      $('[for="date_consommation"] span').text('Veuillez indiquer la date de consommation').fadeIn();
+      $('[for="date_consommation"] span').text('Veuillez indiquer la date de consommation').css("color", "red").fadeIn();
       $('#date_consommation').addClass('bordureRouge');
 
       // Ramener la valeur de formScore à 0
