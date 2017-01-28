@@ -13,9 +13,7 @@
     <div class="col-sm-9 relative">
       <div class="col-sm-5 descriptif">
         <p>
-            <?php foreach ($titre_don as $titre): ?>
-              <?= $titre['titre'] ?>
-            <?php endforeach ?>
+              <h3><?= $dons['titre'] ?></h3>
         </p>
 
         <p>Le type de date de consommation (Ex: Date conseillée ou date de fin de consommation.)</p>

@@ -61,18 +61,24 @@ class DefaultController extends Controller
 		$this->show('page/inscription_b', ['erreurs' => $erreurs]);
 	}
 
+	private $data;
+
+	private $data_2;
 
 	public function creationDon()
 	{
 
+		$this->data = new BorneManager();
+
+
 		$form = [];
 
-		$type_date_manager = new TypeDateManager();
-		$type_date_manager->setTable('type_date');
-		$liste_type_date = $type_date_manager->findAll();
+		$this->data_2 = new TypeDateManager();
+		// $type_date_manager->setTable('type_date');
+		// $liste_type_date = $type_date_manager->findAll();
 
-		$bornes_manager = new BorneManager();
-		$bornes = $bornes_manager->findAll();
+		// $bornes_manager = new BorneManager();
+		// $bornes = $bornes_manager->findAll();
 
 		if(isset($_POST['donner'])) {
 
@@ -103,7 +109,12 @@ class DefaultController extends Controller
 				$dons_manager->insert(array_merge($_POST['myform']));
 		}
 
-		$this->show('page/creation_don', ['liste_type_date' => $liste_type_date, 'bornes' => $bornes]);
+		// $bornes = $this->manager->data_borne();
+    $bornes = $this->data->findAll();
+    $type_date = $this->data_2->findAll();
+
+
+		$this->show('page/creation_don', ['type_date' => $type_date, 'bornes' => $bornes]);
 
 	}
 
@@ -186,12 +197,11 @@ class DefaultController extends Controller
 
 	public function detailOffre()
 	{
-		$titre_don_manager = new DetailTitreManager();
-		$titre_don_manager->setTable('titre');
-		$titre_don = $titre_don_manager->findAll();
+		$don_manager = new DonManager();
+		$don = $don_manager->findAll();
 
 
-		$this->show('page/detail_offre', ['titre' => $titre_don]);
+		$this->show('page/detail_offre', ['don' => $don]);
 	}
 
 
