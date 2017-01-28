@@ -15,14 +15,13 @@ class InscriptionController extends Controller
 {
 
 
-  public function inscription()
-  {
+  public function inscription() {
     $this->show('page/inscription');
   }
 
 
-  public function inscription_b()
-  {
+  public function inscription_b() {
+
     $gump = new GUMP();
 
     if(isset($_POST['inscrire_b'])){
@@ -33,37 +32,40 @@ class InscriptionController extends Controller
         'password'    => 'required|max_len,100|min_len,6',
         'passwordConfirm'    => 'required|max_len,100|min_len,6'
 
-        ));
+      ));
 
       $gump->filter_rules(array(
+
         'username' => 'trim|sanitize_string',
         'password' => 'trim',
         'passwordConfirm' => 'trim',
-        ));
+
+      ));
 
       $validated_data = $gump->run($_POST);
 
-      if($validated_data === false)
+      if($validated_data === false) {
 
-      {
-        $erreurs = $gump->get_errors_array();
+        $erreurs = $gump->get_errors_array(); 
+
       }
-      else
-      {
-          print_r($validated_data); // validation successful
-        }
+
+      $inscription_b_manager = new InscriptionManager();
+      $inscription_b_manager->insert(array_merge($_POST['myform_i']));
 
     }
 
     $this->show('page/inscription_b', ['erreurs' => $erreurs]);
 
   }
-public function inscription_d()
-    {
+
+  public function inscription_d() {
+
       $erreurs = [];
       $gump = new GUMP();
 
-      if(isset($_POST['inscrire_d'])){
+      if(isset($_POST['inscrire_d'])) {
+
         $_POST = $gump->sanitize($_POST);
         $gump->validation_rules(array(
 
@@ -81,7 +83,6 @@ public function inscription_d()
 
           ));
 
-
         $gump->filter_rules(array(
 
           'username' => 'trim|sanitize_string',
@@ -89,21 +90,22 @@ public function inscription_d()
           'passwordConfirm' => 'trim',
           'email'    => 'trim|sanitize_email'
 
-          ));
+        ));
 
         $validated_data = $gump->run($_POST);
 
-        if($validated_data === false)
-        {
+        if($validated_data === false) {
+
           $erreurs = $gump->get_errors_array();
+
         }
-        else
-        {
-           print_r($validated_data); // validation successful
-        }
+
+      $inscription_d_manager = new InscriptionManager();
+      $inscription_d_manager->insert(array_merge($_POST['myform_i']));
 
       }
 
     $this->show('page/inscription_d', ['erreurs' => $erreurs]);
+    
   }
 }

@@ -21,7 +21,6 @@ class OffreController extends Controller
 
     $this->data = new BorneManager();
 
-
     $form = [];
 
     // $this->data_2 = new TypeDateManager();
@@ -61,7 +60,6 @@ class OffreController extends Controller
     }
 
     $this->show('page/creation_don');
-
 
   }
 
