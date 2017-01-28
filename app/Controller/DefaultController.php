@@ -6,6 +6,7 @@ use \W\Controller\Controller;
 use \Manager\TypeDateManager;
 use \Manager\BorneManager;
 use \Manager\DonManager;
+use \Manager\DetailTitreManager;
 use \GUMP;
 
 class DefaultController extends Controller
@@ -19,14 +20,15 @@ class DefaultController extends Controller
 		$this->show('page/home');
 	}
 
+
 	public function inscription()
 	{
-		$this->show('page/inscription');	
+		$this->show('page/inscription');
 	}
+
 
 	public function inscription_b()
 	{
-		$erreurs = [];
 		$gump = new GUMP();
 
 		if(isset($_POST['inscrire_b'])){
@@ -38,7 +40,6 @@ class DefaultController extends Controller
 				'passwordConfirm'    => 'required|max_len,100|min_len,6'
 
 				));
-
 
 			$gump->filter_rules(array(
 				'username' => 'trim|sanitize_string',
@@ -66,8 +67,8 @@ class DefaultController extends Controller
 
 	public function creationDon()
 	{
-		$erreurs = [];
-		$gump = new GUMP();
+
+		$form = [];
 
 		$type_date_manager = new TypeDateManager();
 		$type_date_manager->setTable('type_date');
@@ -76,58 +77,44 @@ class DefaultController extends Controller
 		$bornes_manager = new BorneManager();
 		$bornes = $bornes_manager->findAll();
 
-		$dons_manager = new DonManager();
-
 		if(isset($_POST['donner'])) {
-			$uploads_dir = '/var/www/public/assets/uploads';
-			foreach ($_FILES['myform']["error"] as $key => $error) {
-			    if ($error == UPLOAD_ERR_OK) {
-			        $tmp_name = $_FILES["myform"]["tmp_name"][$key];
-			        $name = $_FILES["myform"]["name"][$key];
-			        move_uploaded_file($tmp_name, "$uploads_dir/$name");
-			    }
-			}
-			$data = array_merge($_POST['myform'], ['donneur_id' => 1, 'image' => $name]); // TODO : $_SESSION['user']['id']
-			print_r($data);
-			die();
 
-			$_POST = $gump->sanitize($_POST);
+			$gump = new GUMP();
+
+			$_POST['myform'] = $gump->sanitize($_POST['myform']); // You don't have to sanitize, but it's safest to do so.
 
 			$gump->validation_rules(array(
-				'dons'                => 'required|alpha_numeric|max_len,500|min_len,6',
-				'acces'               => 'required|alpha_numeric|max_len,500|min_len,6',
-				'numero'              => 'required|numeric|exact_len,10',
-				'date_consommation'   => 'required|date',
-				));
+					'titre'               => 'required|alpha_numeric|max_len,500|min_len,6',
+					'borne_id'            => 'required',
+					'date_consommation'   => 'required|date',
+					'type_id'            	=> 'required'
+			));
 
 			$gump->filter_rules(array(
-				'dons'    => 'trim|sanitize_string',
-				'acces'   => 'trim|sanitize_string',
-				'numero'  => 'trim|sanitize_numbers'
-				));
+				'titre'    => 'trim|sanitize_string'
+			));
 
-			$validated_data = $gump->run($_POST);
+			$validated_data = $gump->run( array_merge( $_POST['myform'], ['donneur_id' => 1] ) ); // TODO : $_SESSION['user']['id']
 
-			if($validated_data === false)
+			if($validated_data === false) {
 
-			{
 				$erreurs = $gump->get_errors_array();
+				$form = $_POST['myform'];
 			}
-			else
-			{
-	        print_r($validated_data); // validation successful
-	    	}
 
+				$dons_manager = new DonManager();
+				$dons_manager->insert(array_merge($_POST['myform']));
+		}
+
+
+			$this->show('page/creation_don', ['erreurs' => $erreurs, 'liste_type_date' => $liste_type_date, 'bornes' => $bornes]);
 
 			$dons_manager->insert($data);
 
-			$this->redirectToRoute('profil_d');
+			// $this->redirectToRoute('profil_d');
 
 		}
 
-		$this->show('page/creation_don', ['erreurs' => $erreurs, 'liste_type_date' => $liste_type_date, 'bornes' => $bornes]);
-
-		}
 
 		public function listeOffres()
 		{
@@ -169,7 +156,7 @@ class DefaultController extends Controller
 					'password' => 'trim',
 					'passwordConfirm' => 'trim',
 					'email'    => 'trim|sanitize_email'
-					
+
 					));
 
 				$validated_data = $gump->run($_POST);
@@ -180,34 +167,44 @@ class DefaultController extends Controller
 				}
 				else
 				{
-		        print_r($validated_data); // validation successful
-		    	}
+		       print_r($validated_data); // validation successful
+		    }
 
 			}
 
-			$this->show('page/inscription_d', ['erreurs' => $erreurs]);
-		}
-
-		public function profil_b()
-		{
-			$this->show('page/profil_b');
-		}
-
-		public function profil_d()
-		{
-			$this->show('page/profil_d');
-		}
-
-		public function edition_p()
-		{
-			$this->show('page/edition_p');
-		}
-
-		public function detailOffre()
-		{
-			$this->show('page/detail_offre');
-		}
-
+		$this->show('page/inscription_d', ['erreurs' => $erreurs]);
 	}
+
+
+	public function profil_b()
+	{
+		$this->show('page/profil_b');
+	}
+
+
+	public function profil_d()
+	{
+		$this->show('page/profil_d');
+	}
+
+
+	public function edition_p()
+	{
+		$this->show('page/edition_p');
+	}
+
+
+	public function detailOffre()
+	{
+		$titre_don_manager = new DetailTitreManager();
+		$titre_don_manager->setTable('titre');
+		$titre_don = $titre_don_manager->findAll();
+
+
+		$this->show('page/detail_offre', ['titre' => $titre_don]);
+	}
+
+
+}
 
 

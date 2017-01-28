@@ -41,19 +41,19 @@
         <div class="container">
                 <div class="row display_inline_block col-lg-6" >
 
-                        <h3><a href="#" class="btn_cherche">Je donne</a></h3>
+                        <h3><a href="<?= $this->url("creationDon") ?>" class="btn_cherche">Je donne</a></h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium tempore dicta non impedit voluptatibus, repellat dolor natus similique perspiciatis inventore magni consequuntur alias, nesciunt culpa. Dicta ea culpa vero modi.</p>
 
                 </div>
 
                 <div class="row display_inline_block col-lg-6">
 
-                        <h3><a href="#" class="btn_cherche">Je recherche</a></h3>
+                        <h3><a href="<?= $this->url("listeOffres") ?>" class="btn_cherche">Je recherche</a></h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos in at sed, mollitia cumque sint, provident commodi, non cum atque nam cupiditate sequi eaque nesciunt minima. Deleniti, iure voluptatibus totam.</p>
 
                 </div>
         </div>
 
     </section>
-    
+
 <?php $this->stop('main_content') ?>

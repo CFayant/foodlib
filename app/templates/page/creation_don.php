@@ -10,25 +10,13 @@
     <form method="POST" class="col-lg-6 margin-auto" enctype="multipart/form-data">
 
       <div class="form-group form_center">
-        <label for="titre">Je donne:</label>
-        <?php if(isset($erreurs['Titre'])) : ?>
-          <span class="text-danger"><?= $erreurs['Titre'] ?></span>
-        <?php endif ?>
-        <textarea type="text" name="myform[titre]" class="form-control" id="titre" placeholder="Ex: Une barquette de 4 tomates."></textarea>
-      </div>
-
-      <div class="form-group form_center">
-        <label for="tags">La catégories:</label>
-        <select class="form-control" name="tagform[tags]">
-          <option value="">Mots clés:</option>
-          <?php foreach ($tags as $tag): ?>
-          <option value="<?= $tag['id'] ?>"><?= $tag['libelle_tag'] ?></option>
-          <?php endforeach ?>
-        </select>
+        <label for="titre">Je donne: <span class="text-danger"></span></label>
+        <textarea type="text" name="myform[titre]" class="form-control" id="titre" placeholder="Ex: Une barquette de 4 tomates."
+        value=" <?= isset($form['titre']) ? $form['titre'] : "" ?> " ></textarea>
       </div>
 
       <div class="form-group form_center text-center">
-        <h3>Sélectionner une adresse:</h3>
+        <h3>Sélectionner une adresse: <span class="text-danger borne"></span></h3>
       </div>
 
       <div class="form-group form_center text-center">
@@ -42,66 +30,60 @@
       </div>
 
       <div class="form-group form_center text-center">
-        <h3>Mon adresse :</h3>
-      </div>
-
-      <div class="form-group form_center text-center">
-        <select class="form-control" name="myform[borne_id]">
-          <option value="">Les bornes:</option>
+        <select class="form-control" name="myform[borne_id]" id="borne_id" >
+          <option value="null">Les bornes:</option>
           <?php foreach ($bornes as $borne): ?>
             <option value="<?= $borne['id'] ?>"><?= $borne['adresse_borne'] . " " . $borne['cp_borne'] ?></option>
           <?php endforeach ?>
-
-
         </select>
-        <p>Adresse du donneur</p>
       </div>
 
-     <!--  <div class="form-group form_center">
-        <label for="acces">Jours et horaires d'accés:</label>
-        <?php if(isset($erreurs['Acces'])) : ?>
-          <span class="text-danger"><?= $erreurs['Acces'] ?></span>
-        <?php endif ?>
-        <textarea type="text" name="myform[acces]" class="form-control" id="acces" placeholder="Ex: Lundi, Mardi, Mercredi, etc..."></textarea>
+      <!-- div adresse perso -->
+      <div class="adressePerso">
+
+        <div class="form-group form_center">
+          <label for="adresse_donneur">Adresse: <span class="text-danger"></span></label>
+          <input type="text" name="myform[adresse_donneur]" class="form-control" id="adresse_donneur" value="<?= $donneurs['for="adresse_donneur"'] ?>">
+        </div>
+
+        <div class="form-group form_center">
+          <label for="acces">Jours et horaires d'accés:</label>
+          <textarea type="text" name="myform[acces]" class="form-control" id="acces" placeholder="Ex: Lundi, Mardi, Mercredi, etc..."></textarea>
+        </div>
+
+        <div class="form-group form_center">
+          <label for="numero">Numéro de téléphone:</label>
+          <input type="text" name="myform[numero]" class="form-control" id="numero" placeholder="Ex: 01 02 03 04 05">
+        </div>
+
       </div>
 
-      <div class="form-group form_center">
-        <label for="numero">Numéro de téléphone:</label>
-        <?php if(isset($erreurs['Numero'])) : ?>
-          <span class="text-danger"><?= $erreurs['Numero'] ?></span>
-        <?php endif ?>
-        <input type="text" name="myform[numero]" class="form-control" id="numero" placeholder="Ex: 01 02 03 04 05">
-      </div> -->
 
       <div class="form-group form_center">
-        <label for="image">Charger une image du produit:</label>
+        <label for="image">Charger une image du produit: <span class="text-danger"></span></label>
         <input type="file" id="image" name="myform[image]">
       </div>
 
       <div class="form-group form_center">
-        <label for="type_date">Le type de date de consommation:</label>
-        <select class="form-control" name="myform[type_id]">
+        <label for="type_date">Le type de date de consommation: <span class="text-danger"></span></label>
+        <select class="form-control" name="myform[type_id]" id="type_date" >
           <option>Type de date:</option>
-          <!-- todo foreach sur la table type_date -->
           <?php foreach($liste_type_date as $type): ?>
-          <option value="<?= $type['id'] ?>"><?= $type['libelle_date']?></option>
-         <? endforeach ?>
+            <option value="<?= $type['id'] ?>"><?= $type['libelle_date']?></option>
+          <? endforeach ?>
         </select>
       </div>
 
       <div class="form-group form_center">
-        <label for="date_consommation">Date de consommation:</label>
-        <?php if(isset($erreurs['Date Consommation'])) : ?>
-          <span class="text-danger"><?= $erreurs['Date Consommation'] ?></span>
-        <?php endif ?>
-        <input type="date" id="date_consommation" name="myform[date_consommation]">
+        <label for="date_consommation">Date de consommation: <span class="text-danger"></span></label>
+        <input type="date" id="date_consommation" name="myform[date_consommation]"  >
       </div>
 
       <div class="col-md-12 text-center">
         <button type="submit" name="donner" class="btn btn-default donner" >Je donne</button>
-
-        <!-- data-toggle="modal" data-target="#donner" -->
       </div>
+
+      <!-- data-toggle="modal" data-target="#donner" -->
 
     </form>
 
@@ -110,7 +92,7 @@
 </section>
 
 
-<!-- Signalement Modals -->
+<!-- Donner Modals -->
 <div class="modal fade" tabindex="-1" role="dialog" id="donner" aria-labelledby="myModalLabel">
   <div class="vertical-alignment-helper ">
     <div class="modal-dialog vertical-align-center" role="document">
@@ -139,5 +121,9 @@
   </div>
 </div><!-- /.modal -->
 
-
 <?php $this->stop('main_content') ?>
+
+<?php $this->start('script') ?>
+  <script src="<?= $this->assetUrl('js/script_creation.js') ?>"></script>
+<?php $this->stop('script') ?>
+

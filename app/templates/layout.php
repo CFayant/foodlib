@@ -243,7 +243,7 @@
 			        </div>
 
 							<div class="text-center">
-		        		<input type="submit" name="Connecter" class="btn btn-default donner" value="Se connecter">
+		        		<input type="submit" name="deconnecter" class="btn btn-default donner" value="Se deconnecter">
 		        	</div>
 		        </form>
 
@@ -257,7 +257,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
-
 <?php echo $this->section('script'); ?>
 
 </body>
