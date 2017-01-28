@@ -58,12 +58,10 @@ class OffreController extends Controller
 
         $dons_manager = new DonManager();
         $dons_manager->insert(array_merge($_POST['myform']));
+      }
+
+      $this->show('page/creation_don');
     }
-
-    $this->show('page/creation_don');
-
-
-  }
 
   public function listeOffres()
   {
@@ -83,8 +81,6 @@ class OffreController extends Controller
     $photos_manager->setTable('photos');
     $photos = $photos_manager->findAll();
 
-
-
     $this->show('page/listeOffres', ['donneurs' => $donneurs, 'dons' => $dons, 'type_dates' => $type_dates, 'photos' => $photos]);
   }
 
@@ -97,6 +93,4 @@ class OffreController extends Controller
 
     $this->show('page/detail_offre', ['don' => $don]);
   }
-
-
 }
