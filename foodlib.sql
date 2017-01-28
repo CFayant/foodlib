@@ -1,4 +1,4 @@
--- --------------------------------------------------------
+﻿-- --------------------------------------------------------
 -- Hôte :                        127.0.0.1
 -- Version du serveur:           5.5.46-0ubuntu0.14.04.2 - (Ubuntu)
 -- SE du serveur:                debian-linux-gnu
@@ -56,13 +56,14 @@ CREATE TABLE IF NOT EXISTS `donneurs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
+
 -- Export de données de la table foodlib.donneurs : ~2 rows (environ)
 DELETE FROM `donneurs`;
 /*!40000 ALTER TABLE `donneurs` DISABLE KEYS */;
 INSERT INTO `donneurs` (`id`, `wuser_id`, `type_donneur_id`, `nom`, `prenom`, `denomination_sociale`, `adresse_donneur`, `cp_donneur`, `mail`, `telephone`, `acces`, `horaires`, `photo_profil`, `commentaire`) VALUES
 	(1, 1, 2, 'Martin', 'Marc', 'Restaurant Pizzeria Michel-Angelo', '4 rue de la Chine', '75020', '', NULL, NULL, NULL, NULL, NULL),
 	(2, 2, 3, 'Dupont', 'Luc', 'Resto du coeur Nation', '11 place de la Nation', '75011', '', NULL, NULL, NULL, NULL, NULL);
-/*!40000 ALTER TABLE `donneurs` ENABLE KEYS */;
+
 
 -- Export de la structure de la table foodlib. dons
 CREATE TABLE IF NOT EXISTS `dons` (
