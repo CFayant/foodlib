@@ -608,7 +608,6 @@ a.info:hover span {
   padding-right: 0;
 }
 
-<<<<<<< HEAD
 .descriptif{
   width: 70%;
 }
@@ -664,11 +663,6 @@ a.info:hover span {
 }
 
 
-.donner:hover {
-
-  background-color: #18BC9C;
-}
-
 .statut {
 
   max-width: 75%;
@@ -716,3 +710,4 @@ a.info:hover span {
 .bordureRouge{
   border-color: red;
 }
+

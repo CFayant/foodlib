@@ -2,28 +2,28 @@
 $(document).ready( function(){
 
 
-  // Display pour la div adressePerso
-  $('[value="adresse"]').click(function(){
-      $('.adressePerso').fadeIn();
-      $('#borne_id').fadeOut();
-  });
+  // // Display pour la div adressePerso
+  // $('[value="adresse"]').click(function(){
+  //     $('.adressePerso').fadeIn();
+  //     $('#borne_id').fadeOut();
+  // });
 
-  // Display none pour la div adressePerso
-  $('[value="borne"]').click(function(){
-      $('.adressePerso').fadeOut();
-      $('#borne_id').fadeIn();
-  });
+  // // Display none pour la div adressePerso
+  // $('[value="borne"]').click(function(){
+  //     $('.adressePerso').fadeOut();
+  //     $('#borne_id').fadeIn();
+  // });
 
-  // Supprimer les messages d'erreurs
-  $('select, textarea, input').focus(function(){
+  // // Supprimer les messages d'erreurs
+  // $('select, textarea, input').focus(function(){
 
-    // Pour que les span soit en display none
-    $('span').fadeOut();
+  //   // Pour que les span soit en display none
+  //   $('span').fadeOut();
 
-    // Pour que les bordures rouges soient retirés
-    $(this).removeClass('bordureRouge');
+  //   // Pour que les bordures rouges soient retirés
+  //   $(this).removeClass('bordureRouge');
 
-  });
+  // });
 
   // Validation d'un formulaire
   $('form').submit(function(event){ // On capte la soumission du formulaire
@@ -126,3 +126,15 @@ $(document).ready( function(){
   });
 
 });  // Fin du chargement du DOM
+
+
+
+
+
+
+
+<?php $this->start('style') ?>
+
+<link rel="stylesheet" href="<?= $this->assetUrl('css/inscription_d.css') ?>">
+
+<?php $this->stop('style') ?>
