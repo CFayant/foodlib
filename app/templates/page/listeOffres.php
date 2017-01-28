@@ -21,8 +21,7 @@
       </div>
 
       <div class="col-xs-3">
-        <p><?= $type_dates['libelle_date'] ?></p>
-        <p><?= $don['date_consommation'] ?></p>
+        <p><?= $don['type']['libelle_date'] . ' ' .  $don['date_consommation'] ?></p>
       </div>
 
       <div class="col-xs-1">

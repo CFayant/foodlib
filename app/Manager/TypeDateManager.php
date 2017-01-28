@@ -8,6 +8,6 @@ namespace Manager;
 class TypeDateManager extends \W\Manager\Manager
 {
 
-	
+
 
 }

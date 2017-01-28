@@ -75,17 +75,31 @@ class OffreController extends Controller
     $dons_manager->setTable('dons');
     $dons = $dons_manager->findAll();
 
-    $type_date_manager = new TypeDateManager();
-    $type_date_manager->setTable('type_date');
-    $type_dates = $type_date_manager->findAll();
+    // $type_date_manager = new TypeDateManager();
+    // $type_date_manager->setTable('type_date');
+    // $type_date = $type_date_manager->findAll();
 
     $photos_manager = new PhotoManager();
     $photos_manager->setTable('photos');
     $photos = $photos_manager->findAll();
 
+    // if( $this->type_date instanceof TypeDate ) {
+    //   return $this->type_date;
+    // } else {
+    //   $type_date_manager = new TypeDateManager;
+    //   $type_date = $type_date_manager->find($this->type_id);
+    //   return $type_date;
+    // }
+
+    // $type_date_manager = new TypeDateManager();
+    // $type_date = $type_date_manager->find($this->type_id);
+    // return $type_date;
+
+    // var_dump($dons->getTypeDate());
+    // exit;
 
 
-    $this->show('page/listeOffres', ['donneurs' => $donneurs, 'dons' => $dons, 'type_dates' => $type_dates, 'photos' => $photos]);
+    $this->show('page/listeOffres', ['donneurs' => $donneurs, 'dons' => $dons, 'data_type_date' => $data_type_date, 'photos' => $photos]);
   }
 
 
