@@ -87,10 +87,52 @@ class OffreController extends Controller
 
   public function detailOffre()
   {
-    $don_manager = new DonManager();
-    $don = $don_manager->findAll();
+
+    $bornes_manager = new BorneManager();
+    $bornes_manager->setTable('bornes');
+    $bornes = $bornes_manager->findAll();
+
+    foreach ($bornes as $borne) {
+
+      $data_bornes= $borne;
+    }
+
+    $donneurs_manager = new DonneurManager();
+    $donneurs_manager->setTable('donneurs');
+    $donneurs = $donneurs_manager->findAll();
+
+    foreach ($donneurs as $donneur) {
+
+      $data_donneur= $donneur;
+    }
+
+    $dons_manager = new DonManager();
+    $dons_manager->setTable('dons');
+    $dons = $dons_manager->findAll() ;
+
+    foreach ($dons as $don) {
+
+      $data_don= $don;
+    }
+
+    $type_date_manager = new TypeDateManager();
+    $type_date_manager->setTable('type_date');
+    $type_date = $type_date_manager->findAll();
+
+    foreach ($type_date as $type) {
+
+      $data_type_date= $type;
+    }
+
+    $photos_manager = new PhotoManager();
+    $photos_manager->setTable('photos');
+    $photos = $photos_manager->findAll();
 
 
-    $this->show('page/detail_offre', ['don' => $don]);
+
+    // return $don;
+
+    $this->show('page/detail_offre', ['data_bornes' => $data_bornes, 'data_donneur' => $data_donneur, 'data_don' => $data_don, 'data_type_date' => $data_type_date, 'photos' => $photos]);
+
   }
 }

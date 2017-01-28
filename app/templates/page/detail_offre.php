@@ -13,15 +13,15 @@
     <div class="col-sm-9 relative">
       <div class="col-sm-5 descriptif">
         <p>
-              <h3><?= $dons['titre'] ?></h3>
+              <h3><?= $data_don['titre']  ?></h3>
         </p>
 
-        <p>Le type de date de consommation (Ex: Date conseillée ou date de fin de consommation.)</p>
-        <p>La date de consommation (Ex: 15 Janvier 2017.)</p>
+        <p><?= $data_type_date['libelle_date'] ?></p>
+        <p><?= $data_don['date_consommation'] ?></p>
       </div>
 
       <div class="col-sm-4 pseudo">
-        <h4>pseudo ou dénomination du donneur</h4>
+        <h4><?= $data_donneur['nom'] ." ". $data_donneur['prenom']?></h4>
       </div>
     </div>
 
@@ -33,11 +33,12 @@
         </div>
 
         <div class="col-sm-5 float-right descriptif_adresse">
-            <p>Adresse du donneur ou adresse d'une borne </p>
+            <p><?= $data_bornes['adresse_borne'] ." ". $data_bornes['cp_borne']?></p>
+            <p><?= $data_donneur['adresse_donneur'] ." ". $data_donneur['cp_donneur']?></p>
 
-            <p>Accés: Nation métro ligne 7 et 6</p>
+            <p><?= $data_donneur['acces'] ?></p>
 
-            <p>jours et horaires</p>
+            <p><?= $data_donneur['horaires'] ?></p>
         </div>
 
       </div>

@@ -1,4 +1,4 @@
-﻿-- --------------------------------------------------------
+-- --------------------------------------------------------
 -- Hôte :                        127.0.0.1
 -- Version du serveur:           5.5.46-0ubuntu0.14.04.2 - (Ubuntu)
 -- SE du serveur:                debian-linux-gnu
@@ -13,19 +13,18 @@
 
 
 -- Export de la structure de la base pour foodlib
-CREATE DATABASE IF NOT EXISTS `foodlib` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `foodlib`;
+CREATE DATABASE IF NOT EXISTS `foodlib` /*!40100 DEFAULT CHARACTER SET latin1 */; USE `foodlib`;
 
 -- Export de la structure de la table foodlib. bornes
 CREATE TABLE IF NOT EXISTS `bornes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `adresse_borne` varchar(140) NOT NULL,
-  `cp_borne` varchar(5) NOT NULL,
-  PRIMARY KEY (`id`)
+ `id` INT(11) NOT NULL AUTO_INCREMENT,
+ `adresse_borne` VARCHAR(140) NOT NULL,
+ `cp_borne` VARCHAR(5) NOT NULL, PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- Export de données de la table foodlib.bornes : ~7 rows (environ)
-DELETE FROM `bornes`;
+DELETE
+FROM `bornes`;
 /*!40000 ALTER TABLE `bornes` DISABLE KEYS */;
 INSERT INTO `bornes` (`id`, `adresse_borne`, `cp_borne`) VALUES
 	(1, '82 av Denfert Rochereau', '75014'),
@@ -90,43 +89,45 @@ CREATE TABLE IF NOT EXISTS `dons` (
 DELETE FROM `dons`;
 /*!40000 ALTER TABLE `dons` DISABLE KEYS */;
 INSERT INTO `dons` (`id`, `donneur_id`, `disponible`, `enleve`, `titre`, `date_consommation`, `type_id`, `beneficiaire_id`, `adresse_retrait`, `borne_id`, `code_pin`, `heure_resa`, `note`, `signalement`, `image`, `adress`) VALUES
-	(3, 1, 1, 0, '2 parts d\'un framboisier fait maison', '2017-01-01', 1, NULL, 1, 2, NULL, '2017-01-27 16:05:43', NULL, 0, '', 'borne'),
+	(3, 1, 1, 0, '2 parts d\'un framboisier fait maison', '2017-01-01', 1,
+NULL, 1, 2, NULL, '2017-01-27 16:05:43', NULL, 0, '', 'borne'),
 	(4, 1, 1, 0, '3 tomates', '2017-02-10', 1, NULL, 0, NULL, NULL, '2017-01-27 16:03:20', NULL, 0, '', '');
 /*!40000 ALTER TABLE `dons` ENABLE KEYS */;
 
 -- Export de la structure de la table foodlib. dons_tags
 CREATE TABLE IF NOT EXISTS `dons_tags` (
-  `don_id` int(11) NOT NULL,
-  `tag_id` int(11) NOT NULL
+ `don_id` INT(11) NOT NULL,
+ `tag_id` INT(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Export de données de la table foodlib.dons_tags : ~0 rows (environ)
-DELETE FROM `dons_tags`;
+DELETE
+FROM `dons_tags`;
 /*!40000 ALTER TABLE `dons_tags` DISABLE KEYS */;
 /*!40000 ALTER TABLE `dons_tags` ENABLE KEYS */;
 
 -- Export de la structure de la table foodlib. photos
 CREATE TABLE IF NOT EXISTS `photos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `don_id` int(12) NOT NULL,
-  `chemin` varchar(500) NOT NULL,
-  PRIMARY KEY (`id`)
+ `id` INT(11) NOT NULL AUTO_INCREMENT,
+ `don_id` INT(12) NOT NULL,
+ `chemin` VARCHAR(500) NOT NULL, PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Export de données de la table foodlib.photos : ~0 rows (environ)
-DELETE FROM `photos`;
+DELETE
+FROM `photos`;
 /*!40000 ALTER TABLE `photos` DISABLE KEYS */;
 /*!40000 ALTER TABLE `photos` ENABLE KEYS */;
 
 -- Export de la structure de la table foodlib. structures
 CREATE TABLE IF NOT EXISTS `structures` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `libelle_structure` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
+ `id` INT(11) NOT NULL AUTO_INCREMENT,
+ `libelle_structure` VARCHAR(50) NOT NULL, PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Export de données de la table foodlib.structures : ~4 rows (environ)
-DELETE FROM `structures`;
+DELETE
+FROM `structures`;
 /*!40000 ALTER TABLE `structures` DISABLE KEYS */;
 INSERT INTO `structures` (`id`, `libelle_structure`) VALUES
 	(1, 'particulier'),
@@ -137,13 +138,13 @@ INSERT INTO `structures` (`id`, `libelle_structure`) VALUES
 
 -- Export de la structure de la table foodlib. tags
 CREATE TABLE IF NOT EXISTS `tags` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `libelle_tag` varchar(90) NOT NULL,
-  PRIMARY KEY (`id`)
+ `id` INT(11) NOT NULL AUTO_INCREMENT,
+ `libelle_tag` VARCHAR(90) NOT NULL, PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 -- Export de données de la table foodlib.tags : ~9 rows (environ)
-DELETE FROM `tags`;
+DELETE
+FROM `tags`;
 /*!40000 ALTER TABLE `tags` DISABLE KEYS */;
 INSERT INTO `tags` (`id`, `libelle_tag`) VALUES
 	(1, 'Fruit'),
@@ -159,13 +160,13 @@ INSERT INTO `tags` (`id`, `libelle_tag`) VALUES
 
 -- Export de la structure de la table foodlib. type_date
 CREATE TABLE IF NOT EXISTS `type_date` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `libelle_date` varchar(120) NOT NULL,
-  PRIMARY KEY (`id`)
+ `id` INT(11) NOT NULL AUTO_INCREMENT,
+ `libelle_date` VARCHAR(120) NOT NULL, PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Export de données de la table foodlib.type_date : ~2 rows (environ)
-DELETE FROM `type_date`;
+DELETE
+FROM `type_date`;
 /*!40000 ALTER TABLE `type_date` DISABLE KEYS */;
 INSERT INTO `type_date` (`id`, `libelle_date`) VALUES
 	(1, 'Date limite de consommation (DLC) le'),
@@ -174,14 +175,15 @@ INSERT INTO `type_date` (`id`, `libelle_date`) VALUES
 
 -- Export de la structure de la table foodlib. wusers
 CREATE TABLE IF NOT EXISTS `wusers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` int(50) NOT NULL,
-  `password` int(50) NOT NULL,
-  PRIMARY KEY (`id`)
+ `id` INT(11) NOT NULL AUTO_INCREMENT,
+ `username` VARCHAR(50) NOT NULL,
+ `password` VARCHAR(50) NOT NULL, 
+ PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Export de données de la table foodlib.wusers : ~0 rows (environ)
-DELETE FROM `wusers`;
+DELETE
+FROM `wusers`;
 /*!40000 ALTER TABLE `wusers` DISABLE KEYS */;
 /*!40000 ALTER TABLE `wusers` ENABLE KEYS */;
 
