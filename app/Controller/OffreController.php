@@ -20,8 +20,20 @@ class OffreController extends Controller
   {
 
     $liste_borne_manager = new BorneManager();
-    $liste_borne_manager->setTable('dons');
+    $liste_borne_manager->setTable('bornes');
     $liste_borne = $liste_borne_manager->findAll();
+
+    $liste_date_manager = new BorneManager();
+    $liste_date_manager->setTable('type_date');
+    $liste_date = $liste_date_manager->findAll();
+
+    $dons_manager = new DonManager();
+    $dons_manager->setTable('dons');
+    $dons = $dons_manager->findAll();
+
+    foreach ($dons as $don) {
+      $don;
+    }
 
 
     $form = [];
@@ -55,7 +67,7 @@ class OffreController extends Controller
         $dons_manager->insert(array_merge($_POST['myform']));
       }
 
-      $this->show('page/creation_don', ['liste_borne' => $liste_borne]);
+      $this->show('page/creation_don', ['liste_borne' => $liste_borne, 'liste_date' => $liste_date, 'don' => $don]);
     }
 
   public function listeOffres()
