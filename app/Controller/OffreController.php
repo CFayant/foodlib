@@ -21,9 +21,7 @@ class OffreController extends Controller
 
     $this->data = new BorneManager();
 
-
     $form = [];
-
 
     if(isset($_POST['donner'])) {
 
