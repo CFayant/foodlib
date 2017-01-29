@@ -67,9 +67,9 @@ class OffreController extends Controller
 
   public function listeOffres()
   {
-    $donneurs_manager = new DonneurManager();
-    $donneurs_manager->setTable('donneurs');
-    $donneurs = $donneurs_manager->findAll();
+    // $donneurs_manager = new DonneurManager();
+    // $donneurs_manager->setTable('donneurs');
+    // $donneurs = $donneurs_manager->findAll();
 
     $dons_manager = new DonManager();
     $dons_manager->setTable('dons');
@@ -79,9 +79,6 @@ class OffreController extends Controller
     // $type_date_manager->setTable('type_date');
     // $type_date = $type_date_manager->findAll();
 
-    $photos_manager = new PhotoManager();
-    $photos_manager->setTable('photos');
-    $photos = $photos_manager->findAll();
 
     // if( $this->type_date instanceof TypeDate ) {
     //   return $this->type_date;
@@ -99,7 +96,8 @@ class OffreController extends Controller
     // exit;
 
 
-    $this->show('page/listeOffres', ['donneurs' => $donneurs, 'dons' => $dons, 'data_type_date' => $data_type_date, 'photos' => $photos]);
+
+    $this->show('page/listeOffres', ['dons' => $dons]);
   }
 
 

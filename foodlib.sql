@@ -1,4 +1,4 @@
-﻿-- --------------------------------------------------------
+-- --------------------------------------------------------
 -- Hôte :                        127.0.0.1
 -- Version du serveur:           5.5.46-0ubuntu0.14.04.2 - (Ubuntu)
 -- SE du serveur:                debian-linux-gnu
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `bornes` (
   `adresse_borne` varchar(140) NOT NULL,
   `cp_borne` varchar(5) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 -- Export de données de la table foodlib.bornes : ~7 rows (environ)
 DELETE FROM `bornes`;
@@ -53,9 +53,10 @@ CREATE TABLE IF NOT EXISTS `donneurs` (
   `horaires` varchar(150) DEFAULT NULL,
   `photo_profil` varchar(255) DEFAULT NULL,
   `commentaire` text,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
+  PRIMARY KEY (`id`),
+  KEY `FK_donneurs_structures` (`type_donneur_id`),
+  CONSTRAINT `FK_donneurs_structures` FOREIGN KEY (`type_donneur_id`) REFERENCES `structures` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Export de données de la table foodlib.donneurs : ~2 rows (environ)
 DELETE FROM `donneurs`;
@@ -63,7 +64,7 @@ DELETE FROM `donneurs`;
 INSERT INTO `donneurs` (`id`, `wuser_id`, `type_donneur_id`, `nom`, `prenom`, `denomination_sociale`, `adresse_donneur`, `cp_donneur`, `mail`, `telephone`, `acces`, `horaires`, `photo_profil`, `commentaire`) VALUES
 	(1, 1, 2, 'Martin', 'Marc', 'Restaurant Pizzeria Michel-Angelo', '4 rue de la Chine', '75020', '', NULL, NULL, NULL, NULL, NULL),
 	(2, 2, 3, 'Dupont', 'Luc', 'Resto du coeur Nation', '11 place de la Nation', '75011', '', NULL, NULL, NULL, NULL, NULL);
-
+/*!40000 ALTER TABLE `donneurs` ENABLE KEYS */;
 
 -- Export de la structure de la table foodlib. dons
 CREATE TABLE IF NOT EXISTS `dons` (
@@ -73,8 +74,8 @@ CREATE TABLE IF NOT EXISTS `dons` (
   `enleve` tinyint(4) DEFAULT '0',
   `titre` varchar(500) NOT NULL,
   `date_consommation` date NOT NULL,
-  `type_id` int(11) DEFAULT NULL,
-  `beneficiaire_id` int(11) DEFAULT NULL,
+  `type_id` int(11) NOT NULL,
+  `beneficiaire_id` int(11),
   `adresse_retrait` tinyint(4) NOT NULL,
   `borne_id` int(5) DEFAULT NULL,
   `code_pin` varchar(4) DEFAULT NULL,
@@ -83,47 +84,31 @@ CREATE TABLE IF NOT EXISTS `dons` (
   `signalement` tinyint(4) NOT NULL,
   `image` varchar(255) NOT NULL,
   `adress` tinytext NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  KEY `FK_dons_type_date` (`type_id`),
+  KEY `FK_dons_donneurs` (`donneur_id`),
+  KEY `FK_dons_wusers` (`beneficiaire_id`),
+  KEY `FK_dons_bornes` (`borne_id`),
+  CONSTRAINT `FK_dons_bornes` FOREIGN KEY (`borne_id`) REFERENCES `bornes` (`id`),
+  CONSTRAINT `FK_dons_donneurs` FOREIGN KEY (`donneur_id`) REFERENCES `donneurs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_dons_type_date` FOREIGN KEY (`type_id`) REFERENCES `type_date` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_dons_wusers` FOREIGN KEY (`beneficiaire_id`) REFERENCES `wusers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- Export de données de la table foodlib.dons : ~1 rows (environ)
+-- Export de données de la table foodlib.dons : ~2 rows (environ)
 DELETE FROM `dons`;
 /*!40000 ALTER TABLE `dons` DISABLE KEYS */;
 INSERT INTO `dons` (`id`, `donneur_id`, `disponible`, `enleve`, `titre`, `date_consommation`, `type_id`, `beneficiaire_id`, `adresse_retrait`, `borne_id`, `code_pin`, `heure_resa`, `note`, `signalement`, `image`, `adress`) VALUES
-	(3, 1, 1, 0, '2 parts d\'un framboisier fait maison', '2017-01-01', 1, NULL, 1, 2, NULL, '2017-01-27 16:05:43', NULL, 0, '', 'borne'),
-	(4, 1, 1, 0, '3 tomates', '2017-02-10', 1, NULL, 0, NULL, NULL, '2017-01-27 16:03:20', NULL, 0, '', '');
+	(3, 1, 1, 0, '2 parts d\'un framboisier fait maison', '2017-01-01', 1, NULL, 1, 2, NULL, '2017-01-29 10:59:24', NULL, 0, 'framboisier.jpg', 'borne'),
+	(4, 2, 1, 0, '3 tomates', '2017-02-10', 2, NULL, 0, NULL, NULL, '2017-01-29 10:09:59', NULL, 0, '', '');
 /*!40000 ALTER TABLE `dons` ENABLE KEYS */;
-
--- Export de la structure de la table foodlib. dons_tags
-CREATE TABLE IF NOT EXISTS `dons_tags` (
-  `don_id` int(11) NOT NULL,
-  `tag_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Export de données de la table foodlib.dons_tags : ~0 rows (environ)
-DELETE FROM `dons_tags`;
-/*!40000 ALTER TABLE `dons_tags` DISABLE KEYS */;
-/*!40000 ALTER TABLE `dons_tags` ENABLE KEYS */;
-
--- Export de la structure de la table foodlib. photos
-CREATE TABLE IF NOT EXISTS `photos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `don_id` int(12) NOT NULL,
-  `chemin` varchar(500) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Export de données de la table foodlib.photos : ~0 rows (environ)
-DELETE FROM `photos`;
-/*!40000 ALTER TABLE `photos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `photos` ENABLE KEYS */;
 
 -- Export de la structure de la table foodlib. structures
 CREATE TABLE IF NOT EXISTS `structures` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `libelle_structure` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- Export de données de la table foodlib.structures : ~4 rows (environ)
 DELETE FROM `structures`;
@@ -134,28 +119,6 @@ INSERT INTO `structures` (`id`, `libelle_structure`) VALUES
 	(3, 'association'),
 	(4, 'entreprise');
 /*!40000 ALTER TABLE `structures` ENABLE KEYS */;
-
--- Export de la structure de la table foodlib. tags
-CREATE TABLE IF NOT EXISTS `tags` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `libelle_tag` varchar(90) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
-
--- Export de données de la table foodlib.tags : ~9 rows (environ)
-DELETE FROM `tags`;
-/*!40000 ALTER TABLE `tags` DISABLE KEYS */;
-INSERT INTO `tags` (`id`, `libelle_tag`) VALUES
-	(1, 'Fruit'),
-	(2, 'Légume'),
-	(3, 'Viande'),
-	(4, 'Poisson'),
-	(5, 'Crustacé'),
-	(6, 'Boisson'),
-	(7, 'Condiment'),
-	(8, 'Plat préparé'),
-	(9, 'Plat cuisiné');
-/*!40000 ALTER TABLE `tags` ENABLE KEYS */;
 
 -- Export de la structure de la table foodlib. type_date
 CREATE TABLE IF NOT EXISTS `type_date` (
@@ -175,8 +138,8 @@ INSERT INTO `type_date` (`id`, `libelle_date`) VALUES
 -- Export de la structure de la table foodlib. wusers
 CREATE TABLE IF NOT EXISTS `wusers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` int(50) NOT NULL,
-  `password` int(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

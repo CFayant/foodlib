@@ -13,19 +13,56 @@ class DonManager extends \W\Manager\Manager
 	public function findAll($orderBy = "", $orderDir = "ASC", $limit = null, $offset = null)
 	{
 
+		// $datas = parent::findAll();
+		// $final_datas = [];
+		// foreach ($datas as $key => $value) {
+		// 	$type_date_manager = new TypeDateManager();
+	 //    	$type_date_manager->setTable('type_date');
+
+		// 	$type = $type_date_manager->find($value['type_id']);
+		// 	$value['type'] = $type;
+
+		// 	$final_datas[] = $value;
+	 //    }    
+
+		// return $final_datas;
+
 		$datas = parent::findAll();
 		$final_datas = [];
 		foreach ($datas as $key => $value) {
+
+			// Récupération de la donnée "type de date" provenant de la
+			// table type_date
 			$type_date_manager = new TypeDateManager();
 	    	$type_date_manager->setTable('type_date');
 
 			$type = $type_date_manager->find($value['type_id']);
 			$value['type'] = $type;
 
+			// $final_datas[] = $value;
+
+			// Récupération des données "type de date" provenant de la
+			// table type_date
+			$donneur_manager = new DonneurManager();
+	    	$donneur_manager->setTable('donneurs');
+
+			$donneur = $donneur_manager->find($value['donneur_id']);
+			$value['donneur'] = $donneur;
+
 			$final_datas[] = $value;
-	    }    
+
+	    }
 
 		return $final_datas;
+
+		// foreach ($datas as $key => $value) {
+
+	 //    }
+
+		// return $final_datas;
+
+
+		
 	}
 
 	// public function getTypeDate(){
