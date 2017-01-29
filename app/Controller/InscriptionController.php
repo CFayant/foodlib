@@ -99,9 +99,11 @@ class InscriptionController extends Controller
           $erreurs = $gump->get_errors_array();
 
         }
-
-      $inscription_d_manager = new InscriptionManager();
-      $inscription_d_manager->insert(array_merge($_POST['myform_i']));
+      
+      $_POST['myform_i']['role'] = 'user';
+      $_POST['myform_i']['password'] = password_hash($_POST['myform_i']['password'], PASSWORD_DEFAULT);
+      $manager = new UserManager();
+      $manager->insert($_POST['myform_i']);
 
       }
 
