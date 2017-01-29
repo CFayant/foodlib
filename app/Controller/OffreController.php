@@ -18,7 +18,6 @@ class OffreController extends Controller
 
   public function creationDon()
   {
-
     $liste_borne_manager = new BorneManager();
     $liste_borne_manager->setTable('bornes');
     $liste_borne = $liste_borne_manager->findAll();
@@ -68,17 +67,16 @@ class OffreController extends Controller
       }
 
       $this->show('page/creation_don', ['liste_borne' => $liste_borne, 'liste_date' => $liste_date, 'don' => $don]);
-    }
+  }
+
 
   public function listeOffres()
   {
-
     $dons_manager = new DonManager();
     $dons_manager->setTable('dons');
     $dons = $dons_manager->findAll();
 
     $this->show('page/listeOffres', ['dons' => $dons]);
-
   }
 
 
