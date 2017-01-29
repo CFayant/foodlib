@@ -3,6 +3,7 @@
 namespace Manager;
 
 use Manager\TypeDateManager;
+use Manager\DonneurManager;
 
 /**
  * Classe requise par l'AuthentificationManager, éventuellement à extender par la UserManager de l'appli
@@ -31,8 +32,8 @@ class DonManager extends \W\Manager\Manager
 		$final_datas = [];
 		foreach ($datas as $key => $value) {
 
-			// Récupération de la donnée "type de date" provenant de la
-			// table type_date
+			// Récupération de la donnée "type de date"
+			// provenant de la table type_date
 			$type_date_manager = new TypeDateManager();
 	    	$type_date_manager->setTable('type_date');
 
@@ -41,8 +42,17 @@ class DonManager extends \W\Manager\Manager
 
 			// $final_datas[] = $value;
 
-			// Récupération des données "type de date" provenant de la
-			// table type_date
+
+			// Récupération de la donnée "borne"
+			// provenant de la table bornes
+			$borne_manager = new BorneManager();
+	    	$borne_manager->setTable('bornes');
+
+			$borne = $borne_manager->find($value['borne_id']);
+			$value['borne'] = $borne;
+
+
+			// Récupération des données provenant de la table donneurs
 			$donneur_manager = new DonneurManager();
 	    	$donneur_manager->setTable('donneurs');
 
@@ -60,8 +70,6 @@ class DonManager extends \W\Manager\Manager
 	 //    }
 
 		// return $final_datas;
-
-
 		
 	}
 

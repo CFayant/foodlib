@@ -12,12 +12,10 @@
   <?php foreach ($dons as $don): ?>
   <div class="padding container well">
 
-      <!-- Affichage de l'image du don ; Ne marche pas encore, en coursde résolution -->
+      <!-- Affichage de l'image du don -->
       <div class="col-xs-3">
-        <img src="<?= $this->assetUrl('uploads/'$don["image"]'')?>" alt="<?= $don['titre'] ?>">
+        <img src="#" alt="<?= $don['titre'] ?>">
       </div>
-
-
 
       <!-- Affichage du titre du don -->
       <div class="col-xs-4">

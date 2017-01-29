@@ -7,8 +7,8 @@ use \Manager\TypeDateManager;
 use \Manager\BorneManager;
 use \Manager\DonneurManager;
 use \Manager\DonManager;
-use \Manager\DetailTitreManager;
-use \Manager\PhotoManager;
+use \Manager\WUsersManager;
+// use \Manager\PhotoManager;
 use \GUMP;
 
 class OffreController extends Controller
@@ -20,7 +20,6 @@ class OffreController extends Controller
   {
 
     $this->data = new BorneManager();
-
 
     $form = [];
 
@@ -62,8 +61,8 @@ class OffreController extends Controller
 
     $this->show('page/creation_don');
 
-
   }
+
 
   public function listeOffres()
   {
@@ -95,19 +94,31 @@ class OffreController extends Controller
     // var_dump($dons->getTypeDate());
     // exit;
 
-
-
     $this->show('page/listeOffres', ['dons' => $dons]);
   }
 
 
   public function detailOffre()
   {
-    $don_manager = new DonManager();
-    $don = $don_manager->findAll();
+  
+    $dons_manager = new DonManager();
+    $dons_manager->setTable('dons');
+    $dons = $dons_manager->findAll();
+
+    $donneur_manager = new DonneurManager();
+    $donneur_manager->setTable('donneurs');
+    $donneurs = $donneur_manager->findAll();
+
+    foreach ($dons as $don) {
+      $don;
+    }
+
+    foreach ($donneurs as $donneur) {
+      $donneur; 
+    }
 
 
-    $this->show('page/detail_offre', ['don' => $don]);
+    $this->show('page/detail_offre', ['don' => $don, 'donneur' => $donneur]);
   }
 
 
