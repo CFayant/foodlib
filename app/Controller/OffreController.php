@@ -24,12 +24,6 @@ class OffreController extends Controller
 
     $form = [];
 
-    // $this->data_2 = new TypeDateManager();
-    // $type_date_manager->setTable('type_date');
-    // $liste_type_date = $type_date_manager->findAll();
-
-    // $bornes_manager = new BorneManager();
-    // $bornes = $bornes_manager->findAll();
 
     if(isset($_POST['donner'])) {
 
@@ -65,74 +59,24 @@ class OffreController extends Controller
 
   public function listeOffres()
   {
-    $donneurs_manager = new DonneurManager();
-    $donneurs_manager->setTable('donneurs');
-    $donneurs = $donneurs_manager->findAll();
 
     $dons_manager = new DonManager();
     $dons_manager->setTable('dons');
     $dons = $dons_manager->findAll();
 
-    $type_date_manager = new TypeDateManager();
-    $type_date_manager->setTable('type_date');
-    $type_dates = $type_date_manager->findAll();
+    $this->show('page/listeOffres', ['dons' => $dons]);
 
-    $photos_manager = new PhotoManager();
-    $photos_manager->setTable('photos');
-    $photos = $photos_manager->findAll();
-
-    $this->show('page/listeOffres', ['donneurs' => $donneurs, 'dons' => $dons, 'type_dates' => $type_dates, 'photos' => $photos]);
   }
 
 
   public function detailOffre()
   {
-
-    $bornes_manager = new BorneManager();
-    $bornes_manager->setTable('bornes');
-    $bornes = $bornes_manager->findAll();
-
-    foreach ($bornes as $borne) {
-
-      $data_bornes= $borne;
-    }
-
-    $donneurs_manager = new DonneurManager();
-    $donneurs_manager->setTable('donneurs');
-    $donneurs = $donneurs_manager->findAll();
-
-    foreach ($donneurs as $donneur) {
-
-      $data_donneur= $donneur;
-    }
-
     $dons_manager = new DonManager();
     $dons_manager->setTable('dons');
     $dons = $dons_manager->findAll() ;
 
-    foreach ($dons as $don) {
-
-      $data_don= $don;
-    }
-
-    $type_date_manager = new TypeDateManager();
-    $type_date_manager->setTable('type_date');
-    $type_date = $type_date_manager->findAll();
-
-    foreach ($type_date as $type) {
-
-      $data_type_date= $type;
-    }
-
-    $photos_manager = new PhotoManager();
-    $photos_manager->setTable('photos');
-    $photos = $photos_manager->findAll();
-
-
-
-    // return $don;
-
-    $this->show('page/detail_offre', ['data_bornes' => $data_bornes, 'data_donneur' => $data_donneur, 'data_don' => $data_don, 'data_type_date' => $data_type_date, 'photos' => $photos]);
+    $this->show('page/detail_offre', ['dons' => $dons]);
 
   }
+
 }
