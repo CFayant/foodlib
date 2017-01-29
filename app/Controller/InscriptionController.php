@@ -55,7 +55,7 @@ class InscriptionController extends Controller
 
     }
 
-    $this->show('page/inscription_b', ['erreurs' => $erreurs]);
+    $this->show('page/inscription_b');
 
   }
 public function inscription_d()
@@ -104,6 +104,6 @@ public function inscription_d()
 
       }
 
-    $this->show('page/inscription_d', ['erreurs' => $erreurs]);
+    $this->show('page/inscription_d');
   }
 }

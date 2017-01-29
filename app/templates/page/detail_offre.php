@@ -7,7 +7,7 @@
 <!-- Affichage de la page détails du don -->
 <section class="padding">
 
-  
+
   <div class="container">
 
     <div class="col-sm-3">
@@ -17,6 +17,7 @@
     <div class="col-sm-9 relative">
       <div class="col-sm-5 descriptif">
         <p>
+
               <h3><?= $don['titre'] ?></h3>
         </p>
 
@@ -26,6 +27,7 @@
 
       <div class="col-sm-4 pseudo">
         <h4><?= $donneur['wuser']['username'] ?></h4>
+
       </div>
     </div>
 
@@ -37,7 +39,7 @@
         </div>
 
         <div class="col-sm-5 float-right descriptif_adresse">
-            
+
             <!-- Eléments sur le donneur OU sur la borne -->
 
             <!-- Eléments sur le donneur : adresse, cp, téléphone, accès et horaires -->

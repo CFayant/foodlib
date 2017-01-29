@@ -18,17 +18,22 @@ class OffreController extends Controller
 
   public function creationDon()
   {
+    $liste_borne_manager = new BorneManager();
+    $liste_borne_manager->setTable('bornes');
+    $liste_borne = $liste_borne_manager->findAll();
 
-    $this->data = new BorneManager();
+    $liste_date_manager = new BorneManager();
+    $liste_date_manager->setTable('type_date');
+    $liste_date = $liste_date_manager->findAll();
 
-    $form = [];
 
-    // $this->data_2 = new TypeDateManager();
-    // $type_date_manager->setTable('type_date');
-    // $liste_type_date = $type_date_manager->findAll();
+    $dons_manager = new DonManager();
+    $dons_manager->setTable('dons');
+    $dons = $dons_manager->findAll();
 
-    // $bornes_manager = new BorneManager();
-    // $bornes = $bornes_manager->findAll();
+    foreach ($dons as $don) {
+      $don;
+    }
 
     if(isset($_POST['donner'])) {
 
@@ -57,19 +62,17 @@ class OffreController extends Controller
 
         $dons_manager = new DonManager();
         $dons_manager->insert(array_merge($_POST['myform']));
+
     }
 
     $this->show('page/creation_don');
+
 
   }
 
 
   public function listeOffres()
   {
-    // $donneurs_manager = new DonneurManager();
-    // $donneurs_manager->setTable('donneurs');
-    // $donneurs = $donneurs_manager->findAll();
-
     $dons_manager = new DonManager();
     $dons_manager->setTable('dons');
     $dons = $dons_manager->findAll();
@@ -100,7 +103,6 @@ class OffreController extends Controller
 
   public function detailOffre()
   {
-  
     $dons_manager = new DonManager();
     $dons_manager->setTable('dons');
     $dons = $dons_manager->findAll();
@@ -114,12 +116,11 @@ class OffreController extends Controller
     }
 
     foreach ($donneurs as $donneur) {
-      $donneur; 
+      $donneur;
     }
 
-
     $this->show('page/detail_offre', ['don' => $don, 'donneur' => $donneur]);
-  }
 
+  }
 
 }
