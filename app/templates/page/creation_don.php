@@ -32,7 +32,7 @@
       <div class="form-group form_center text-center">
         <select class="form-control" name="myform[borne_id]" id="borne_id" >
           <option value="null">Les bornes:</option>
-          <?php foreach ($bornes as $borne): ?>
+          <?php foreach ($liste_borne as $borne): ?>
             <option value="<?= $borne['id'] ?>"><?= $borne['adresse_borne'] . " " . $borne['cp_borne'] ?></option>
           <?php endforeach ?>
         </select>
@@ -43,7 +43,7 @@
 
         <div class="form-group form_center">
           <label for="adresse_donneur">Adresse: <span class="text-danger"></span></label>
-          <input type="text" name="myform[adresse_donneur]" class="form-control" id="adresse_donneur" value="<?= $donneurs['for="adresse_donneur"'] ?>">
+          <input type="text" name="myform[adresse_donneur]" class="form-control" id="adresse_donneur" value="<?= $donneurs['adresse_donneur'] ?>">
         </div>
 
         <div class="form-group form_center">

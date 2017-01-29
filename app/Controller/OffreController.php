@@ -19,7 +19,10 @@ class OffreController extends Controller
   public function creationDon()
   {
 
-    $this->data = new BorneManager();
+    $liste_borne_manager = new BorneManager();
+    $liste_borne_manager->setTable('dons');
+    $liste_borne = $liste_borne_manager->findAll();
+
 
     $form = [];
 
@@ -52,7 +55,7 @@ class OffreController extends Controller
         $dons_manager->insert(array_merge($_POST['myform']));
       }
 
-      $this->show('page/creation_don');
+      $this->show('page/creation_don', ['liste_borne' => $liste_borne]);
     }
 
   public function listeOffres()
