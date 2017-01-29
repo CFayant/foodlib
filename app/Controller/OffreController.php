@@ -24,12 +24,6 @@ class OffreController extends Controller
 
     $form = [];
 
-    // $this->data_2 = new TypeDateManager();
-    // $type_date_manager->setTable('type_date');
-    // $liste_type_date = $type_date_manager->findAll();
-
-    // $bornes_manager = new BorneManager();
-    // $bornes = $bornes_manager->findAll();
 
     if(isset($_POST['donner'])) {
 
@@ -67,37 +61,13 @@ class OffreController extends Controller
 
   public function listeOffres()
   {
-    // $donneurs_manager = new DonneurManager();
-    // $donneurs_manager->setTable('donneurs');
-    // $donneurs = $donneurs_manager->findAll();
 
     $dons_manager = new DonManager();
     $dons_manager->setTable('dons');
     $dons = $dons_manager->findAll();
 
-    // $type_date_manager = new TypeDateManager();
-    // $type_date_manager->setTable('type_date');
-    // $type_date = $type_date_manager->findAll();
-
-
-    // if( $this->type_date instanceof TypeDate ) {
-    //   return $this->type_date;
-    // } else {
-    //   $type_date_manager = new TypeDateManager;
-    //   $type_date = $type_date_manager->find($this->type_id);
-    //   return $type_date;
-    // }
-
-    // $type_date_manager = new TypeDateManager();
-    // $type_date = $type_date_manager->find($this->type_id);
-    // return $type_date;
-
-    // var_dump($dons->getTypeDate());
-    // exit;
-
-
-
     $this->show('page/listeOffres', ['dons' => $dons]);
+
   }
 
 
@@ -105,7 +75,6 @@ class OffreController extends Controller
   {
     $don_manager = new DonManager();
     $don = $don_manager->findAll();
-
 
     $this->show('page/detail_offre', ['don' => $don]);
   }
