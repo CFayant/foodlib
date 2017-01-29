@@ -3,17 +3,13 @@
 namespace Controller;
 
 use \W\Controller\Controller;
-use \Manager\TypeDateManager;
-use \Manager\BorneManager;
-use \Manager\DonneurManager;
-use \Manager\DonManager;
-use \Manager\DetailTitreManager;
-use \Manager\PhotoManager;
-use \GUMP;
+use \W\Manager\UserManager;
+use \Manager\WuserManager;
+
+
 
 class InscriptionController extends Controller
 {
-
 
   public function inscription()
   {
@@ -23,87 +19,156 @@ class InscriptionController extends Controller
 
   public function inscription_b()
   {
-    $gump = new GUMP();
 
-    if(isset($_POST['inscrire_b'])){
-      $_POST = $gump->sanitize($_POST);
-      $gump->validation_rules(array(
+    $erreurs = [];
+    if ( isset($_POST['myform']['inscrire_b']) ) {
 
-        'username'    => 'required|alpha_numeric|max_len,100|min_len,6',
-        'password'    => 'required|max_len,100|min_len,6',
-        'passwordConfirm'    => 'required|max_len,100|min_len,6'
+      $manager = new WuserManager();
 
-        ));
+      // Validation et Filtrage [myform]
 
-      $gump->filter_rules(array(
-        'username' => 'trim|sanitize_string',
-        'password' => 'trim',
-        'passwordConfirm' => 'trim',
-        ));
+      // Nom
+      if( empty( $_POST['myform']['username']) ||
+       (strlen($_POST['myform']['username']) <3) ||
+       (strlen($_POST['myform']['username']) > 100) ) {
 
-      $validated_data = $gump->run($_POST);
+            $erreurs[] = 'Le champ pseudo doit obligatoirement comporter entre 3 et 50 caractères';
 
-      if($validated_data === false)
-
-      {
-        $erreurs = $gump->get_errors_array();
-      }
-      else
-      {
-          print_r($validated_data); // validation successful
         }
 
+        // Password
+        if (empty($_POST['myform']['password']) ||
+          strlen($_POST['myform']['password']) > 50) {
+          $erreurs[] = "Le champ mot de passe doit obligatoirement comporter moins de 50 caractères";
+        }
+
+        // Confirm password
+        if ($_POST['myform']['passwordConfirm'] != $_POST['myform']['password']) {
+          $erreurs[] = "Le mot de passe ne correspond pas";
+        }
+
+        // Si $erreurs vide, Validation OK
+       if ( empty($erreurs)) {
+
+            $wuser = $manager->insert(['username' => $_POST['myform']['username'],
+                    // Hash le password pour crypter les données
+                    'password' => password_hash($_POST['myform']['password'], PASSWORD_DEFAULT)]);
+            $_POST['myform']['user_id'] = $wuser['id'];
+
+            $utilisateur = new WuserManager();
+            $utilisateur->insert($_POST['myform']);
+
+            $this->redirectToRoute('home');
+
+      }
+
+      $this->show('page/inscription_b', ['erreurs' => $erreurs]);
+      // Fin Validation et Filtrage
+
+    } else {
+      $this->show('page/inscription_b',['erreurs' => $erreurs]);
     }
 
-    $this->show('page/inscription_b');
-
   }
-public function inscription_d()
-    {
-      $erreurs = [];
-      $gump = new GUMP();
-
-      if(isset($_POST['inscrire_d'])){
-        $_POST = $gump->sanitize($_POST);
-        $gump->validation_rules(array(
-
-          'username'    => 'required|alpha_numeric|max_len,100|min_len,6',
-          'first_name'    => 'required|alpha_numeric|max_len,100|min_len,6',
-          'last_name'    => 'required|alpha_numeric|max_len,100|min_len,6',
-          'adress'    => 'alpha_numeric|max_len,100|min_len,6',
-          'password'    => 'required|max_len,100|min_len,6',
-          'email'       => 'required|valid_email',
-          'phone'    => 'alpha_numeric|exact_len,10',
-          'access'    => 'alpha_numeric|max_len,600|min_len,6',
-          'access_time'    => 'alpha_numeric|max_len,100|min_len,6',
-          'comment'    => 'alpha_numeric|max_len,500|min_len,6',
-          'passwordConfirm'    => 'required|max_len,100|min_len,6'
-
-          ));
 
 
-        $gump->filter_rules(array(
+  public function inscription_d()
+  {
 
-          'username' => 'trim|sanitize_string',
-          'password' => 'trim',
-          'passwordConfirm' => 'trim',
-          'email'    => 'trim|sanitize_email'
+    $erreurs = [];
+    if ( isset($_POST['sign-up']) ) {
 
-          ));
+      $manager = new WuserManager();
 
-        $validated_data = $gump->run($_POST);
+      // Validation et Filtrage [myform_i]
 
-        if($validated_data === false)
-        {
-          $erreurs = $gump->get_errors_array();
-        }
-        else
-        {
-           print_r($validated_data); // validation successful
+      // Nom
+      if( empty( $_POST['myform']['username']) ||
+       (strlen($_POST['myform']['username']) < 5) ||
+       (strlen($_POST['myform']['username']) > 50) ) {
+
+          $erreurs[] = 'Le champ pseudo doit obligatoirement comporter entre 5 et 50 caractères';
+
         }
 
-      }
+        // last_name
+        if( empty($_POST['myform_i']['last_name']) ||
+          (strlen($_POST['myform_i']['last_name']) < 5) ||
+            (strlen($_POST['myform_i']['last_name']) > 50) ) {
 
-    $this->show('page/inscription_d');
+            $erreurs[] = 'Le champ Nom doit obligatoirement comporter entre 5 et 50 caractères et est requis';
+        }
+
+
+        // first_name
+        if( empty($_POST['myform_i']['first_name']) ||
+          (strlen($_POST['myform_i']['first_name']) < 5) ||
+            (strlen($_POST['myform_i']['first_name']) > 50) ) {
+
+            $erreurs[] = 'Le champ prénom doit obligatoirement comporter entre 5 et 50 caractères et est requis';
+        }
+
+
+        // adress
+        if( (strlen($_POST['myform_i']['adress']) <5) ||
+          (strlen($_POST['myform_i']['adress']) > 100)) {
+
+          $erreurs[] = 'Le champ adresse doit comporter entre 5 et 100 caractères';
+        }
+
+
+        // phone
+        if( !(strlen($_POST['myform_i']['phone'] == 10) ) ) {
+
+          $erreurs[] = 'Le champ numéro de téléphone doit comporte 10 chiffres';
+        }
+
+        // Validation et Filtrage [myform_i]
+
+        // Email
+        if (empty($_POST['myform']['e_mail']) ||
+           strlen($_POST['myform']['e_mail']) > 255 ||
+           !filter_var($_POST['myform']['e_mail'], FILTER_VALIDATE_EMAIL)) {
+
+          $erreurs[] = "Votre email n'est pas valide";
+
+        }
+        elseif ($manager->emailExists($_POST['myform_i']['e_mail'])) {
+
+          $erreurs[] = "Cet email existe déja";
+
+        }
+
+        // Password
+        if (empty($_POST['myform']['password']) ||
+          strlen($_POST['myform']['password']) > 300) {
+          $erreurs[] = "Champ mot de passe requis";
+        }
+
+        // Confirm password
+        if ($_POST['myform']['passwordConfirm'] != $_POST['myform']['password']) {
+          $erreurs[] = "Le mot de passe ne correspond pas";
+        }
+
+        // Si $erreurs vide, Validation OK
+       if ( empty($erreurs)) {
+
+          $wuser = $manager->insert(['email' => $_POST['myform_i']['email'],
+          // Hash le password pour crypter les données
+          'password' => password_hash($_POST['myform_i']['password'], PASSWORD_DEFAULT)]);
+          $_POST['myform_i']['user_id'] = $wuser['id'];
+
+          $utilisateur = new UtilisateurManager();
+          $utilisateur->insert($_POST['myform_i']);
+          $this->redirectToRoute('login');
+
+        }
+
+        $this->show('user/register', ['erreurs' => $erreurs]);
+        // Fin Validation et Filtrage
+
+    } else {
+    $this->show('user/register',['erreurs' => $erreurs]);
+    }
+
   }
-}

@@ -62,7 +62,6 @@
 		<div class="form-group">
 			<label for="comment">Vos commentaires <span></span></label>
 			<textarea name="myform_i[comment]" class="form-control" id="comment_i_d"></textarea>
-
 		</div>
 
 		<div class="form-group">
