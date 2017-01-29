@@ -2,6 +2,7 @@
 
 <?php $this->start('main_content') ?>
 
+
 <section class="padding container">
 
 	<form method="POST" class="col-lg-6 margin-auto" enctype="multipart/form-data" id="form_i_d">
@@ -16,7 +17,7 @@
 
 		<div class="form-group">
 			<label for="username">Votre pseudo <span></span></label>
-			<input type="text" name="myform_i[username]" class="form-control" id="username_i_d">
+			<input type="text" name="myform[username]" class="form-control" id="username_i_d">
 		</div>
 
 		<div class="form-group">
@@ -66,12 +67,12 @@
 
 		<div class="form-group">
 			<label for="password">Votre mot de passe <span></span></label>
-			<input type="text" name="myform_i[password]" class="form-control" id="password_i_d">
+			<input type="password" name="myform[password]" class="form-control" id="password_i_d">
 		</div>
 
 		<div class="form-group">
 			<label for="passwordConfirm">Confirmez votre mot de passe <span></span></label>
-			<input type="text" name="myform_i[passwordConfirm]" class="form-control" id="passwordConfirm_i_d">
+			<input type="password" name="myform[passwordConfirm]" class="form-control" id="passwordConfirm_i_d">
 		</div>
 
 		<div class="col-md-12 text-center">
@@ -84,11 +85,6 @@
 
 <?php $this->stop('main_content') ?>
 
-<?php $this->start('script') ?>
-
-<script src="<?= $this->assetUrl('js/inscription_d.js') ?>"></script>
-
-<?php $this->stop('script') ?>
 
 
 

@@ -23,7 +23,7 @@ class DonneurManager extends \W\Manager\Manager
 			$final_datas[] = $value;
 
 			// var_dump($final_datas); exit;
-	
+
 	    }
 
 		return $final_datas;

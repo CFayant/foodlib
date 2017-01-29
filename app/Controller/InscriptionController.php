@@ -5,6 +5,7 @@ namespace Controller;
 use \W\Controller\Controller;
 use \W\Manager\UserManager;
 use \Manager\WuserManager;
+use \Manager\DonneurManager;
 
 
 
@@ -53,10 +54,7 @@ class InscriptionController extends Controller
             $wuser = $manager->insert(['username' => $_POST['myform']['username'],
                     // Hash le password pour crypter les données
                     'password' => password_hash($_POST['myform']['password'], PASSWORD_DEFAULT)]);
-            $_POST['myform']['user_id'] = $wuser['id'];
-
-            $utilisateur = new WuserManager();
-            $utilisateur->insert($_POST['myform']);
+            // $_POST['myform']['user_id'] = $wuser['id'];
 
             $this->redirectToRoute('home');
 
@@ -76,9 +74,11 @@ class InscriptionController extends Controller
   {
 
     $erreurs = [];
-    if ( isset($_POST['sign-up']) ) {
+    if ( isset($_POST['myform_i']['inscrire_d']) ) {
 
       $manager = new WuserManager();
+      $donneurs = new DonneurManager();
+
 
       // Validation et Filtrage [myform_i]
 
@@ -118,26 +118,26 @@ class InscriptionController extends Controller
 
 
         // phone
-        if( !(strlen($_POST['myform_i']['phone'] == 10) ) ) {
+        // if( !(strlen($_POST['myform_i']['phone'] == 10) ) ) {
 
-          $erreurs[] = 'Le champ numéro de téléphone doit comporte 10 chiffres';
-        }
+        //   $erreurs[] = 'Le champ numéro de téléphone doit comporte 10 chiffres';
+        // }
 
         // Validation et Filtrage [myform_i]
 
         // Email
-        if (empty($_POST['myform']['e_mail']) ||
-           strlen($_POST['myform']['e_mail']) > 255 ||
-           !filter_var($_POST['myform']['e_mail'], FILTER_VALIDATE_EMAIL)) {
+        // if ( empty($_POST['myform']['e_mail']) ||
+        //    strlen($_POST['myform']['e_mail']) > 255 ||
+        //    !filter_var($_POST['myform']['e_mail'], FILTER_VALIDATE_EMAIL)) {
 
-          $erreurs[] = "Votre email n'est pas valide";
+        //   $erreurs[] = "Votre email n'est pas valide";
 
-        }
-        elseif ($manager->emailExists($_POST['myform_i']['e_mail'])) {
+        // }
+        // elseif ($manager->emailExists($_POST['myform_i']['e_mail'])) {
 
-          $erreurs[] = "Cet email existe déja";
+        //   $erreurs[] = "Cet email existe déja";
 
-        }
+        // }
 
         // Password
         if (empty($_POST['myform']['password']) ||
@@ -153,22 +153,28 @@ class InscriptionController extends Controller
         // Si $erreurs vide, Validation OK
        if ( empty($erreurs)) {
 
-          $wuser = $manager->insert(['email' => $_POST['myform_i']['email'],
+          // Envoie de données vers la table Wusers
+          $wuser = $manager->insert(['username' => $_POST['myform']['username'],
           // Hash le password pour crypter les données
-          'password' => password_hash($_POST['myform_i']['password'], PASSWORD_DEFAULT)]);
-          $_POST['myform_i']['user_id'] = $wuser['id'];
+          'password' => password_hash($_POST['myform']['password'], PASSWORD_DEFAULT)]);
+          $_POST['myform_i']['wuser_id'] = $wuser['id'];
 
-          $utilisateur = new UtilisateurManager();
-          $utilisateur->insert($_POST['myform_i']);
-          $this->redirectToRoute('login');
+
+          // Envoie de données vers la table donneurs
+          $donneurs->insert($_POST['myform_i']);
+
+          $this->redirectToRoute('home');
 
         }
 
-        $this->show('user/register', ['erreurs' => $erreurs]);
+        $this->show('page/inscription_d', ['erreurs' => $erreurs]);
         // Fin Validation et Filtrage
 
     } else {
-    $this->show('user/register',['erreurs' => $erreurs]);
+
+    $this->show('page/inscription_d', ['erreurs' => $erreurs]);
     }
 
   }
+
+}
