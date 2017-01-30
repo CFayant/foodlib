@@ -25,7 +25,7 @@
 		</div>
 
 		<div class="col-md-12 text-center">
-			<input type="submit"  name="myform[inscrire_b]" value="M'inscrire" class="btn btn-default donner">
+			<input type="submit"  name="inscrire_b" value="M'inscrire" class="btn btn-default donner">
 		</div>
 
 	</form>

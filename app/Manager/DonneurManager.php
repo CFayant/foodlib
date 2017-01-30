@@ -29,5 +29,4 @@ class DonneurManager extends \W\Manager\Manager
 		return $final_datas;
     }
 
-
 }

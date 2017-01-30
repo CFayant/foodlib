@@ -22,7 +22,7 @@ class InscriptionController extends Controller
   {
 
     $erreurs = [];
-    if ( isset($_POST['myform']['inscrire_b']) ) {
+    if ( isset($_POST['inscrire_b']) ) {
 
       $manager = new WuserManager();
 
@@ -66,7 +66,6 @@ class InscriptionController extends Controller
     } else {
       $this->show('page/inscription_b',['erreurs' => $erreurs]);
     }
-
   }
 
 
@@ -74,13 +73,12 @@ class InscriptionController extends Controller
   {
 
     $erreurs = [];
-    if ( isset($_POST['myform_i']['inscrire_d']) ) {
+    if ( isset($_POST['inscrire_d']) ) {
 
       $manager = new WuserManager();
-      $donneurs = new DonneurManager();
 
 
-      // Validation et Filtrage [myform_i]
+      // Validation et Filtrage [myformi]
 
       // Nom
       if( empty( $_POST['myform']['username']) ||
@@ -92,48 +90,48 @@ class InscriptionController extends Controller
         }
 
         // last_name
-        if( empty($_POST['myform_i']['last_name']) ||
-          (strlen($_POST['myform_i']['last_name']) < 5) ||
-            (strlen($_POST['myform_i']['last_name']) > 50) ) {
+        if( empty($_POST['myformi']['last_name']) ||
+          (strlen($_POST['myformi']['last_name']) < 5) ||
+            (strlen($_POST['myformi']['last_name']) > 50) ) {
 
             $erreurs[] = 'Le champ Nom doit obligatoirement comporter entre 5 et 50 caractères et est requis';
         }
 
 
         // first_name
-        if( empty($_POST['myform_i']['first_name']) ||
-          (strlen($_POST['myform_i']['first_name']) < 5) ||
-            (strlen($_POST['myform_i']['first_name']) > 50) ) {
+        if( empty($_POST['myformi']['first_name']) ||
+          (strlen($_POST['myformi']['first_name']) < 5) ||
+            (strlen($_POST['myformi']['first_name']) > 50) ) {
 
             $erreurs[] = 'Le champ prénom doit obligatoirement comporter entre 5 et 50 caractères et est requis';
         }
 
 
-        // adress
-        if( (strlen($_POST['myform_i']['adress']) <5) ||
-          (strlen($_POST['myform_i']['adress']) > 100)) {
+        // adresse_donneur
+        if( (strlen($_POST['myformi']['adresse_donneur']) <5) ||
+          (strlen($_POST['myformi']['adresse_donneur']) > 100)) {
 
           $erreurs[] = 'Le champ adresse doit comporter entre 5 et 100 caractères';
         }
 
 
-        // phone
-        // if( !(strlen($_POST['myform_i']['phone'] == 10) ) ) {
+        // telephone
+        // if( (strlen($_POST['myformi']['telephone'] <> 10) ) ) {
 
         //   $erreurs[] = 'Le champ numéro de téléphone doit comporte 10 chiffres';
         // }
 
-        // Validation et Filtrage [myform_i]
+        // Validation et Filtrage [myformi]
 
         // Email
-        // if ( empty($_POST['myform']['e_mail']) ||
-        //    strlen($_POST['myform']['e_mail']) > 255 ||
-        //    !filter_var($_POST['myform']['e_mail'], FILTER_VALIDATE_EMAIL)) {
+        // if ( empty($_POST['myform']['mail']) ||
+        //    strlen($_POST['myform']['mail']) > 255 ||
+        //    !filter_var($_POST['myform']['mail'], FILTER_VALIDATE_EMAIL)) {
 
         //   $erreurs[] = "Votre email n'est pas valide";
 
         // }
-        // elseif ($manager->emailExists($_POST['myform_i']['e_mail'])) {
+        // elseif ($manager->emailExists($_POST['myformi']['mail'])) {
 
         //   $erreurs[] = "Cet email existe déja";
 
@@ -157,11 +155,12 @@ class InscriptionController extends Controller
           $wuser = $manager->insert(['username' => $_POST['myform']['username'],
           // Hash le password pour crypter les données
           'password' => password_hash($_POST['myform']['password'], PASSWORD_DEFAULT)]);
-          $_POST['myform_i']['wuser_id'] = $wuser['id'];
+          $_POST['myformi']['wuser_id'] = $wuser['id'];
 
 
           // Envoie de données vers la table donneurs
-          $donneurs->insert($_POST['myform_i']);
+          $donneurs = new DonneurManager();
+          $donneurs->insert($_POST['myformi']);
 
           $this->redirectToRoute('home');
 
@@ -171,10 +170,8 @@ class InscriptionController extends Controller
         // Fin Validation et Filtrage
 
     } else {
-
-    $this->show('page/inscription_d', ['erreurs' => $erreurs]);
+      $this->show('page/inscription_d', ['erreurs' => $erreurs]);
     }
-
   }
 
 }
