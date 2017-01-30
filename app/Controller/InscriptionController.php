@@ -95,26 +95,24 @@ class InscriptionController extends Controller
 
 
         // telephone
-        // if( (strlen($_POST['myformi']['telephone'] <> 10) ) ) {
+        if( (strlen($_POST['myformi']['telephone']) < 10) || (strlen($_POST['myformi']['telephone']) > 10)) {
 
-        //   $erreurs[] = 'Le champ numéro de téléphone doit comporte 10 chiffres';
-        // }
+          $erreurs[] = 'Le champ numéro de téléphone doit comporte 10 chiffres';
+        }
 
         // Validation et Filtrage [myformi]
 
         // Email
-        // if ( empty($_POST['myform']['mail']) ||
-        //    strlen($_POST['myform']['mail']) > 255 ||
-        //    !filter_var($_POST['myform']['mail'], FILTER_VALIDATE_EMAIL)) {
+        if ( empty($_POST['myformi']['email']) || strlen($_POST['myformi']['email']) > 255 || !filter_var($_POST['myformi']['email'], FILTER_VALIDATE_EMAIL)) {
 
-        //   $erreurs[] = "Votre email n'est pas valide";
+          print_r("Votre email n'est pas valide");
 
-        // }
-        // elseif ($manager->emailExists($_POST['myformi']['mail'])) {
+        }
+        elseif ($manager->emailExists($_POST['myformi']['email'])) {
 
-        //   $erreurs[] = "Cet email existe déja";
+          print_r("Cet email existe déja");
 
-        // }
+        }
 
         // Password
         if (empty($_POST['myform']['password']) ||

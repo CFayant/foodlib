@@ -10,7 +10,7 @@ class ConnexionController extends Controller {
 
 	public function login() {
 
-		if(isset($_POST['connexion'])) {
+		if(isset($_POST['connect'])) {
 
 			$auth = new AuthentificationManager();
 			$userManager = new UserManager();

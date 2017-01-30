@@ -17,7 +17,7 @@
 		</div>
 
 		<div class="col-md-12 text-center">
-			<input type="submit"  name="connexion" value="Connexion" class="btn btn-default donner">
+			<input type="submit"  name="connect" value="Connexion" class="btn btn-default donner">
 		</div>
 
 	</form>

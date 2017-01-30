@@ -36,8 +36,8 @@
 		</div>
 
 		<div class="form-group">
-			<label for="mail">Votre email <span></span></label>
-			<input type="email" name="myformi[mail]" class="form-control" id="mail">
+			<label for="email">Votre email <span></span></label>
+			<input type="email" name="myformi[email]" class="form-control" id="mail">
 		</div>
 
 		<div class="form-group">
