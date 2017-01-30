@@ -47,13 +47,18 @@
         </div>
 
         <div class="form-group form_center">
-          <label for="acces">Jours et horaires d'accés:</label>
-          <textarea type="text" name="myformd[acces]" class="form-control" id="acces" placeholder="Ex: Lundi, Mardi, Mercredi, etc..."></textarea>
+          <label for="acces">acces:</label>
+          <textarea type="text" name="myformd[acces]" class="form-control" id="acces" value="<?= $don['donneur']['acces'] ?>"><?= $don['donneur']['acces'] ?></textarea>
+        </div>
+
+        <div class="form-group form_center">
+          <label for="horaires">Jours et horaires:</label>
+          <textarea type="text" name="myformd[horaires]" class="form-control" id="horaires" value="<?= $don['donneur']['horaires'] ?>"><?= $don['donneur']['horaires'] ?></textarea>
         </div>
 
         <div class="form-group form_center">
           <label for="telephone">Numéro de téléphone:</label>
-          <input type="text" name="myformd[telephone]" class="form-control" id="telephone" placeholder="Ex: 01 02 03 04 05">
+          <input type="text" name="myformd[telephone]" class="form-control" id="telephone" value="<?= $don['donneur']['telephone'] ?>">
         </div>
 
       </div>
@@ -122,5 +127,10 @@
 </div><!-- /.modal -->
 
 <?php $this->stop('main_content') ?>
+
+<?php $this->start('script') ?>
+  <script src="<?= $this->assetUrl('js/script_creation.js') ?>"></script>
+<?php $this->stop('script') ?>
+
 
 
