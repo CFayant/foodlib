@@ -66,56 +66,27 @@ class OffreController extends Controller
 
   public function listeOffres()
   {
-    // $donneurs_manager = new DonneurManager();
-    // $donneurs_manager->setTable('donneurs');
-    // $donneurs = $donneurs_manager->findAll();
-
-    $dons_manager = new DonManager();
-    $dons_manager->setTable('dons');
-    $dons = $dons_manager->findAll();
-
-    // $type_date_manager = new TypeDateManager();
-    // $type_date_manager->setTable('type_date');
-    // $type_date = $type_date_manager->findAll();
-
-
-    // if( $this->type_date instanceof TypeDate ) {
-    //   return $this->type_date;
-    // } else {
-    //   $type_date_manager = new TypeDateManager;
-    //   $type_date = $type_date_manager->find($this->type_id);
-    //   return $type_date;
-    // }
-
-    // $type_date_manager = new TypeDateManager();
-    // $type_date = $type_date_manager->find($this->type_id);
-    // return $type_date;
-
-    // var_dump($dons->getTypeDate());
-    // exit;
-
+    $data_dons = new DonManager();
+    $dons = $data_dons->findDonsDisponibles();
+    
     $this->show('page/listeOffres', ['dons' => $dons]);
   }
 
 
   public function detailOffre($id)
   {
-  
-    $don_manager = new DonManager();
-    // $dons_manager->setTable('dons');
-    $don = $don_manager->find($id);
+    $data_dons = new DonManager();
+    $dons = $data_dons->findDonneesDon();
 
-    $donneur_manager = new DonneurManager();
-    // $donneur_manager->setTable('donneurs');
-    $donneur = $donneur_manager->find($don['donneur_id']);
-
-    $wuser_manager = new UserManager();
-    $wuser = $wuser_manager->find($donneur['wuser_id']);
-
-
-
-
-    $this->show('page/detail_offre', ['don' => $don, 'donneur' => $donneur, 'wuser' => $wuser]);
+    // $this->show('page/detail_offre', [$_GET['dons'] => $dons['id']]);
+    $this->show('page/detail_offre', 'dons');
+    // if( isset($_POST['creer'] ) ) {
+    // poster($_POST['titre'], $_POST['contenu']);
+    
+    // return $this->redirectToRoute('detailOffre');
+    // redirectToRoute('detailOffre', array $params = array());
+    
+    // return $this->redirectToRoute('blog_show', array('slug' => 'my-page'));
   }
 
 

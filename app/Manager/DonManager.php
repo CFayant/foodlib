@@ -3,7 +3,7 @@
 namespace Manager;
 
 use Manager\TypeDateManager;
-use Manager\DonneurManager;
+use \W\Manager\Manager;
 
 /**
  * Classe requise par l'AuthentificationManager, éventuellement à extender par la UserManager de l'appli
@@ -11,59 +11,75 @@ use Manager\DonneurManager;
 class DonManager extends \W\Manager\Manager
 {
 
-	public function findAll($orderBy = "", $orderDir = "ASC", $limit = null, $offset = null)
+	public function findDonsDisponibles()
 	{
+		$sql = "SELECT dons.id, titre, image, date_consommation, libelle_date, cp_donneur FROM dons
+			INNER JOIN typeDates ON dons.type_id = typeDates.id
+			INNER JOIN donneurs ON dons.donneur_id = donneurs.id
+			WHERE dons.disponible = 1
+			ORDER BY dons.date_consommation ASC";
 
-		// $datas = parent::findAll();
-		// $final_datas = [];
-		// foreach ($datas as $key => $value) {
-		// 	$type_date_manager = new TypeDateManager();
-	 //    	$type_date_manager->setTable('type_date');
+		$dons = $this->dbh->prepare($sql);
+		$dons->execute();
 
-		// 	$type = $type_date_manager->find($value['type_id']);
-		// 	$value['type'] = $type;
+		return $dons->fetchAll();
+	}
 
-		// 	$final_datas[] = $value;
-	 //    }    
+	public function findDonneesDon()
+	{
+		$sql = "SELECT titre, image, date_consommation, adresse_retrait, libelle_date, denomination_sociale, adresse_donneur, cp_donneur, acces, horaires, username, adresse_borne, cp_borne FROM dons
+			RIGHT JOIN typeDates ON dons.type_id = typeDates.id
+			RIGHT JOIN donneurs ON dons.donneur_id = donneurs.id
+			RIGHT JOIN wusers ON donneurs.id = wusers.id
+			RIGHT JOIN bornes ON dons.borne_id = bornes.id
+			WHERE dons.id ="id;
 
-		// return $final_datas;
+		$dons = $this->dbh->prepare($sql);
+		$dons->execute();
 
-		$datas = parent::findAll();
-		$final_datas = [];
-		foreach ($datas as $key => $value) {
+		return $dons->fetchAll();
 
-			// Récupération de la donnée "type de date"
-			// provenant de la table type_date
-			$type_date_manager = new TypeDateManager();
-	    	$type_date_manager->setTable('type_date');
+		// var_dump($dons);
+	}
 
-			$type = $type_date_manager->find($value['type_id']);
-			$value['type'] = $type;
+	// public function findAll($orderBy = "", $orderDir = "ASC", $limit = null, $offset = null)
+	// {
+	// 	$datas = parent::findAll();
+	// 	$final_datas = [];
+	// 	foreach ($datas as $key => $value) {
 
-			// $final_datas[] = $value;
+	// 		// Récupération de la donnée "type de date"
+	// 		// provenant de la table type_date
+	// 		$type_date_manager = new TypeDateManager();
+	//     	$type_date_manager->setTable('type_date');
 
+	// 		$type = $type_date_manager->find($value['type_id']);
+	// 		$value['type'] = $type;
 
-			// Récupération de la donnée "borne"
-			// provenant de la table bornes
-			$borne_manager = new BorneManager();
-	    	$borne_manager->setTable('bornes');
-
-			$borne = $borne_manager->find($value['borne_id']);
-			$value['borne'] = $borne;
+	// 		// $final_datas[] = $value;
 
 
-			// Récupération des données provenant de la table donneurs
-			$donneur_manager = new DonneurManager();
-	    	$donneur_manager->setTable('donneurs');
+	// 		// Récupération de la donnée "borne"
+	// 		// provenant de la table bornes
+	// 		$borne_manager = new BorneManager();
+	//     	$borne_manager->setTable('bornes');
 
-			$donneur = $donneur_manager->find($value['donneur_id']);
-			$value['donneur'] = $donneur;
+	// 		$borne = $borne_manager->find($value['borne_id']);
+	// 		$value['borne'] = $borne;
 
-			$final_datas[] = $value;
 
-	    }
+	// 		// Récupération des données provenant de la table donneurs
+	// 		$donneur_manager = new DonneurManager();
+	//     	$donneur_manager->setTable('donneurs');
 
-		return $final_datas;
+	// 		$donneur = $donneur_manager->find($value['donneur_id']);
+	// 		$value['donneur'] = $donneur;
+
+	// 		$final_datas[] = $value;
+
+	//     }
+
+	// 	return $final_datas;
 
 		// foreach ($datas as $key => $value) {
 
@@ -71,7 +87,7 @@ class DonManager extends \W\Manager\Manager
 
 		// return $final_datas;
 		
-	}
+	// }
 
 	// public function getTypeDate(){
 	// 	$type_date_manager = new TypeDateManager();

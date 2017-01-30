@@ -1,33 +1,37 @@
 <?php $this->layout('layout', ['title' => 'detailOffre']) ?>
 
-
-
 <?php $this->start('main_content') ?>
 
-<!-- Affichage de la page détails du don -->
+<?php foreach ($dons as $don): ?>
+
+<!-- Affichage de la page détails du don sélectionné -->
 <section class="padding">
 
   
   <div class="container">
 
     <div class="col-sm-3">
-      <img src="<?= $this->assetUrl('img/portfolio/cake.png') ?>" class="img-responsive" alt="<?= $don['titre'] ?>">
+      <img src="<?= $this->assetUrl('img/portfolio/cake.png') ?>" class="img-responsive" alt="<?= $titre ?>">
     </div>
-    <?= '<pre>' ?>
-    <?= var_dump($don) ?>
-    <?= '</pre>' ?>
+    
+    <pre>
+    <?=var_dump($dons)?>
+    </pre>
+
     <div class="col-sm-9 relative">
+      <!-- Affichage du titre du don -->
       <div class="col-sm-5 descriptif">
         <p>
-              <h3><?= $don['titre'] ?></h3>
+          <h3><?= $titre ?></h3>
         </p>
 
-        <p><?= $donneur['type']['libelle_date'] ?></p>
+        <!-- Affichage de la date de consommation liée au don, précédée du libellé de son type de date -->
+        <p><?= $don['libelle_date'] ?></p>
         <p><?= $don['date_consommation'] ?></p>
       </div>
 
       <div class="col-sm-4 pseudo">
-        <h4><?= $wuser['username'] ?></h4>
+        <h4><?= $dons['username'] ?></h4>
       </div>
     </div>
 
@@ -43,15 +47,15 @@
             <!-- Eléments sur le donneur OU sur la borne -->
 
             <!-- Eléments sur le donneur : adresse, cp, téléphone, accès et horaires -->
-            <p><?= $donneur['adresse_donneur'] ?></p>
-            <p><?= $donneur['cp_donneur'] ?></p>
-            <p><?= $donneur['telephone'] ?></p>
-            <p><?= $donneur['acces'] ?></p>
-            <p><?= $donneur['horaires'] ?></p>
+            <p><?= $dons['adresse_donneur'] ?></p>
+            <p><?= $dons['cp_donneur'] ?></p>
+            <p><?= $dons['telephone'] ?></p>
+            <p><?= $dons['acces'] ?></p>
+            <p><?= $dons['horaires'] ?></p>
 
             <!-- Eléments sur la borne : adresse et cp -->
-            <p><?= $don['borne']['adresse_borne'] ?></p>
-            <p><?= $don['borne']['cp_borne'] ?></p>
+            <p><?= $dons['adresse_borne'] ?></p>
+            <p><?= $dons['cp_borne'] ?></p>
 
         </div>
 
@@ -80,7 +84,7 @@
         <div class="modal-body">
 
               <div class="form-group form_center">
-                <label for="confirmation">Je confirme vouloir bénéficier de ce don</label>
+                <label for="confirmation">Je confirme vouloir bénéficier de ce don </label>
                 <input type="checkbox" name="confirmation">
               </div>
 
@@ -104,7 +108,7 @@
         </div>
         <div class="modal-body">
 
-            <div class="text-center"><p class="text-danger">ATTENTION veulliez prendre note de votre code de retrait unique !!!</p></div>
+            <div class="text-center"><p class="text-danger">ATTENTION !!! Veuillez prendre note de votre code de retrait unique !!!</p></div>
             <div class="text-center"><p>code de retrait unique</p></div>
 
               <div class="text-center">

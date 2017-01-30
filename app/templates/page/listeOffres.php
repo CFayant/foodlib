@@ -2,15 +2,17 @@
 
 <?php $this->start('main_content') ?>
 
+<!-- Affichage de la page Liste de tous les dons disponibles -->
 <section class="padding">
 
   <div class="text-center">
     <h2>Liste des dons disponibles</h2>
   </div>
 
-  <?= '<pre>' ?>
-  <?= var_dump($dons) ?>
-  <?= '</pre>' ?>
+  <pre>
+  <?=var_dump($dons)?>
+  </pre>
+
   <?php foreach ($dons as $don): ?>
   <div class="padding container well">
 
@@ -26,17 +28,17 @@
 
       <!-- Affichage de la date de consommation liée au don, précédée du libellé de son type de date -->
       <div class="col-xs-3">
-        <p><?= $don['type']['libelle_date'] . ' ' .  $don['date_consommation'] ?></p>
+        <p><?= $don['libelle_date'] . ' ' .  $don['date_consommation'] ?></p>
       </div>
 
       <!-- Affichage du code postal du donneur de ce don -->
       <div class="col-xs-1">
-        <p><?= $don['donneur']['cp_donneur'] ?></p>
+        <p><?= $don['cp_donneur'] ?></p>
       </div>
 
       <!-- Affichage du lien menant vers les détails du don -->
       <div class="col-xs-12 text-right">
-        <a href="<?= $this->url("detailOffre", ['id'=> $don['id']]) ?>">Détails</a>
+        <a href="<?= $this->url("detailOffre", ['id'=> $postId]) ?>">Détails</a>
       </div>
 
   </div>

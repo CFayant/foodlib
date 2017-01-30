@@ -8,26 +8,51 @@ namespace Manager;
 class DonneurManager extends \W\Manager\Manager
 {
 
-	public function findAll($orderBy = "", $orderDir = "ASC", $limit = null, $offset = null)
+	public function findDons()
 	{
+		$sql = "SELECT * FROM " . $dons;
+		$dons = $this->dbh->prepare($sql);
+		$dons->bindValue(":id", $id);
+		$dons->execute();
 
-		$datas = parent::findAll();
-		$final_datas = [];
-		foreach ($datas as $key => $value) {
+		return $dons->fetch();
+	}
 
-			$wuser_manager = new WUsersManager();
-			$wuser_manager->setTable('wusers');
-			$wuser = $wuser_manager->find($value['wuser_id']);
-			$value['wuser'] = $wuser;
+	// public function findAll($orderBy = "", $orderDir = "ASC", $limit = null, $offset = null)
+	// {
 
-			$final_datas[] = $value;
+	// 	$datas = parent::findAll();
+	// 	$final_datas = [];
+	// 	foreach ($datas as $key => $value) {
 
-			// var_dump($final_datas); exit;
+	// 		$value['wuser'] = $wuser;
+
+	// 		$final_datas[] = $value;
+
+	// 		// var_dump($final_datas); exit;
 	
-	    }
+	//     }
 
-		return $final_datas;
-    }
+	// 	return $final_datas;
+ //    }
+
+ //    public function findAll($orderBy = "", $orderDir = "ASC", $limit = null, $offset = null)
+	// {
+
+	// 	$datas = parent::findAll();
+	// 	$final_datas = [];
+	// 	foreach ($datas as $key => $value) {
+
+	// 		$value['wuser'] = $wuser;
+
+	// 		$final_datas[] = $value;
+
+	// 		// var_dump($final_datas); exit;
+	
+	//     }
+
+	// 	return $final_datas;
+ //    }
 
 
 }
