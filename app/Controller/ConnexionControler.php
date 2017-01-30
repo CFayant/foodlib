@@ -8,14 +8,15 @@ use \W\Security\AuthentificationManager;
 use \W\Manager\UserManager;
 use \Manager\EventManager;
 
-class UserController extends Controller {
+class ConnexionController extends Controller {
 
 	/**
 	 * Page de connexion
 	 */
 	public function login() {
 
-		if ( isset($_POST['login']) ) {
+		if ( isset($_POST['connecter']) ) {
+
 			$auth_manager = new AuthentificationManager();
 			$util_manager = new UtilisateurManager();
 
@@ -23,18 +24,26 @@ class UserController extends Controller {
 
 			// Validation et Filtrage
 
-			if ( $auth_manager->isValidLoginInfo($_POST['form_login']['email'], $_POST['form_login']['password']) == 0 ) {
+			if ($auth_manager->isValidLoginInfo($_POST['username'], $_POST['password']) == 0 ) {
 
-				$erreurs[] = "Mauvais email ou mot de passe.";
+				$erreurs[] = "pseudo ou mot de passe erroné";
 			} 
 
-			if (empty($_POST['form_login']['email']) ||
-				empty($_POST['form_login']['password'])) {
+			if (empty($_POST['username']) || empty($_POST['password'])) {
 				
 				$erreurs[] = "Tous les champs sont requis";
 			}
+
+			$this->redirectToRoute('home');
 		}
 
+	}
+
+	public function logout() {
+
+		$logout_user = new AuthentificationManager();
+		$logout_user->logUserOut();
+		$this->redirectToRoute('home');
 	}
 
 }

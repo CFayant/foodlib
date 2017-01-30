@@ -46,7 +46,7 @@ class InscriptionController extends Controller
       if ($_POST['myform']['passwordConfirm'] != $_POST['myform']['password']) {
         $erreurs[] = "Le mot de passe ne correspond pas";
       }
-
+      
       // Si $erreurs vide, Validation OK
      if ( empty($erreurs)) {
 

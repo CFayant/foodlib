@@ -175,7 +175,7 @@
 			        </div>
 
 		        	<div class="form-group form_center">
-			        	<label for="message">Je Signal</label>
+			        	<label for="message">Je Signale</label>
 			        		<textarea name="message" class="form-control" placeholder="Votre message"></textarea>
 			        </div>
 
@@ -206,17 +206,18 @@
 
 		        	<div class="form-group form_center">
 			        	<label for="pseudo">Pseudo</label>
-			        	<input type="text" name="pseudo" class="form-control" placeholder="Votre pseudo">
+			        	<input type="text" name="username" class="form-control" placeholder="Votre pseudo">
 			        </div>
 
 		        	<div class="form-group form_center">
 			        	<label for="mdp">Password</label>
-			        	<input type="password" name="mdp" class="form-control" placeholder="Mot de passe">
+			        	<input type="password" name="password" class="form-control" placeholder="Mot de passe">
 			        </div>
-
-							<div class="text-center">
+			
+					<div class="text-center">
 		        		<input type="submit" name="Connecter" class="btn btn-default donner" value="Se connecter">
 		        	</div>
+		        	
 		        </form>
 
 	      </div>
