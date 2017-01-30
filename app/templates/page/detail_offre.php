@@ -2,32 +2,32 @@
 
 <?php $this->start('main_content') ?>
 
-<?php foreach ($dons as $don): ?>
+
 
 <!-- Affichage de la page détails du don sélectionné -->
 <section class="padding">
 
-  
+
   <div class="container">
 
     <div class="col-sm-3">
       <img src="<?= $this->assetUrl('img/portfolio/cake.png') ?>" class="img-responsive" alt="<?= $titre ?>">
     </div>
-    
+
     <pre>
-    <?=var_dump($dons)?>
+    <?php var_dump($dons)?>
     </pre>
 
     <div class="col-sm-9 relative">
-      <!-- Affichage du titre du don -->
+      <!-- Affichage du titre du dons -->
       <div class="col-sm-5 descriptif">
         <p>
-          <h3><?= $titre ?></h3>
+          <h3><?= $dons[1]['titre'] ?></h3>
         </p>
 
-        <!-- Affichage de la date de consommation liée au don, précédée du libellé de son type de date -->
-        <p><?= $don['libelle_date'] ?></p>
-        <p><?= $don['date_consommation'] ?></p>
+        <!-- Affichage de la date de consommation liée au dons, précédée du libellé de son type de date -->
+        <p><?= $dons['libelle_date'] ?></p>
+        <p><?= $dons['date_consommation'] ?></p>
       </div>
 
       <div class="col-sm-4 pseudo">
@@ -43,12 +43,12 @@
         </div>
 
         <div class="col-sm-5 float-right descriptif_adresse">
-            
-            <!-- Eléments sur le donneur OU sur la borne -->
 
-            <!-- Eléments sur le donneur : adresse, cp, téléphone, accès et horaires -->
-            <p><?= $dons['adresse_donneur'] ?></p>
-            <p><?= $dons['cp_donneur'] ?></p>
+            <!-- Eléments sur le donsneur OU sur la borne -->
+
+            <!-- Eléments sur le donsneur : adresse, cp, téléphone, accès et horaires -->
+            <p><?= $dons['adresse_donsneur'] ?></p>
+            <p><?= $dons['cp_donsneur'] ?></p>
             <p><?= $dons['telephone'] ?></p>
             <p><?= $dons['acces'] ?></p>
             <p><?= $dons['horaires'] ?></p>

@@ -38,7 +38,7 @@
 
       <!-- Affichage du lien menant vers les détails du don -->
       <div class="col-xs-12 text-right">
-        <a href="<?= $this->url("detailOffre", ['id'=> $postId]) ?>">Détails</a>
+        <a href="<?= $this->url( "detailOffre") ?>">Détails</a>
       </div>
 
   </div>

@@ -27,12 +27,10 @@ class DonManager extends \W\Manager\Manager
 
 	public function findDonneesDon()
 	{
-		$sql = "SELECT titre, image, date_consommation, adresse_retrait, libelle_date, denomination_sociale, adresse_donneur, cp_donneur, acces, horaires, username, adresse_borne, cp_borne FROM dons
-			RIGHT JOIN typeDates ON dons.type_id = typeDates.id
-			RIGHT JOIN donneurs ON dons.donneur_id = donneurs.id
-			RIGHT JOIN wusers ON donneurs.id = wusers.id
-			RIGHT JOIN bornes ON dons.borne_id = bornes.id
-			WHERE dons.id ="id;
+		$sql = "SELECT DISTINCT dons.id, dons.titre, dons.image, dons.date_consommation, typeDates.libelle_date, donneurs.denomination_sociale, donneurs.adresse_donneur, donneurs.cp_donneur,
+donneurs.acces, donneurs.horaires, wusers.username, bornes.adresse_borne, bornes.cp_borne FROM dons, typeDates, donneurs, wusers, bornes
+WHERE dons.type_id = typeDates.id AND dons.donneur_id = donneurs.id AND donneurs.wuser_id = wusers.id AND dons.borne_id = bornes.id
+";
 
 		$dons = $this->dbh->prepare($sql);
 		$dons->execute();
@@ -86,7 +84,7 @@ class DonManager extends \W\Manager\Manager
 	 //    }
 
 		// return $final_datas;
-		
+
 	// }
 
 	// public function getTypeDate(){
@@ -98,7 +96,7 @@ class DonManager extends \W\Manager\Manager
 	// }
 	// private $id;
 	// protected $type_id;
-	
+
 	// protected $type_date;
 
 	/* Constructor */
@@ -211,6 +209,6 @@ class DonManager extends \W\Manager\Manager
 
 	// 	return $this;
 	// }
-	
+
 
 }

@@ -68,24 +68,24 @@ class OffreController extends Controller
   {
     $data_dons = new DonManager();
     $dons = $data_dons->findDonsDisponibles();
-    
+
     $this->show('page/listeOffres', ['dons' => $dons]);
   }
 
 
-  public function detailOffre($id)
+  public function detailOffre()
   {
     $data_dons = new DonManager();
     $dons = $data_dons->findDonneesDon();
 
     // $this->show('page/detail_offre', [$_GET['dons'] => $dons['id']]);
-    $this->show('page/detail_offre', 'dons');
+    $this->show('page/detail_offre', ['dons'=> $dons]);
     // if( isset($_POST['creer'] ) ) {
     // poster($_POST['titre'], $_POST['contenu']);
-    
+
     // return $this->redirectToRoute('detailOffre');
     // redirectToRoute('detailOffre', array $params = array());
-    
+
     // return $this->redirectToRoute('blog_show', array('slug' => 'my-page'));
   }
 
