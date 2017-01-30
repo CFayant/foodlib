@@ -8,7 +8,9 @@
     <h2>Liste des dons disponibles</h2>
   </div>
 
- 
+  <?= '<pre>' ?>
+  <?= var_dump($dons) ?>
+  <?= '</pre>' ?>
   <?php foreach ($dons as $don): ?>
   <div class="padding container well">
 
@@ -34,7 +36,7 @@
 
       <!-- Affichage du lien menant vers les détails du don -->
       <div class="col-xs-12 text-right">
-        <a href="<?= $this->url("detailOffre") ?>">Détails</a>
+        <a href="<?= $this->url("detailOffre", ['id'=> $don['id']]) ?>">Détails</a>
       </div>
 
   </div>

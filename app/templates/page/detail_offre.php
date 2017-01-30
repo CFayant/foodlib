@@ -13,19 +13,21 @@
     <div class="col-sm-3">
       <img src="<?= $this->assetUrl('img/portfolio/cake.png') ?>" class="img-responsive" alt="<?= $don['titre'] ?>">
     </div>
-
+    <?= '<pre>' ?>
+    <?= var_dump($don) ?>
+    <?= '</pre>' ?>
     <div class="col-sm-9 relative">
       <div class="col-sm-5 descriptif">
         <p>
               <h3><?= $don['titre'] ?></h3>
         </p>
 
-        <p><?= $don['type']['libelle_date'] ?></p>
+        <p><?= $donneur['type']['libelle_date'] ?></p>
         <p><?= $don['date_consommation'] ?></p>
       </div>
 
       <div class="col-sm-4 pseudo">
-        <h4><?= $donneur['wuser']['username'] ?></h4>
+        <h4><?= $wuser['username'] ?></h4>
       </div>
     </div>
 

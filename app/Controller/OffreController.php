@@ -7,7 +7,7 @@ use \Manager\TypeDateManager;
 use \Manager\BorneManager;
 use \Manager\DonneurManager;
 use \Manager\DonManager;
-use \Manager\WUsersManager;
+use \W\Manager\UserManager;
 // use \Manager\PhotoManager;
 use \GUMP;
 
@@ -98,27 +98,24 @@ class OffreController extends Controller
   }
 
 
-  public function detailOffre()
+  public function detailOffre($id)
   {
   
-    $dons_manager = new DonManager();
-    $dons_manager->setTable('dons');
-    $dons = $dons_manager->findAll();
+    $don_manager = new DonManager();
+    // $dons_manager->setTable('dons');
+    $don = $don_manager->find($id);
 
     $donneur_manager = new DonneurManager();
-    $donneur_manager->setTable('donneurs');
-    $donneurs = $donneur_manager->findAll();
+    // $donneur_manager->setTable('donneurs');
+    $donneur = $donneur_manager->find($don['donneur_id']);
 
-    foreach ($dons as $don) {
-      $don;
-    }
-
-    foreach ($donneurs as $donneur) {
-      $donneur; 
-    }
+    $wuser_manager = new UserManager();
+    $wuser = $wuser_manager->find($donneur['wuser_id']);
 
 
-    $this->show('page/detail_offre', ['don' => $don, 'donneur' => $donneur]);
+
+
+    $this->show('page/detail_offre', ['don' => $don, 'donneur' => $donneur, 'wuser' => $wuser]);
   }
 
 
