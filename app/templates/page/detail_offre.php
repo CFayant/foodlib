@@ -1,27 +1,33 @@
 <?php $this->layout('layout', ['title' => 'detailOffre']) ?>
 
+
+
 <?php $this->start('main_content') ?>
 
+<!-- Affichage de la page détails du don -->
 <section class="padding">
+
 
   <div class="container">
 
     <div class="col-sm-3">
-      <img src="<?= $this->assetUrl('img/portfolio/cake.png') ?>" class="img-responsive" alt="">
+      <img src="<?= $this->assetUrl('img/portfolio/cake.png') ?>" class="img-responsive" alt="<?= $don['titre'] ?>">
     </div>
 
     <div class="col-sm-9 relative">
       <div class="col-sm-5 descriptif">
         <p>
-              <h3><?= $dons['titre'] ?></h3>
+
+              <h3><?= $don['titre'] ?></h3>
         </p>
 
-        <p>Le type de date de consommation (Ex: Date conseillée ou date de fin de consommation.)</p>
-        <p>La date de consommation (Ex: 15 Janvier 2017.)</p>
+        <p><?= $don['type']['libelle_date'] ?></p>
+        <p><?= $don['date_consommation'] ?></p>
       </div>
 
       <div class="col-sm-4 pseudo">
-        <h4>pseudo ou dénomination du donneur</h4>
+        <h4><?= $donneur['wuser']['username'] ?></h4>
+
       </div>
     </div>
 
@@ -33,11 +39,20 @@
         </div>
 
         <div class="col-sm-5 float-right descriptif_adresse">
-            <p>Adresse du donneur ou adresse d'une borne </p>
 
-            <p>Accés: Nation métro ligne 7 et 6</p>
+            <!-- Eléments sur le donneur OU sur la borne -->
 
-            <p>jours et horaires</p>
+            <!-- Eléments sur le donneur : adresse, cp, téléphone, accès et horaires -->
+            <p><?= $donneur['adresse_donneur'] ?></p>
+            <p><?= $donneur['cp_donneur'] ?></p>
+            <p><?= $donneur['telephone'] ?></p>
+            <p><?= $donneur['acces'] ?></p>
+            <p><?= $donneur['horaires'] ?></p>
+
+            <!-- Eléments sur la borne : adresse et cp -->
+            <p><?= $don['borne']['adresse_borne'] ?></p>
+            <p><?= $don['borne']['cp_borne'] ?></p>
+
         </div>
 
       </div>

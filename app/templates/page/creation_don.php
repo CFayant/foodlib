@@ -21,18 +21,18 @@
 
       <div class="form-group form_center text-center">
         <label class="radio-inline">
-          <input type="radio" name="myform[adress]" value="borne" checked> Sélectionner une borne réfrigérée
+          <input type="radio" name="myform[adresse_retrait]" value="borne" checked> Sélectionner une borne réfrigérée
         </label>
 
         <label class="radio-inline">
-          <input type="radio" name="myform[adress]" value="adresse"> Mon adresse
+          <input type="radio" name="myform[adresse_retrait]" value="adresse du donneur"> Mon adresse
         </label>
       </div>
 
       <div class="form-group form_center text-center">
         <select class="form-control" name="myform[borne_id]" id="borne_id" >
-          <option value="null">Les bornes:</option>
-          <?php foreach ($bornes as $borne): ?>
+          <option value="">Les bornes:</option>
+          <?php foreach ($liste_borne as $borne): ?>
             <option value="<?= $borne['id'] ?>"><?= $borne['adresse_borne'] . " " . $borne['cp_borne'] ?></option>
           <?php endforeach ?>
         </select>
@@ -43,17 +43,17 @@
 
         <div class="form-group form_center">
           <label for="adresse_donneur">Adresse: <span class="text-danger"></span></label>
-          <input type="text" name="myform[adresse_donneur]" class="form-control" id="adresse_donneur" value="<?= $donneurs['for="adresse_donneur"'] ?>">
+          <input type="text" name="myformd[adresse_donneur]" class="form-control" id="adresse_donneur" value="<?= $don['donneur']['adresse_donneur'] ?>">
         </div>
 
         <div class="form-group form_center">
           <label for="acces">Jours et horaires d'accés:</label>
-          <textarea type="text" name="myform[acces]" class="form-control" id="acces" placeholder="Ex: Lundi, Mardi, Mercredi, etc..."></textarea>
+          <textarea type="text" name="myformd[acces]" class="form-control" id="acces" placeholder="Ex: Lundi, Mardi, Mercredi, etc..."></textarea>
         </div>
 
         <div class="form-group form_center">
-          <label for="numero">Numéro de téléphone:</label>
-          <input type="text" name="myform[numero]" class="form-control" id="numero" placeholder="Ex: 01 02 03 04 05">
+          <label for="telephone">Numéro de téléphone:</label>
+          <input type="text" name="myformd[telephone]" class="form-control" id="telephone" placeholder="Ex: 01 02 03 04 05">
         </div>
 
       </div>
@@ -67,9 +67,9 @@
       <div class="form-group form_center">
         <label for="type_date">Le type de date de consommation: <span class="text-danger"></span></label>
         <select class="form-control" name="myform[type_id]" id="type_date" >
-          <option>Type de date:</option>
-          <?php foreach($liste_type_date as $type): ?>
-            <option value="<?= $type['id'] ?>"><?= $type['libelle_date']?></option>
+          <option value="">Type de date:</option>
+          <?php foreach($liste_date as $date): ?>
+            <option value="<?= $date['id'] ?>"><?= $date['libelle_date']?></option>
           <? endforeach ?>
         </select>
       </div>
@@ -123,7 +123,4 @@
 
 <?php $this->stop('main_content') ?>
 
-<?php $this->start('script') ?>
-  <script src="<?= $this->assetUrl('js/script_creation.js') ?>"></script>
-<?php $this->stop('script') ?>
 
