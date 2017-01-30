@@ -3,12 +3,6 @@
 namespace Controller;
 
 use \W\Controller\Controller;
-use \Manager\TypeDateManager;
-use \Manager\BorneManager;
-use \Manager\DonneurManager;
-use \Manager\DonManager;
-use \Manager\DetailTitreManager;
-use \Manager\PhotoManager;
 use \GUMP;
 
 class InscriptionController extends Controller
@@ -50,7 +44,6 @@ class InscriptionController extends Controller
 
       }
 
-      $inscription_b_manager = new InscriptionManager();
       $inscription_b_manager->insert(array_merge($_POST['myform_i']));
 
     }
