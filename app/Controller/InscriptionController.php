@@ -4,7 +4,7 @@ namespace Controller;
 
 use \W\Controller\Controller;
 use \W\Manager\UserManager;
-use \Manager\WuserManager;
+// use \Manager\WuserManager;
 use \Manager\DonneurManager;
 
 
@@ -24,7 +24,7 @@ class InscriptionController extends Controller
     $erreurs = [];
     if ( isset($_POST['inscrire_b']) ) {
 
-      $manager = new WuserManager();
+      $manager = new UserManager();
 
       // Validation et Filtrage [myform]
 
@@ -75,7 +75,7 @@ class InscriptionController extends Controller
     $erreurs = [];
     if ( isset($_POST['inscrire_d']) ) {
 
-      $manager = new WuserManager();
+      $manager = new UserManager();
 
 
       // Validation et Filtrage [myformi]
