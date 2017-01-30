@@ -1,21 +1,46 @@
-<?php
+<?php 
 
 namespace Controller;
 
 use \W\Controller\Controller;
+use \W\Security\AuthentificationManager;
+use \W\Manager\UserManager;
 
-class ConnexionController extends Controller
-{
+class ConnexionController extends Controller {
 
-	/* Page d'accueil par défaut */
-	public function home()
-	{
-		$this->show('page/home');
+	// public function displayLogin() {
+
+		
+	// }
+
+	public function login() {
+
+
+
+
+		// if(isset($_POST['connexion'])) {
+
+		// 	$auth = new AuthentificationManager();
+		// 	$userManager = new UserManager();
+
+		// 	if($auth->isValidLoginInfo($_POST['myform']['username'], $_POST['myform']['password'])) {
+
+		// 		$user = $userManager->getUserByUsernameOrEmail($_POST['myform']['username']);
+		// 		$auth->logUserIn($user);
+
+		// 		$this->redirectToRoute('home');
+		// 	}
+
+
+		// }
+	$this->show('page/login');
 	}
 
-	public function cgu()
-	{
-	$this->show('page/cgu');
+	public function logout() {
+
+		$auth = new AuthentificationManager();
+		$auth->logUserOut();
+		$this->redirectToRoute('home');
 	}
 
 }

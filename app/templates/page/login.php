@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Inscription']) ?>
+<?php $this->layout('layout', ['title' => 'Connexion']) ?>
 
 <?php $this->start('main_content') ?>
 
@@ -11,23 +11,13 @@
 			<input type="text" name="myform[username]" class="form-control">
 		</div>
 
-		<div class="form-group">
-			<label for="email">Votre email <span></span></label>
-			<input type="email" name="myform[email]" class="form-control" id="mail">
-		</div>
-
-		<div class="form-group">
+		<div class="form-group"my>
 			<label for="password">Votre Mot de Passe <span></span></label>
 			<input type="password" name="myform[password]" class="form-control">
 		</div>
 
-		<div class="form-group">
-			<label for="passwordConfirm">Confirmez Mot de Passe <span></span></label>
-			<input type="password" name="myform[passwordConfirm]" class="form-control">
-		</div>
-
 		<div class="col-md-12 text-center">
-			<input type="submit"  name="inscrire_b" value="M'inscrire" class="btn btn-default donner">
+			<input type="submit"  name="connexion" value="Connexion" class="btn btn-default donner">
 		</div>
 
 	</form>
@@ -41,4 +31,3 @@
 <link href="<?= $this->assetUrl('css/inscription_b.css') ?>" rel="stylesheet">
 
 <?php $this->stop('style') ?>
-

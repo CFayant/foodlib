@@ -4,15 +4,10 @@ namespace Controller;
 
 use \W\Controller\Controller;
 use \W\Manager\UserManager;
-use \Manager\WuserManager;
 use \Manager\DonneurManager;
 
 class InscriptionController extends Controller
 {
-
-
-
-
 
   public function inscription() {
 
@@ -24,7 +19,7 @@ class InscriptionController extends Controller
     $erreurs = [];
     if ( isset($_POST['inscrire_b']) ) {
 
-      $manager = new WuserManager();
+      $manager = new UserManager();
 
       // Validation et Filtrage [myform]
 
@@ -46,11 +41,11 @@ class InscriptionController extends Controller
       if ($_POST['myform']['passwordConfirm'] != $_POST['myform']['password']) {
         $erreurs[] = "Le mot de passe ne correspond pas";
       }
-      
+
       // Si $erreurs vide, Validation OK
      if ( empty($erreurs)) {
 
-          $wuser = $manager->insert(['username' => $_POST['myform']['username'],
+          $wuser = $manager->insert(['username' => $_POST['myform']['username'], 'email' => $_POST['myform']['email'],
                   // Hash le password pour crypter les données
                   'password' => password_hash($_POST['myform']['password'], PASSWORD_DEFAULT)]);
           // $_POST['myform']['user_id'] = $wuser['id'];
@@ -71,7 +66,7 @@ class InscriptionController extends Controller
       $erreurs = [];
       if ( isset($_POST['inscrire_d']) ) {
 
-      $manager = new WuserManager();
+      $manager = new UserManager();
 
       // Nom
       if( empty( $_POST['myform']['username']) || (strlen($_POST['myform']['username']) < 5) || (strlen($_POST['myform']['username']) > 50) ) {
@@ -151,7 +146,6 @@ class InscriptionController extends Controller
         }
 
         $this->show('page/inscription_d', ['erreurs' => $erreurs]);
-        // Fin Validation et Filtrage
 
     } else {
       $this->show('page/inscription_d', ['erreurs' => $erreurs]);

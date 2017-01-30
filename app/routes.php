@@ -13,6 +13,7 @@
     	['GET|POST', '/creationDon/', 'Offre#creationDon', 'creationDon'],
 		['GET', '/detailOffre/', 'Offre#detailOffre', 'detailOffre'],
 		['GET', '/listeOffres/', 'Offre#listeOffres', 'listeOffres'],
-		['GET', '/cgu/', 'Default#cgu', 'cgu']
+		['GET', '/cgu/', 'Default#cgu', 'cgu'],
+		['GET|POST', '/login/', 'Connexion#login', 'login']
 
 	);
