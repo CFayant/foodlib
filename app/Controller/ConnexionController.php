@@ -23,7 +23,7 @@ class ConnexionController extends Controller {
 
 		}
 
-	$this->show('page/login');
+		$this->show('page/login');
 
 	}
 
