@@ -38,12 +38,12 @@ class OffreController extends Controller
 
           $erreurs[] = 'Le champ titre doit obligatoirement comporter entre 5 et 50 caractères et est requis';
 
-        }
+      }
 
-        if ( isset( $_POST['myform']['adresse_retrait'] ) ){
+      if ( isset( $_POST['myform']['adresse_retrait'] ) ){
 
-      // borne_id
-      if( empty($_POST['myform']['borne_id']) ) {
+        // borne_id
+        if( empty($_POST['myform']['borne_id']) ) {
 
           $choix = $_POST['myform']['adresse_retrait'];
 
@@ -54,20 +54,21 @@ class OffreController extends Controller
               $erreurs[] = 'Veuillez sélectionner une borne';
             }
           }
-          elseif ($choix== "adresse du donneur"){
+        } elseif ($choix== "adresse du donneur"){
 
             if( empty($_POST['myformd']['adresse_donneur']) || (strlen($_POST['myformd']['adresse_donneur']) <5) || (strlen($_POST['myformd']['adresse_donneur']) > 100)) {
 
               $erreurs[] = 'Le champ adresse doit comporter entre 5 et 100 caractères et est requis';
             }
-
-            // telephone
-            if( (strlen($_POST['myformd']['telephone'] <> 10) ) ) {
-              if( (strlen($_POST['myformd']['telephone'] <> 10) ) ) {
-                $erreurs[] = 'Le champ numéro de téléphone doit comporte 10 chiffres';
-              }
-            }
           }
+
+        // telephone
+        if( (strlen($_POST['myformd']['telephone'] <> 10) ) ) {
+          if( (strlen($_POST['myformd']['telephone'] <> 10) ) ) {
+            $erreurs[] = 'Le champ numéro de téléphone doit comporte 10 chiffres';
+          }
+        }
+      }
 
         // image
         // if (empty($_POST['myform']['image']) ) {
@@ -106,11 +107,9 @@ class OffreController extends Controller
         // Fin Validation et Filtrage
 
     } else {
-      $this->show('page/creation_don', ['erreurs' => $erreurs, 'liste_borne' => $liste_borne, 'liste_date' => $liste_date, 'don' => $don]);
-    }
-
+        $this->show('page/creation_don', ['erreurs' => $erreurs, 'liste_borne' => $liste_borne, 'liste_date' => $liste_date, 'don' => $don]);
+      }
   }
-
 
   public function listeOffres()
   {
@@ -126,7 +125,7 @@ class OffreController extends Controller
     $data_dons = new DonManager();
     $dons = $data_dons->findDonneesDon();
 
-    $this->show('page/detail_offre', ['dons'=> $dons]);
+    $this->show('page/detail_offre', ['dons' => $dons]);
   }
 
 }
