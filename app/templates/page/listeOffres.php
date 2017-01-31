@@ -10,11 +10,11 @@
   </div>
 
   <?php foreach ($dons as $don): ?>
-  <div class="padding container well">
+    <div class="padding container well">
 
-      <!-- Affichage de l'image du don -->
+      <!-- Affichage de l'image du don résolu -->
       <div class="col-xs-3">
-        <img src="#" alt="<?= $don['titre'] ?>">
+        <img src="<?php echo $this->assetUrl('uploads/'.$don["image"]) ?>" alt="<?= $don['titre'] ?>">
       </div>
 
       <!-- Affichage du titre du don -->
@@ -37,7 +37,7 @@
         <a href="<?= $this->url( "detailOffre") ?>">Détails</a>
       </div>
 
-  </div>
+    </div>
   <?php endforeach ?>
 
 </section>
