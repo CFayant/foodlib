@@ -27,8 +27,6 @@ class OffreController extends Controller
     $donneur = $donneur_manager->findDonneurByUserId($_SESSION['user']['id']);
 
 
-
-
     $erreurs = [];
     if ( isset($_POST['donner']) ) {
 
@@ -90,9 +88,8 @@ class OffreController extends Controller
         // Si $erreurs vide, Validation OK
       if ( empty($erreurs)) {
 
-          // Envoie de données vers la table dons
-          // Ajouter l'id $_SESSIONS du donneur
-        $_POST['myform']['donneur_id'] = 1;
+        // Envoie de données vers la table dons
+        $_POST['myform']['donneur_id'] = $_SESSION['user']['id'];
 
         $don = new DonManager();
         $don->insert($_POST['myform']);

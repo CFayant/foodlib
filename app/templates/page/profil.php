@@ -4,14 +4,6 @@
 
 <section class="container padding text-center">
 
-<!-- 	<pre>
-    <?php var_dump($wuser)?>
-    </pre>
-
-    	<pre>
-    <?php var_dump($dons)?>
-    </pre> -->
-
 	<h1><?= $wuser['username'] ?></h1>
 
 	<span><a href="<?= $this->url("edition_p") ?>">Editer mon profil de donneur</a></span>
@@ -30,14 +22,14 @@
 		<table class="table">
 
 			<tr>
-	
+
 				<th>Date de don</th>
 
 				<th>Descriptif du produit</th>
 
 			</tr>
 
-			
+
 			<?php foreach ($don_donneur as $donneur) : ?>
 				<tr>
 					<td><?= $donneur['heure_resa'] ?></td>
@@ -68,7 +60,7 @@
 
 			</tr>
 
-			
+
 				<?php foreach ($dons as $don) : ?>
 					<tr>
 						<td><?= $don['heure_resa'] ?></td>

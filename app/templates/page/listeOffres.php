@@ -14,7 +14,7 @@
 
       <!-- Affichage de l'image du don résolu -->
       <div class="img-responsive">
-        <img src="<?php echo $this->assetUrl('uploads/'.$don["image"]) ?>" alt="<?= $don['titre'] ?>">
+        <img src="<?= $this->assetUrl('uploads/'.$don["image"]) ?>" alt="<?= $don['titre'] ?>">
       </div>
 
       <!-- Affichage du titre du don -->
