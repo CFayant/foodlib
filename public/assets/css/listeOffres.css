@@ -3,3 +3,18 @@ img {
 	max-width: 30%;
 	max-height: 330px;
 }
+
+.paddingPlus {
+
+	padding-top: 50px;
+}
+
+.img-responsive {
+
+	display: block;
+}
+
+#div2 {
+
+	display: block;
+}
