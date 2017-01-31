@@ -82,6 +82,7 @@ class OffreController extends Controller
         // Si $erreurs vide, Validation OK
       if ( empty($erreurs)) {
 
+
         $uploads_dir = '/var/www/public/assets/uploads';
         $tmp_name = $_FILES["myform"]["tmp_name"];
         $name = $_FILES["myform"]["name"];
@@ -89,14 +90,16 @@ class OffreController extends Controller
 
         // Envoie de données vers la table dons
         // Ajouter l'id $_SESSIONS du donneur
+
+        // Envoie de données vers la table dons
         $_POST['myform']['donneur_id'] = $_SESSION['user']['id'];
 
         $don = new DonManager();
         $don->insert($_POST['myform'], ['image' => $name]);
 
-          // Ici il faut recuperer l'id du donneur avec $_SESSION A VOIR AVEC LAURENT
-          $donneurUp = new DonneurManager();
-          $donneurUP->updateByUserId($_SESSION['user']['id']);
+        // Ici il faut recuperer l'id du donneur avec $_SESSION A VOIR AVEC LAURENT
+        $donneurUp = new DonneurManager();
+        $donneurUP->updateByUserId($_SESSION['user']['id']);
 
 
         $this->redirectToRoute('home');
@@ -110,6 +113,7 @@ class OffreController extends Controller
     }
   }
 
+
   public function listeOffres()
   {
     $data_dons = new DonManager();
@@ -117,6 +121,7 @@ class OffreController extends Controller
 
     $this->show('page/listeOffres', ['dons' => $dons]);
   }
+
 
   public function detailOffre($id)
   {

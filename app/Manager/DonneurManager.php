@@ -18,6 +18,7 @@ class DonneurManager extends \W\Manager\Manager
 		return $sth->fetch();
 	}
 
+
 	public function findDataDonneur($id)
 	{
 		$sql = "SELECT * FROM donneurs, dons, wusers WHERE wusers.id = :id";
@@ -40,6 +41,4 @@ class DonneurManager extends \W\Manager\Manager
 		return $this->find($id);
 
 	}
-
-
 }
