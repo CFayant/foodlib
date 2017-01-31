@@ -14,17 +14,10 @@ use \GUMP;
 class ProfilController extends Controller
 {
 
-  public function profil_b()
+  public function profil()
   {
-    $this->show('page/profil_b');
+    $this->show('page/profil');
   }
-
-
-  public function profil_d()
-  {
-    $this->show('page/profil_d');
-  }
-
 
   public function edition_p()
   {
