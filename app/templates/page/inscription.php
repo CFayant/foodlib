@@ -5,11 +5,11 @@
 <section class="text-center padding form-check container width-limit">
 
 	<div class="well">
-		<a class="TextDecoration" href="<?= $this->url("inscription_b") ?>">Je suis bénéficiaire</a>
+		<a class="TextDecoration btn btn-default donner" href="<?= $this->url("inscription_b") ?>">Je suis bénéficiaire</a>
 	</div>
 
 	<div class="well">
-		<a class="TextDecoration" href="<?= $this->url("inscription_d") ?>">Je suis donneur</a>
+		<a class="TextDecoration btn btn-default donner" href="<?= $this->url("inscription_d") ?>">Je suis donneur</a>
 	</div>
 
 </section>

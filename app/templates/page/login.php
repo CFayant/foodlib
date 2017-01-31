@@ -6,7 +6,7 @@
 
 	<form method="POST" class="col-lg-6 margin-auto form-group">
 
-		<div class="form-group">
+		<div class="form-group paddingPlus">
 			<label for="username">Votre Pseudo <span></span></label>
 			<input type="text" name="username" class="form-control">
 		</div>
@@ -28,6 +28,6 @@
 
 <?php $this->start('style') ?>
 
-<link href="<?= $this->assetUrl('css/inscription_b.css') ?>" rel="stylesheet">
+<link href="<?= $this->assetUrl('css/login.css') ?>" rel="stylesheet">
 
 <?php $this->stop('style') ?>

@@ -13,15 +13,15 @@
             </div>
             <div class="row">
                 <div class="col-sm-4 portfolio-item">
-                        <img src="<?= $this->assetUrl('img/portfolio/cabin.png') ?>" class="img-responsive" alt="">
+                        <img src="<?= $this->assetUrl('img/portfolio/cabin.png') ?>" class="img-responsive" id="hide" alt="">
                 </div>
 
                 <div class="col-sm-4 portfolio-item">
                         <img src="<?= $this->assetUrl('img/portfolio/cake.png') ?>" class="img-responsive" alt="">
                 </div>
 
-                <div class="col-sm-4 portfolio-item">
-                        <img src="<?= $this->assetUrl('img/portfolio/circus.png') ?>" class="img-responsive" alt="">
+                <div class="col-sm-4 portfolio-item" >
+                        <img src="<?= $this->assetUrl('img/portfolio/circus.png') ?>" class="img-responsive" id="hide" alt="">
                 </div>
 
                 <div class="col-lg-12 text-center">
@@ -57,3 +57,9 @@
     </section>
 
 <?php $this->stop('main_content') ?>
+
+<?php $this->start('style') ?>
+
+<link href="<?= $this->assetUrl('css/home.css') ?>" rel="stylesheet">
+
+<?php $this->stop('style') ?>
