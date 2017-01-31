@@ -37,7 +37,7 @@ class OffreController extends Controller
       // titre
       if( empty( $_POST['myform']['titre']) || (strlen($_POST['myform']['titre']) < 5) || (strlen($_POST['myform']['titre']) > 500) ) {
 
-        $erreurs[] = 'Le champ titre doit obligatoirement comporter entre 5 et 50 caractères et est requis';
+        $erreurs['titre'] = 'Le champ titre doit obligatoirement comporter entre 5 et 50 caractères et est requis';
 
       }
 
@@ -79,12 +79,12 @@ class OffreController extends Controller
 
         // type_id
       if (empty($_POST['myform']['type_id']) ) {
-        $erreurs[] = "Veuillez sélectionner le type de date de consommation";
+        $erreurs['type_id'] = "Veuillez sélectionner le type de date de consommation";
       }
 
         // date_consommation
       if (empty($_POST['myform']['date_consommation']) ) {
-        $erreurs[] = "Veuillez indiquer une date de consommation";
+        $erreurs['date_consommation'] = "Veuillez indiquer une date de consommation";
       }
 
         // Si $erreurs vide, Validation OK

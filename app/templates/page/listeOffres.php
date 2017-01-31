@@ -3,7 +3,7 @@
 <?php $this->start('main_content') ?>
 
 <!-- Affichage de la page Liste de tous les dons disponibles -->
-<section class="padding">
+<section class=" padding">
 
   <div class="text-center">
     <h2>Liste des dons disponibles</h2>

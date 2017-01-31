@@ -16,9 +16,21 @@ class ConnexionController extends Controller {
 			$userManager = new UserManager();
 
 			if($auth->isValidLoginInfo($_POST['username'], $_POST['password'])) {
+
 				$user = $userManager->getUserByUsernameOrEmail($_POST['username']);
 				$auth->logUserIn($user);
 				$this->redirectToRoute('home');
+
+			} else {
+
+				$erreurs['username'] = 'Le Pseudo est incorrect';
+				$erreurs['password'] = 'Le mot de passe est incorrect';
+			}
+
+			if(is_null($_POST['username'] && $_POST['password'])){
+
+				$erreurs['username'] = 'Le Pseudo est incorrect';
+				$erreurs['password'] = 'Le mot de passe est incorrect';
 			}
 
 		}

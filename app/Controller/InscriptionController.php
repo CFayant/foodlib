@@ -24,22 +24,22 @@ class InscriptionController extends Controller
 
       // Validation et Filtrage [myform]
 
-      // Nom
-      if( empty( $_POST['myform']['username']) || (strlen($_POST['myform']['username']) <3) || (strlen($_POST['myform']['username']) > 100) ) {
+      // Pseudo
+      if( empty( $_POST['myform']['username']) || (strlen($_POST['myform']['username']) <5) || (strlen($_POST['myform']['username']) > 100) ) {
 
-      $erreurs[] = 'Le champ pseudo doit obligatoirement comporter entre 3 et 50 caractères';
+      $erreurs['username'] = 'Le champ pseudo doit obligatoirement comporter entre 5 et 50 caractères';
 
       }
 
       // Password
       if (empty($_POST['myform']['password']) || strlen($_POST['myform']['password']) > 50) {
-        $erreurs[] = "Le champ mot de passe doit obligatoirement comporter moins de 50 caractères";
+        $erreurs['password'] = "Le champ mot de passe doit obligatoirement comporter moins de 50 caractères";
       }
 
 
       // Confirm password
       if ($_POST['myform']['passwordConfirm'] != $_POST['myform']['password']) {
-        $erreurs[] = "Le mot de passe ne correspond pas";
+        $erreurs['passwordConfirm'] = "Le mot de passe ne correspond pas";
       }
 
       // Si $erreurs vide, Validation OK
@@ -75,63 +75,80 @@ class InscriptionController extends Controller
 
       $manager = new UserManager();
 
-      // Nom
+      // Pseudo
       if( empty( $_POST['myform']['username']) || (strlen($_POST['myform']['username']) < 5) || (strlen($_POST['myform']['username']) > 50) ) {
 
-          $erreurs[] = 'Le champ pseudo doit obligatoirement comporter entre 5 et 50 caractères';
+          $erreurs['username'] = 'Le champ pseudo doit obligatoirement comporter entre 5 et 50 caractères';
 
       }
 
       // last_name
       if( empty($_POST['myformi']['last_name']) || (strlen($_POST['myformi']['last_name']) < 5) || (strlen($_POST['myformi']['last_name']) > 50) ) {
 
-            $erreurs[] = 'Le champ Nom doit obligatoirement comporter entre 5 et 50 caractères et est requis';
+            $erreurs['last_name'] = 'Le champ Nom doit obligatoirement comporter entre 5 et 50 caractères et est requis';
       }
 
       // first_name
       if( empty($_POST['myformi']['first_name']) || (strlen($_POST['myformi']['first_name']) < 5) || (strlen($_POST['myformi']['first_name']) > 50) ) {
 
-          $erreurs[] = 'Le champ prénom doit obligatoirement comporter entre 5 et 50 caractères et est requis';
+          $erreurs['first_name'] = 'Le champ prénom doit obligatoirement comporter entre 5 et 50 caractères et est requis';
       }
 
       // adresse_donneur
       if( (strlen($_POST['myformi']['adresse_donneur']) <5) || (strlen($_POST['myformi']['adresse_donneur']) > 100)) {
 
-        $erreurs[] = 'Le champ adresse doit comporter entre 5 et 100 caractères';
+        $erreurs['adresse_donneur'] = 'Le champ adresse doit comporter entre 5 et 100 caractères';
       }
 
+      // Email
+      if ( empty($_POST['myformi']['email']) || strlen($_POST['myformi']['email']) > 255 || !filter_var($_POST['myformi']['email'], FILTER_VALIDATE_EMAIL)) {
+        $erreurs['email'] = 'Votre email n\'est pas valide';
+        //print_r("Votre email n'est pas valide");
 
-        // telephone
-        if( (strlen($_POST['myformi']['telephone']) < 10) || (strlen($_POST['myformi']['telephone']) > 10)) {
+      }
+      elseif ($manager->emailExists($_POST['myformi']['email'])) {
+        $erreurs['email'] = 'Cet email existe déja';
+        //print_r("Cet email existe déja");
 
-          $erreurs[] = 'Le champ numéro de téléphone doit comporte 10 chiffres';
-        }
+      }
 
-        // Email
-        if ( empty($_POST['myformi']['email']) || strlen($_POST['myformi']['email']) > 255 || !filter_var($_POST['myformi']['email'], FILTER_VALIDATE_EMAIL)) {
+      // telephone
+      if( (strlen($_POST['myformi']['telephone']) < 10) || (strlen($_POST['myformi']['telephone']) > 10)) {
 
-          print_r("Votre email n'est pas valide");
+        $erreurs['telephone'] = 'Le champ numéro de téléphone doit comporte 10 chiffres';
+      }
 
-        }
-        elseif ($manager->emailExists($_POST['myformi']['email'])) {
+      // Moyen d'acces
+      if( (strlen($_POST['myformi']['acces']) < 20) || (strlen($_POST['myformi']['acces']) > 100)) {
 
-          print_r("Cet email existe déja");
+        $erreurs['acces'] = 'Le champ moyen d\'acces doit comporter entre 20 et 100';
+      }
 
-        }
+      // Horaires d'acces
+      if( (strlen($_POST['myformi']['horaires']) < 20) || (strlen($_POST['myformi']['horaires']) > 100)) {
+
+        $erreurs['horaires'] = 'Le champ horaires d\'acces doit comporter entre 20 et 100';
+      }
+
+      // Horaires d'acces
+      if( (strlen($_POST['myformi']['commentaire']) < 20) || (strlen($_POST['myformi']['commentaire']) > 100)) {
+
+        $erreurs['commentaire'] = 'Le champ commentaire doit comporter entre 20 et 100';
+      }
 
       // Password
       if (empty($_POST['myform']['password']) ||
         strlen($_POST['myform']['password']) > 300) {
-        $erreurs[] = "Champ mot de passe requis";
+        $erreurs['password'] = 'Champ mot de passe requis';
       }
 
       // Confirm password
       if ($_POST['myform']['passwordConfirm'] != $_POST['myform']['password']) {
-        $erreurs[] = "Le mot de passe ne correspond pas";
+        $erreurs['passwordConfirm'] = 'Le mot de passe ne correspond pas';
       }
 
       // Si $erreurs vide, Validation OK
-     if ( empty($erreurs)) {
+      if ( empty($erreurs)) {
 
         // Envoie de données vers la table Wusers
         $wuser = $manager->insert(['username' => $_POST['myform']['username'],

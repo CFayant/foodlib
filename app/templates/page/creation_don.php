@@ -11,13 +11,13 @@
     <form method="POST" class="col-lg-6 margin-auto" enctype="multipart/form-data">
 
       <div class="form-group form_center">
-        <label for="titre">Je donne: <span class="text-danger"></span></label>
+        <label for="titre">Je donne: <span class="red"><?= (isset($erreurs['titre'])) ? $erreurs['titre'] : '' ?></span></label>
         <textarea type="text" name="myform[titre]" class="form-control" id="titre" placeholder="Ex: Une barquette de 4 tomates."
         value=" <?= isset($form['titre']) ? $form['titre'] : "" ?> " ></textarea>
       </div>
 
       <div class="form-group form_center text-center">
-        <h3>Sélectionner une adresse: <span class="text-danger borne"></span></h3>
+        <h3>Sélectionner une adresse: <span class="red borne"></span></h3>
       </div>
 
       <div class="form-group form_center text-center">
@@ -43,7 +43,7 @@
       <div class="adressePerso">
 
         <div class="form-group form_center">
-          <label for="adresse_donneur">Adresse: <span class="text-danger"></span></label>
+          <label for="adresse_donneur">Adresse: <span class="red"></span></label>
           <input type="text" name="myformd[adresse_donneur]" class="form-control" id="adresse_donneur" value="<?= $donneur['adresse_donneur'] ?>">
         </div>
 
@@ -66,12 +66,12 @@
 
 
       <div class="form-group form_center">
-        <label for="image">Charger une image du produit: <span class="text-danger"></span></label>
+        <label for="image">Charger une image du produit: <span class="red"></span></label>
         <input type="file" id="image" name="myform[image]">
       </div>
 
       <div class="form-group form_center">
-        <label for="type_date">Le type de date de consommation: <span class="text-danger"></span></label>
+        <label for="type_date">Le type de date de consommation: <span class="red"><?= (isset($erreurs['type_id'])) ? $erreurs['type_id'] : '' ?></span></label>
         <select class="form-control" name="myform[type_id]" id="type_date" >
           <option value="">Type de date:</option>
           <?php foreach($liste_date as $date): ?>
@@ -80,8 +80,9 @@
         </select>
       </div>
 
+
       <div class="form-group form_center">
-        <label for="date_consommation">Date de consommation: <span class="text-danger"></span></label>
+        <label for="date_consommation">Date de consommation: <span class="red"><?= (isset($erreurs['date_consommation'])) ? $erreurs['date_consommation'] : '' ?></span></label>
         <input type="date" id="date_consommation" name="myform[date_consommation]"  >
       </div>
 

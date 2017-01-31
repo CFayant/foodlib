@@ -14,9 +14,9 @@
       <img src="<?= $this->assetUrl('img/portfolio/cake.png') ?>" class="img-responsive" alt="<?= $titre ?>">
     </div>
 
-<pre>
+<!-- <pre>
     <?php var_dump($don)?>
-    </pre>
+    </pre> -->
 
     <div class="col-sm-9 relative">
       <!-- Affichage du titre du dons -->

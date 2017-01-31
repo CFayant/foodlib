@@ -1,6 +1,5 @@
 footer {
 
-	position: absolute;
 	bottom: 0;
 	width: 100%;
 }
@@ -15,4 +14,9 @@ section h2 {
 label {
 
 	display: block;
+}
+
+.red {
+
+	color: red;
 }
