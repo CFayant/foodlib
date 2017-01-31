@@ -32,8 +32,6 @@
 <?php $this->stop('main_content') ?>
 
 <?php $this->start('style') ?>
-
 <link href="<?= $this->assetUrl('css/inscription_b.css') ?>" rel="stylesheet">
-
 <?php $this->stop('style') ?>
 

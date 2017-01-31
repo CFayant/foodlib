@@ -5,7 +5,8 @@
 <section class="padding">
 
   <div class="container">
-    <h2 class="text-center">Je fais un don:</h2>
+  
+    <h2 class="">Je fais un don:</h2>
 
     <form method="POST" class="col-lg-6 margin-auto" enctype="multipart/form-data">
 
@@ -131,6 +132,10 @@
 <?php $this->start('script') ?>
   <script src="<?= $this->assetUrl('js/script_creation.js') ?>"></script>
 <?php $this->stop('script') ?>
+
+<?php $this->start('style') ?>
+<link href="<?= $this->assetUrl('css/creationDon.css') ?>" rel="stylesheet">
+<?php $this->stop('style') ?>
 
 
 
