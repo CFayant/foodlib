@@ -24,9 +24,9 @@
                         <img src="<?= $this->assetUrl('img/portfolio/circus.png') ?>" class="img-responsive" id="hide" alt="">
                 </div>
 
-                <div class="col-lg-12 text-center">
+                <div class="col-lg-12">
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta iste autem odio, explicabo quisquam, expedita dolores dignissimos nesciunt odit quod, repudiandae iusto aliquam! Non accusamus amet sapiente fugit, nulla a..</p>
+                    <p class="text-center">Foodlib est un site à but non lucratif crée pour mettre en relation des donneurs avec des individus en situation précaire pour leur proposer une aide alimentaire.</p>
 
                 </div>
 
@@ -41,15 +41,15 @@
         <div class="container">
                 <div class="row display_inline_block col-lg-6" >
 
-                        <h3><a href="<?= $this->url("creationDon") ?>" class="btn_cherche">Je donne</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium tempore dicta non impedit voluptatibus, repellat dolor natus similique perspiciatis inventore magni consequuntur alias, nesciunt culpa. Dicta ea culpa vero modi.</p>
+                        <h3><a href="<?= $this->url("creationDon") ?>" class="btn_cherche  text-center">Je donne</a></h3>
+                        <p>Vous êtes donneur ? Foodlib vous permet de créer vos annonces personnalisées afin de mettre les denrées de votre choix à disposition des bénéficiaires. Cliquez sur "Je donne" pour commencer à créer vos annonces !</p>
 
                 </div>
 
                 <div class="row display_inline_block col-lg-6">
 
-                        <h3><a href="<?= $this->url("listeOffres") ?>" class="btn_cherche">Je recherche</a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos in at sed, mollitia cumque sint, provident commodi, non cum atque nam cupiditate sequi eaque nesciunt minima. Deleniti, iure voluptatibus totam.</p>
+                        <h3><a href="<?= $this->url("listeOffres") ?>" class="btn_cherche  text-center">Je recherche</a></h3>
+                        <p>Vous êtes bénéficiaires ? Foodlib vous permet de profiter des nombreuses denrées alimentaires déposées par nos donneurs. Cliquez sur "Je recherche" pour commencer à consulter les annonces</p>
 
                 </div>
         </div>
