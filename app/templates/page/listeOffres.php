@@ -9,10 +9,6 @@
     <h2>Liste des dons disponibles</h2>
   </div>
 
-  <pre>
-  <?=var_dump($dons)?>
-  </pre>
-
   <?php foreach ($dons as $don): ?>
   <div class="padding container well">
 

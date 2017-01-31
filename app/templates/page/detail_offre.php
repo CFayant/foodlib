@@ -14,9 +14,9 @@
       <img src="<?= $this->assetUrl('img/portfolio/cake.png') ?>" class="img-responsive" alt="<?= $titre ?>">
     </div>
 
-    <pre>
+<!--     <pre>
     <?php var_dump($dons)?>
-    </pre>
+    </pre> -->
 
     <div class="col-sm-9 relative">
       <!-- Affichage du titre du dons -->
@@ -26,12 +26,12 @@
         </p>
 
         <!-- Affichage de la date de consommation liée au dons, précédée du libellé de son type de date -->
-        <p><?= $dons['libelle_date'] ?></p>
-        <p><?= $dons['date_consommation'] ?></p>
+        <p><?= $dons[1]['libelle_date'] ?></p>
+        <p><?= $dons[1]['date_consommation'] ?></p>
       </div>
 
       <div class="col-sm-4 pseudo">
-        <h4><?= $dons['username'] ?></h4>
+        <h4><?= $dons[1]['username'] ?></h4>
       </div>
     </div>
 
@@ -44,18 +44,21 @@
 
         <div class="col-sm-5 float-right descriptif_adresse">
 
-            <!-- Eléments sur le donsneur OU sur la borne -->
+            <!-- Eléments sur le donneur OU sur la borne -->
 
-            <!-- Eléments sur le donsneur : adresse, cp, téléphone, accès et horaires -->
-            <p><?= $dons['adresse_donsneur'] ?></p>
-            <p><?= $dons['cp_donsneur'] ?></p>
-            <p><?= $dons['telephone'] ?></p>
-            <p><?= $dons['acces'] ?></p>
-            <p><?= $dons['horaires'] ?></p>
+            <!-- Eléments sur le donneur : adresse, cp, téléphone, accès et horaires -->
+            <?php if (empty($dons[1]['adresse_borne'])) : ?>
+              <p><?= $dons[1]['adresse_donneur'] ?></p>
+              <p><?= $dons[1]['cp_donneur'] ?></p>
+              <p><?= $dons[1]['telephone'] ?></p>
+              <p><?= $dons[1]['acces'] ?></p>
+              <p><?= $dons[1]['horaires'] ?></p>
+            <?php endif ?>
+
 
             <!-- Eléments sur la borne : adresse et cp -->
-            <p><?= $dons['adresse_borne'] ?></p>
-            <p><?= $dons['cp_borne'] ?></p>
+            <p><?= $dons[1]['adresse_borne'] ?></p>
+            <p><?= $dons[1]['cp_borne'] ?></p>
 
         </div>
 
