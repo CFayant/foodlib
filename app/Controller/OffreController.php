@@ -121,7 +121,6 @@ class OffreController extends Controller
     $this->show('page/listeOffres', ['dons' => $dons]);
   }
 
-
   public function detailOffre($id)
   {
     $data_dons = new DonManager();

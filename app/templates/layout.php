@@ -57,7 +57,7 @@
 						<a href="<?= $this->url("logout") ?>">Deconnexion</a>
 					</li>
 					<li class="page-scroll">
-						<a href="<?= $this->url("profil_b") ?>">Profil</a>
+						<a href="<?= $this->url("profil") ?>">Profil</a>
 					</li>
 					<?php endif ?>
 				</ul>

@@ -11,10 +11,10 @@
   <div class="container">
 
     <div class="col-sm-3">
-      <img src="<?= $this->assetUrl('img/portfolio/cake.png') ?>" class="img-responsive" alt="<?= $titre ?>">
+      <img src="<?= $this->assetUrl('uploads/'.$don["image"]) ?>" class="img-responsive" alt="<?= $don['titre'] ?>">
     </div>
 
-<pre>
+    <pre>
     <?php var_dump($don)?>
     </pre>
 
@@ -31,7 +31,7 @@
       </div>
 
       <div class="col-sm-4 pseudo">
-        <h4><?= $don['username'] ?></h4>
+        <h4>donneur : <?= $don['username'] ?></h4>
       </div>
     </div>
 
@@ -46,18 +46,21 @@
             <!-- Eléments sur le donneur OU sur la borne -->
 
             <!-- Eléments sur le donneur : adresse, cp, téléphone, accès et horaires -->
-            <?php if (empty($don['adresse_borne'])) : ?>
+            <?php if ($don['adresse_retrait'] == 0) : ?>
+              <p>Adresse du donneur :</p>
               <p><?= $don['adresse_donneur'] ?></p>
               <p><?= $don['cp_donneur'] ?></p>
-              <p><?= $don['telephone'] ?></p>
+              <p>Accès :</p>
               <p><?= $don['acces'] ?></p>
+              <p>Horaires de retrait :</p>
               <p><?= $don['horaires'] ?></p>
+              <p><?= $don['telephone'] ?></p>
+            <?php else: ?>
+              <!-- Eléments sur la borne : adresse et cp -->
+              <p>Adresse de la borne réfrigérée :</p>
+              <p><?= $don['adresse_borne'] ?></p>
+              <p><?= $don['cp_borne'] ?> Paris</p>
             <?php endif ?>
-
-
-            <!-- Eléments sur la borne : adresse et cp -->
-            <p><?= $don['adresse_borne'] ?></p>
-            <p><?= $don['cp_borne'] ?></p>
 
         </div>
 
