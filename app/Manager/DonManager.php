@@ -3,7 +3,7 @@
 namespace Manager;
 
 use Manager\TypeDateManager;
-use Manager\DonneurManager;
+use \W\Manager\Manager;
 
 /**
  * Classe requise par l'AuthentificationManager, éventuellement à extender par la UserManager de l'appli
@@ -11,43 +11,30 @@ use Manager\DonneurManager;
 class DonManager extends \W\Manager\Manager
 {
 
-	public function findAll($orderBy = "", $orderDir = "ASC", $limit = null, $offset = null)
+	public function findDonsDisponibles()
 	{
+		$sql = "SELECT dons.id, titre, image, date_consommation, libelle_date, cp_donneur FROM dons
+						INNER JOIN typeDates ON dons.type_id = typeDates.id
+						INNER JOIN donneurs ON dons.donneur_id = donneurs.id
+						WHERE dons.disponible = 1
+						ORDER BY dons.date_consommation ASC";
 
-		$datas = parent::findAll();
-		$final_datas = [];
-		foreach ($datas as $key => $value) {
+		$dons = $this->dbh->prepare($sql);
+		$dons->execute();
 
-			// Récupération de la donnée "type de date"
-			// provenant de la table type_date
-			$type_date_manager = new TypeDateManager();
-	    	$type_date_manager->setTable('type_date');
+		return $dons->fetchAll();
+	}
 
-			$type = $type_date_manager->find($value['type_id']);
-			$value['type'] = $type;
+	public function findDonneesDon()
+	{
+	$sql = "SELECT DISTINCT dons.id, dons.titre, dons.image, dons.date_consommation, typeDates.libelle_date, donneurs.denomination_sociale, donneurs.adresse_donneur, donneurs.cp_donneur,
+	donneurs.acces, donneurs.horaires, donneurs.telephone, wusers.username, bornes.adresse_borne, bornes.cp_borne FROM dons, typeDates, donneurs, wusers, bornes
+	WHERE dons.type_id = typeDates.id AND dons.donneur_id = donneurs.id AND donneurs.wuser_id = wusers.id AND dons.borne_id = bornes.id AND dons.disponible = 1";
 
+		$dons = $this->dbh->prepare($sql);
+		$dons->execute();
 
-			// Récupération de la donnée "borne"
-			// provenant de la table bornes
-			$borne_manager = new BorneManager();
-	    	$borne_manager->setTable('bornes');
-
-			$borne = $borne_manager->find($value['borne_id']);
-			$value['borne'] = $borne;
-
-
-			// Récupération des données provenant de la table donneurs
-			$donneur_manager = new DonneurManager();
-	    	$donneur_manager->setTable('donneurs');
-
-			$donneur = $donneur_manager->find($value['donneur_id']);
-			$value['donneur'] = $donneur;
-
-
-			$final_datas[] = $value;
-
-	  }
-		return $final_datas;
+		return $dons->fetchAll();
 	}
 
 }

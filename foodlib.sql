@@ -55,15 +55,17 @@ CREATE TABLE IF NOT EXISTS `donneurs` (
   `commentaire` text,
   PRIMARY KEY (`id`),
   KEY `FK_donneurs_structures` (`type_donneur_id`),
-  CONSTRAINT `FK_donneurs_structures` FOREIGN KEY (`type_donneur_id`) REFERENCES `structures` (`id`)
+  KEY `FK_donneurs_wusers` (`wuser_id`),
+  CONSTRAINT `FK_donneurs_structures` FOREIGN KEY (`type_donneur_id`) REFERENCES `structures` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_donneurs_wusers` FOREIGN KEY (`wuser_id`) REFERENCES `wusers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Export de données de la table foodlib.donneurs : ~2 rows (environ)
 DELETE FROM `donneurs`;
 /*!40000 ALTER TABLE `donneurs` DISABLE KEYS */;
 INSERT INTO `donneurs` (`id`, `wuser_id`, `type_donneur_id`, `nom`, `prenom`, `denomination_sociale`, `adresse_donneur`, `cp_donneur`, `mail`, `telephone`, `acces`, `horaires`, `photo_profil`, `commentaire`) VALUES
-	(1, 1, 2, 'Martin', 'Marc', 'Restaurant Pizzeria Michel-Angelo', '4 rue de la Chine', '75020', '', NULL, NULL, NULL, NULL, NULL),
-	(2, 2, 3, 'Dupont', 'Luc', 'Resto du coeur Nation', '11 place de la Nation', '75011', '', NULL, NULL, NULL, NULL, NULL);
+	(1, 1, 2, 'Martin', 'Marc', 'Restaurant Pizzeria Michel-Angelo', '4 rue de la Chine', '75020', '', '0667980812', 'Métro Place des Fêtes', 'L 10h-17h, Ma 9h-18h', NULL, NULL),
+	(2, 2, 3, 'Dupont', 'Luc', 'Resto du coeur Nation', '11 place de la Nation', '75011', '', '0102030405', 'RER A', 'L 9h-17h, Ma 9h-18h, Me 12h30-17h45', NULL, NULL);
 /*!40000 ALTER TABLE `donneurs` ENABLE KEYS */;
 
 -- Export de la structure de la table foodlib. dons
@@ -75,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `dons` (
   `titre` varchar(500) NOT NULL,
   `date_consommation` date NOT NULL,
   `type_id` int(11) NOT NULL,
-  `beneficiaire_id` int(11),
+  `beneficiaire_id` int(11) DEFAULT NULL,
   `adresse_retrait` tinyint(4) NOT NULL,
   `borne_id` int(5) DEFAULT NULL,
   `code_pin` varchar(4) DEFAULT NULL,
@@ -83,7 +85,6 @@ CREATE TABLE IF NOT EXISTS `dons` (
   `note` decimal(10,0) DEFAULT NULL,
   `signalement` tinyint(4) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `adress` tinytext NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_dons_type_date` (`type_id`),
   KEY `FK_dons_donneurs` (`donneur_id`),
@@ -91,16 +92,18 @@ CREATE TABLE IF NOT EXISTS `dons` (
   KEY `FK_dons_bornes` (`borne_id`),
   CONSTRAINT `FK_dons_bornes` FOREIGN KEY (`borne_id`) REFERENCES `bornes` (`id`),
   CONSTRAINT `FK_dons_donneurs` FOREIGN KEY (`donneur_id`) REFERENCES `donneurs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_dons_type_date` FOREIGN KEY (`type_id`) REFERENCES `type_date` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_dons_type_date` FOREIGN KEY (`type_id`) REFERENCES `typeDates` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_dons_wusers` FOREIGN KEY (`beneficiaire_id`) REFERENCES `wusers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
--- Export de données de la table foodlib.dons : ~2 rows (environ)
+-- Export de données de la table foodlib.dons : ~4 rows (environ)
 DELETE FROM `dons`;
 /*!40000 ALTER TABLE `dons` DISABLE KEYS */;
-INSERT INTO `dons` (`id`, `donneur_id`, `disponible`, `enleve`, `titre`, `date_consommation`, `type_id`, `beneficiaire_id`, `adresse_retrait`, `borne_id`, `code_pin`, `heure_resa`, `note`, `signalement`, `image`, `adress`) VALUES
-	(3, 1, 1, 0, '2 parts d\'un framboisier fait maison', '2017-01-01', 1, NULL, 1, 2, NULL, '2017-01-29 10:59:24', NULL, 0, 'framboisier.jpg', 'borne'),
-	(4, 2, 1, 0, '3 tomates', '2017-02-10', 2, NULL, 0, NULL, NULL, '2017-01-29 10:09:59', NULL, 0, '', '');
+INSERT INTO `dons` (`id`, `donneur_id`, `disponible`, `enleve`, `titre`, `date_consommation`, `type_id`, `beneficiaire_id`, `adresse_retrait`, `borne_id`, `code_pin`, `heure_resa`, `note`, `signalement`, `image`) VALUES
+	(3, 1, 1, 0, '2 parts d\'un framboisier fait maison', '2017-01-01', 1, NULL, 1, 2, NULL, '2017-01-29 10:59:24', NULL, 0, 'framboisier.jpg'),
+	(4, 2, 1, 0, '3 tomates', '2017-02-10', 2, NULL, 1, 1, NULL, '2017-01-31 08:42:56', NULL, 0, 'tomates.jpg'),
+	(6, 2, 1, 0, 'des oeufs', '2017-02-02', 2, NULL, 1, 4, NULL, '2017-01-31 08:32:07', NULL, 0, 'oeufs.jpg'),
+	(7, 1, 1, 0, 'du lait', '2017-02-03', 2, NULL, 0, 3, NULL, '2017-01-31 09:46:29', NULL, 0, '');
 /*!40000 ALTER TABLE `dons` ENABLE KEYS */;
 
 -- Export de la structure de la table foodlib. structures
@@ -120,20 +123,20 @@ INSERT INTO `structures` (`id`, `libelle_structure`) VALUES
 	(4, 'entreprise');
 /*!40000 ALTER TABLE `structures` ENABLE KEYS */;
 
--- Export de la structure de la table foodlib. type_date
-CREATE TABLE IF NOT EXISTS `type_date` (
+-- Export de la structure de la table foodlib. typeDates
+CREATE TABLE IF NOT EXISTS `typeDates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `libelle_date` varchar(120) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Export de données de la table foodlib.type_date : ~2 rows (environ)
-DELETE FROM `type_date`;
-/*!40000 ALTER TABLE `type_date` DISABLE KEYS */;
-INSERT INTO `type_date` (`id`, `libelle_date`) VALUES
+-- Export de données de la table foodlib.typeDates : ~2 rows (environ)
+DELETE FROM `typeDates`;
+/*!40000 ALTER TABLE `typeDates` DISABLE KEYS */;
+INSERT INTO `typeDates` (`id`, `libelle_date`) VALUES
 	(1, 'Date limite de consommation (DLC) le'),
 	(2, 'A consommer de préférence avant le (DLUO)');
-/*!40000 ALTER TABLE `type_date` ENABLE KEYS */;
+/*!40000 ALTER TABLE `typeDates` ENABLE KEYS */;
 
 -- Export de la structure de la table foodlib. wusers
 CREATE TABLE IF NOT EXISTS `wusers` (
@@ -141,11 +144,14 @@ CREATE TABLE IF NOT EXISTS `wusers` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Export de données de la table foodlib.wusers : ~0 rows (environ)
+-- Export de données de la table foodlib.wusers : ~2 rows (environ)
 DELETE FROM `wusers`;
 /*!40000 ALTER TABLE `wusers` DISABLE KEYS */;
+INSERT INTO `wusers` (`id`, `username`, `password`) VALUES
+	(1, 'mm', 'mm'),
+	(2, 'ld', 'ld');
 /*!40000 ALTER TABLE `wusers` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

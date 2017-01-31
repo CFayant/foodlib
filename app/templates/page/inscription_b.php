@@ -12,11 +12,6 @@
 		</div>
 
 		<div class="form-group">
-			<label for="email">Votre email <span></span></label>
-			<input type="email" name="myform[email]" class="form-control" id="mail">
-		</div>
-
-		<div class="form-group">
 			<label for="password">Votre Mot de Passe <span></span></label>
 			<input type="password" name="myform[password]" class="form-control">
 		</div>

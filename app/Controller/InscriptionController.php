@@ -10,9 +10,9 @@ class InscriptionController extends Controller
 {
 
   public function inscription() {
-
     $this->show('page/inscription');
   }
+
 
   public function inscription_b() {
 
@@ -31,8 +31,7 @@ class InscriptionController extends Controller
       }
 
       // Password
-      if (empty($_POST['myform']['password']) ||
-        strlen($_POST['myform']['password']) > 50) {
+      if (empty($_POST['myform']['password']) || strlen($_POST['myform']['password']) > 50) {
         $erreurs[] = "Le champ mot de passe doit obligatoirement comporter moins de 50 caractères";
       }
 
@@ -45,7 +44,7 @@ class InscriptionController extends Controller
       // Si $erreurs vide, Validation OK
      if ( empty($erreurs)) {
 
-          $wuser = $manager->insert(['username' => $_POST['myform']['username'], 'email' => $_POST['myform']['email'],
+          $wuser = $manager->insert(['username' => $_POST['myform']['username'],
                   // Hash le password pour crypter les données
                   'password' => password_hash($_POST['myform']['password'], PASSWORD_DEFAULT)]);
           // $_POST['myform']['user_id'] = $wuser['id'];
@@ -63,8 +62,8 @@ class InscriptionController extends Controller
 
   public function inscription_d() {
 
-      $erreurs = [];
-      if ( isset($_POST['inscrire_d']) ) {
+    $erreurs = [];
+    if ( isset($_POST['inscrire_d']) ) {
 
       $manager = new UserManager();
 
@@ -73,25 +72,25 @@ class InscriptionController extends Controller
 
           $erreurs[] = 'Le champ pseudo doit obligatoirement comporter entre 5 et 50 caractères';
 
-        }
+      }
 
       // last_name
       if( empty($_POST['myformi']['last_name']) || (strlen($_POST['myformi']['last_name']) < 5) || (strlen($_POST['myformi']['last_name']) > 50) ) {
 
             $erreurs[] = 'Le champ Nom doit obligatoirement comporter entre 5 et 50 caractères et est requis';
-        }
+      }
 
-        // first_name
-        if( empty($_POST['myformi']['first_name']) || (strlen($_POST['myformi']['first_name']) < 5) || (strlen($_POST['myformi']['first_name']) > 50) ) {
+      // first_name
+      if( empty($_POST['myformi']['first_name']) || (strlen($_POST['myformi']['first_name']) < 5) || (strlen($_POST['myformi']['first_name']) > 50) ) {
 
-            $erreurs[] = 'Le champ prénom doit obligatoirement comporter entre 5 et 50 caractères et est requis';
-        }
+          $erreurs[] = 'Le champ prénom doit obligatoirement comporter entre 5 et 50 caractères et est requis';
+      }
 
-        // adresse_donneur
-        if( (strlen($_POST['myformi']['adresse_donneur']) <5) || (strlen($_POST['myformi']['adresse_donneur']) > 100)) {
+      // adresse_donneur
+      if( (strlen($_POST['myformi']['adresse_donneur']) <5) || (strlen($_POST['myformi']['adresse_donneur']) > 100)) {
 
-          $erreurs[] = 'Le champ adresse doit comporter entre 5 et 100 caractères';
-        }
+        $erreurs[] = 'Le champ adresse doit comporter entre 5 et 100 caractères';
+      }
 
 
         // telephone
@@ -99,8 +98,6 @@ class InscriptionController extends Controller
 
           $erreurs[] = 'Le champ numéro de téléphone doit comporte 10 chiffres';
         }
-
-        // Validation et Filtrage [myformi]
 
         // Email
         if ( empty($_POST['myformi']['email']) || strlen($_POST['myformi']['email']) > 255 || !filter_var($_POST['myformi']['email'], FILTER_VALIDATE_EMAIL)) {
@@ -114,38 +111,38 @@ class InscriptionController extends Controller
 
         }
 
-        // Password
-        if (empty($_POST['myform']['password']) ||
-          strlen($_POST['myform']['password']) > 300) {
-          $erreurs[] = "Champ mot de passe requis";
-        }
+      // Password
+      if (empty($_POST['myform']['password']) ||
+        strlen($_POST['myform']['password']) > 300) {
+        $erreurs[] = "Champ mot de passe requis";
+      }
 
-        // Confirm password
-        if ($_POST['myform']['passwordConfirm'] != $_POST['myform']['password']) {
-          $erreurs[] = "Le mot de passe ne correspond pas";
-        }
+      // Confirm password
+      if ($_POST['myform']['passwordConfirm'] != $_POST['myform']['password']) {
+        $erreurs[] = "Le mot de passe ne correspond pas";
+      }
 
-        // Si $erreurs vide, Validation OK
-       if ( empty($erreurs)) {
+      // Si $erreurs vide, Validation OK
+     if ( empty($erreurs)) {
 
-          // Envoie de données vers la table Wusers
-          $wuser = $manager->insert(['username' => $_POST['myform']['username'],
-          // Hash le password pour crypter les données
-          'password' => password_hash($_POST['myform']['password'], PASSWORD_DEFAULT)]);
-          $_POST['myformi']['wuser_id'] = $wuser['id'];
+        // Envoie de données vers la table Wusers
+        $wuser = $manager->insert(['username' => $_POST['myform']['username'],
+        // Hash le password pour crypter les données
+        'password' => password_hash($_POST['myform']['password'], PASSWORD_DEFAULT)]);
+        $_POST['myformi']['wuser_id'] = $wuser['id'];
 
 
-          // Envoie de données vers la table donneurs
-          $donneurs = new DonneurManager();
-          $donneurs->insert($_POST['myformi']);
+        // Envoie de données vers la table donneurs
+        $donneurs = new DonneurManager();
+        $donneurs->insert($_POST['myformi']);
 
-          $this->redirectToRoute('home');
+        $this->redirectToRoute('home');
 
-        }
-
+      }
         $this->show('page/inscription_d', ['erreurs' => $erreurs]);
 
     } else {
+
       $this->show('page/inscription_d', ['erreurs' => $erreurs]);
     }
   }

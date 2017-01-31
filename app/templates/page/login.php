@@ -7,13 +7,13 @@
 	<form method="POST" class="col-lg-6 margin-auto form-group">
 
 		<div class="form-group">
-			<label for="username" class="">Votre Pseudo <span></span></label>
-			<input type="text" name="myform[username]" class="form-control">
+			<label for="username">Votre Pseudo <span></span></label>
+			<input type="text" name="username" class="form-control">
 		</div>
 
-		<div class="form-group"my>
+		<div class="form-group">
 			<label for="password">Votre Mot de Passe <span></span></label>
-			<input type="password" name="myform[password]" class="form-control">
+			<input type="password" name="password" class="form-control">
 		</div>
 
 		<div class="col-md-12 text-center">
