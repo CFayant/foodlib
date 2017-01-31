@@ -110,12 +110,12 @@ class InscriptionController extends Controller
         // Email
         if ( empty($_POST['myformi']['email']) || strlen($_POST['myformi']['email']) > 255 || !filter_var($_POST['myformi']['email'], FILTER_VALIDATE_EMAIL)) {
 
-          print_r("Votre email n'est pas valide");
+          $erreurs[] = "Votre email n'est pas valide";
 
         }
         elseif ($manager->emailExists($_POST['myformi']['email'])) {
 
-          print_r("Cet email existe déja");
+          $erreurs[] = "Cet email existe déja";
 
         }
 

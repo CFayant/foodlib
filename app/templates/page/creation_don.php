@@ -4,6 +4,11 @@
 
 <section class="padding">
 
+<pre>
+  <?php var_dump($erreurs); ?>
+</pre>
+
+
   <div class="container">
   
     <h2 class="">Je fais un don:</h2>
@@ -49,17 +54,17 @@
 
         <div class="form-group form_center">
           <label for="acces">acces:</label>
-          <textarea type="text" name="myformd[acces]" class="form-control" id="acces" value="<?= $don['donneur']['acces'] ?>"><?= $don['donneur']['acces'] ?></textarea>
+          <textarea type="text" name="myformd[acces]" class="form-control" id="acces" value="<?= $donneur['acces'] ?>"><?= $donneur['acces'] ?></textarea>
         </div>
 
         <div class="form-group form_center">
           <label for="horaires">Jours et horaires:</label>
-          <textarea type="text" name="myformd[horaires]" class="form-control" id="horaires" value="<?= $don['donneur']['horaires'] ?>"><?= $don['donneur']['horaires'] ?></textarea>
+          <textarea type="text" name="myformd[horaires]" class="form-control" id="horaires" value="<?= $donneur['horaires'] ?>"><?= $donneur['horaires'] ?></textarea>
         </div>
 
         <div class="form-group form_center">
           <label for="telephone">Numéro de téléphone:</label>
-          <input type="text" name="myformd[telephone]" class="form-control" id="telephone" value="<?= $don['donneur']['telephone'] ?>">
+          <input type="text" name="myformd[telephone]" class="form-control" id="telephone" value="<?= $donneur['telephone'] ?>">
         </div>
 
       </div>
