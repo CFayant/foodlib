@@ -5,12 +5,13 @@
 <section class="padding">
 
 <pre>
+  <?php var_dump($donneur); ?>
   <?php var_dump($erreurs); ?>
 </pre>
 
 
   <div class="container">
-  
+
     <h2 class="">Je fais un don:</h2>
 
     <form method="POST" class="col-lg-6 margin-auto" enctype="multipart/form-data">

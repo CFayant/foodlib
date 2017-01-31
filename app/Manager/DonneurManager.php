@@ -10,7 +10,7 @@ class DonneurManager extends \W\Manager\Manager
 
 	public function findDonneurByUserId($id)
 	{
-		$sql = "SELECT donneurs.adresse_donneur, donneurs.cp_donneur, donneurs.acces, donneurs.horaires, donneurs.telephone FROM donneurs WHERE wuser_id = :id";
+		$sql = "SELECT * FROM donneurs WHERE wuser_id = :id";
 
 		$sth = $this->dbh->prepare($sql);
 		$sth->bindValue('id', $id);
@@ -27,5 +27,19 @@ class DonneurManager extends \W\Manager\Manager
 		$sth->execute();
 		return $sth->fetch();
 	}
+
+
+	public function updateByUserId($id)
+	{
+		$sql = "UPDATE donneurs SET adresse_donneur = :adresse WHERE wusers_id = :id";
+
+
+		$sth = $this->dbh->prepare($sql);
+		$sth->bindValue('adresse', $POST['adresse_donneur']);
+		$sth->execute();
+		return $this->find($id);
+
+	}
+
 
 }

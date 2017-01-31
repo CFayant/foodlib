@@ -24,9 +24,8 @@ class OffreController extends Controller
     $liste_date = $liste_date_manager->findAll();
 
 
-    // Voir avec laurent pour choper l'id
-    // $donneur_manager = new DonneurManager();
-    // $donneur = $donneur_manager->findDonneurByUserId($id);
+    $donneur_manager = new DonneurManager();
+    $donneur = $donneur_manager->findDonneurByUserId($_SESSION['user']['id']);
 
     $erreurs = [];
     if ( isset($_POST['donner']) ) {
@@ -90,24 +89,24 @@ class OffreController extends Controller
 
         // Envoie de données vers la table dons
         // Ajouter l'id $_SESSIONS du donneur
-        $_POST['myform']['donneur_id'] = 1;
+        $_POST['myform']['donneur_id'] = $_SESSION['user']['id'];
 
         $don = new DonManager();
         $don->insert($_POST['myform'], ['image' => $name]);
 
           // Ici il faut recuperer l'id du donneur avec $_SESSION A VOIR AVEC LAURENT
-          // $donneur = new DonneurManager();
-          // $donneur->update($_POST['myformd']);
+          $donneurUp = new DonneurManager();
+          $donneurUP->updateByUserId($_SESSION['user']['id']);
 
 
         $this->redirectToRoute('home');
       }
 
-      $this->show('page/creation_don', ['erreurs' => $erreurs, 'liste_borne' => $liste_borne, 'liste_date' => $liste_date]);
+      $this->show('page/creation_don', ['erreurs' => $erreurs, 'liste_borne' => $liste_borne, 'liste_date' => $liste_date, 'donneur' => $donneur]);
         // Fin Validation et Filtrage
 
     } else {
-      $this->show('page/creation_don', ['erreurs' => $erreurs, 'liste_borne' => $liste_borne, 'liste_date' => $liste_date]);
+      $this->show('page/creation_don', ['erreurs' => $erreurs, 'liste_borne' => $liste_borne, 'liste_date' => $liste_date, 'donneur' => $donneur]);
     }
   }
 
