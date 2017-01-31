@@ -45,18 +45,21 @@
 					<li class="page-scroll">
 						<a href="<?= $this->url("listeOffres") ?>">Chercher</a>
 					</li>
+					<?php if (!isset($_SESSION['user'])): ?>
 					<li class="page-scroll">
 						<a href="<?= $this->url("inscription") ?>">Inscription</a>
 					</li>
 					<li class="page-scroll">
 						<a href="<?= $this->url("login") ?>" >Connexion</a>
 					</li>
+					<?php else: ?>
 					<li class="page-scroll">
-						<a href="#" data-toggle="modal" data-target="#deconnecter">Deconnexion</a>
+						<a href="<?= $this->url("logout") ?>">Deconnexion</a>
 					</li>
 					<li class="page-scroll">
 						<a href="<?= $this->url("profil_b") ?>">Profil</a>
 					</li>
+					<?php endif ?>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->

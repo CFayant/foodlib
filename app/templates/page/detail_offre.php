@@ -14,24 +14,24 @@
       <img src="<?= $this->assetUrl('img/portfolio/cake.png') ?>" class="img-responsive" alt="<?= $titre ?>">
     </div>
 
-<!--     <pre>
-    <?php var_dump($dons)?>
-    </pre> -->
+<pre>
+    <?php var_dump($don)?>
+    </pre>
 
     <div class="col-sm-9 relative">
       <!-- Affichage du titre du dons -->
       <div class="col-sm-5 descriptif">
         <p>
-          <h3><?= $dons[1]['titre'] ?></h3>
+          <h3><?= $don['titre'] ?></h3>
         </p>
 
         <!-- Affichage de la date de consommation liée au dons, précédée du libellé de son type de date -->
-        <p><?= $dons[1]['libelle_date'] ?></p>
-        <p><?= $dons[1]['date_consommation'] ?></p>
+        <p><?= $don['libelle_date'] ?></p>
+        <p><?= $don['date_consommation'] ?></p>
       </div>
 
       <div class="col-sm-4 pseudo">
-        <h4><?= $dons[1]['username'] ?></h4>
+        <h4><?= $don['username'] ?></h4>
       </div>
     </div>
 
@@ -46,18 +46,18 @@
             <!-- Eléments sur le donneur OU sur la borne -->
 
             <!-- Eléments sur le donneur : adresse, cp, téléphone, accès et horaires -->
-            <?php if (empty($dons[1]['adresse_borne'])) : ?>
-              <p><?= $dons[1]['adresse_donneur'] ?></p>
-              <p><?= $dons[1]['cp_donneur'] ?></p>
-              <p><?= $dons[1]['telephone'] ?></p>
-              <p><?= $dons[1]['acces'] ?></p>
-              <p><?= $dons[1]['horaires'] ?></p>
+            <?php if (empty($don['adresse_borne'])) : ?>
+              <p><?= $don['adresse_donneur'] ?></p>
+              <p><?= $don['cp_donneur'] ?></p>
+              <p><?= $don['telephone'] ?></p>
+              <p><?= $don['acces'] ?></p>
+              <p><?= $don['horaires'] ?></p>
             <?php endif ?>
 
 
             <!-- Eléments sur la borne : adresse et cp -->
-            <p><?= $dons[1]['adresse_borne'] ?></p>
-            <p><?= $dons[1]['cp_borne'] ?></p>
+            <p><?= $don['adresse_borne'] ?></p>
+            <p><?= $don['cp_borne'] ?></p>
 
         </div>
 
@@ -72,11 +72,9 @@
         <a href="<?= $this->url( "listeOffres") ?>" class="btn btn-default donner">Retour</a>
     </div>
 
-
   </div>
 
 </section>
-
 
 <!-- confirmation Modals -->
 <div class="modal fade" tabindex="-1" role="dialog" id="confirmation" aria-labelledby="myModalLabel">

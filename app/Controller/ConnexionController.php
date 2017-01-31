@@ -16,8 +16,8 @@ class ConnexionController extends Controller {
 			$userManager = new UserManager();
 
 			if($auth->isValidLoginInfo($_POST['username'], $_POST['password'])) {
-				$userManager->getUserByUsernameOrEmail($_POST['username']);
-				$auth->logUserIn($userManager);
+				$user = $userManager->getUserByUsernameOrEmail($_POST['username']);
+				$auth->logUserIn($user);
 				$this->redirectToRoute('home');
 			}
 
@@ -27,11 +27,11 @@ class ConnexionController extends Controller {
 
 	}
 
-// 	public function logout() {
+	public function logout() {
 
-// 		$auth = new AuthentificationManager();
-// 		$auth->logUserOut();
-// 		$this->redirectToRoute('home');
-// 	}
+		$auth = new AuthentificationManager();
+		$auth->logUserOut();
+		$this->redirectToRoute('home');
+	}
 
 }

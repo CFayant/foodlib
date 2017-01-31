@@ -34,7 +34,7 @@
 
       <!-- Affichage du lien menant vers les détails du don -->
       <div class="col-xs-12 text-right">
-        <a href="<?= $this->url( "detailOffre") ?>" class="btn btn-default donner">Détails</a>
+        <a href="<?= $this->url( "detailOffre", ['id' => $don['id']]) ?>" class="btn btn-default donner">Détails</a>
       </div>
 
     </div>

@@ -43,7 +43,7 @@
 
         <div class="form-group form_center">
           <label for="adresse_donneur">Adresse: <span class="text-danger"></span></label>
-          <input type="text" name="myformd[adresse_donneur]" class="form-control" id="adresse_donneur" value="<?= $don['donneur']['adresse_donneur'] ?>">
+          <input type="text" name="myformd[adresse_donneur]" class="form-control" id="adresse_donneur" value="<?= $donneur['adresse_donneur'] ?>">
         </div>
 
         <div class="form-group form_center">

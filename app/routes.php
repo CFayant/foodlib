@@ -12,9 +12,11 @@
 		['GET', '/edition_p/', 'Profil#edition_p', 'edition_p'],
    		['GET|POST', '/creationDon/', 'Offre#creationDon', 'creationDon'],
 		['GET|POST', '/listeOffres/', 'Offre#listeOffres', 'listeOffres'],
-		['GET', '/detailOffre/', 'Offre#detailOffre', 'detailOffre'],
+		['GET', '/detailOffre/[i:id]', 'Offre#detailOffre', 'detailOffre'],
 		['GET', '/cgu/', 'Default#cgu', 'cgu'],
-		['GET|POST', '/login/', 'Connexion#login', 'login']
+		['GET|POST', '/login/', 'Connexion#login', 'login'],
+		['GET', '/logout/', 'Connexion#logout', 'logout']
+
 
 
 	);
