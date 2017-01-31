@@ -4,9 +4,17 @@
 
 <section class="container padding text-center">
 
-	<h1>Mon Profil</h1>
+<!-- 	<pre>
+    <?php var_dump($wuser)?>
+    </pre>
 
-	<span><a href="<?= $this->url("edition_p") ?>">Editer</a></span>
+    	<pre>
+    <?php var_dump($dons)?>
+    </pre> -->
+
+	<h1><?= $wuser['username'] ?></h1>
+
+	<span><a href="<?= $this->url("edition_p") ?>">Editer mon profil de donneur</a></span>
 
 		<div class="img-centered">
 			<img class="img-rounded sizeLimit" src="<?= $this->assetUrl('img/portfolio/cabin.png') ?>" alt="img_profil">
@@ -14,76 +22,65 @@
 
 </section>
 
-<section class="container text-center">
+<?php if(empty($donneur) ) : ?>
+	<section class="container text-center">
 
-<h3>Mes Dons</h3><br>
+		<h3>Mes Dons</h3><br>
 
-	<table class="table">
+		<table class="table">
 
-		<tr>
+			<tr>
+	
+				<th>Date de don</th>
 
-			<th>Date de don</th>
+				<th>Descriptif du produit</th>
 
-			<th>Descriptif du produit</th>
+			</tr>
 
-		</tr>
-
-		<?php foreach ($dons as $don): ?>
-	    	<div class="padding container well">
-
-		    	<!-- Affichage de la date de consommation liée au don, précédée du libellé de son type de date -->
-				<div class="col-xs-3">
-		        	<p><?= $don['libelle_date'] . ' ' .  $don['date_consommation'] ?></p>
-				</div>
-
-		      	<!-- Affichage du titre du don -->
-				<div class="col-xs-4">
-					<h4><?= $don['titre'] ?></h4>
-				</div>
-
-		    </div>
-
-	    </div>
-
-  		<?php endforeach ?>
-
-		<tr>
-
-			<td>Lorem ipsum dolor sit amet.</td>
-			<td>Lorem ipsum dolor sit amet.</td>
-
-		</tr>
-
-	</table>
+			
+			<?php foreach ($don_donneur as $donneur) : ?>
+				<tr>
+					<td><?= $donneur['heure_resa'] ?></td>
+					<td><?= $donneur['titre'] ?></td>
+				</tr>
+			<? endforeach ?>
 
 
-</section>
-
-<section class="container text-center">
-
-<h3>Mes Offres Acquises</h3><br>
-
-	<table class="table">
-
-		<tr>
-
-			<th>Date d'acquisition</th>
-
-			<th>Descriptif du produit</th>
-
-		</tr>
-
-		<tr>
-
-			<td>Lorem ipsum dolor sit amet.</td>
-
-			<td>Lorem ipsum dolor sit amet.</td>
-
-		</tr>
-
-	</table>
+		</table>
 
 
-</section>
+	</section>
+<?php endif ?>
+
+
+<?php if(empty($don) ) : ?>
+	<section class="container text-center">
+
+		<h3>Mes Offres Acquises</h3><br>
+
+		<table class="table">
+
+			<tr>
+
+				<th>Date d'acquisition</th>
+
+				<th>Descriptif du produit</th>
+
+			</tr>
+
+			
+				<?php foreach ($dons as $don) : ?>
+					<tr>
+						<td><?= $don['heure_resa'] ?></td>
+						<td><?= $don['titre'] ?></td>
+					<tr>
+				<? endforeach ?>
+
+			<tr>
+
+		</table>
+
+	</section>
+<?php endif ?>
 
 <?php $this->stop('main_content') ?>

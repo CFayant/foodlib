@@ -41,12 +41,9 @@ class DonManager extends \W\Manager\Manager
 		$test = new DonManager();
     	$t = $test->testLieuRetrait($id);
 
-  //   	$this->show('page/detail_offre', ['don' => $don]);
+		  // $this->show('page/detail_offre', ['don' => $don]);
 		
-		// testLieuRetrait(:id);
-
-		// $r=$retrait;
-
+		// testLieuRetrait
 		if ($t['adresse_retrait'] == 1) {
 			$sql = "SELECT DISTINCT dons.id, dons.titre, dons.image, dons.date_consommation, dons.adresse_retrait, typeDates.libelle_date, wusers.username, bornes.adresse_borne, bornes.cp_borne FROM dons, typeDates, donneurs, wusers, bornes
 		WHERE dons.type_id = typeDates.id AND dons.donneur_id = donneurs.id AND donneurs.wuser_id = wusers.id AND dons.borne_id = bornes.id AND dons.disponible = 1 and dons.id = :id";
@@ -66,5 +63,28 @@ class DonManager extends \W\Manager\Manager
 
 		return $dons->fetch();
 	}
+
+	public function findDonsByBeneficiaireId($id)
+	{
+		$sql = "SELECT DISTINCT * FROM dons WHERE dons.beneficiaire_id = :id";
+		$sth = $this->dbh->prepare($sql);
+		$sth->bindValue('id', $id);
+		$sth->execute();
+
+		return $sth->fetchAll();
+	}
+
+
+	public function findDonsByDonneurId($id)
+	{
+		$sql = "SELECT DISTINCT * FROM dons WHERE dons.donneur_id = :id";
+		$sth = $this->dbh->prepare($sql);
+		$sth->bindValue('id', $id);
+		$sth->execute();
+
+		return $sth->fetchAll();
+	}
+
+
 
 }
