@@ -20,7 +20,7 @@ class OffreController extends Controller
     $liste_borne = $liste_borne_manager->findAll();
 
     $liste_date_manager =  new TypeDateManager();
-    $liste_date_manager->setTable('type_date');
+    $liste_date_manager->setTable('typeDates');
     $liste_date = $liste_date_manager->findAll();
 
     $dons_manager = new DonManager();
@@ -40,35 +40,36 @@ class OffreController extends Controller
 
       }
 
-      if ( isset( $_POST['myform']['adresse_retrait'] ) ){
+      // if ( isset( $_POST['myform']['adresse_retrait'] ) ){
 
-        // borne_id
-        if( empty($_POST['myform']['borne_id']) ) {
+      //   $choix = $_POST['myform']['adresse_retrait'];
 
-          $choix = $_POST['myform']['adresse_retrait'];
+      //   // borne_id
+      //   if( empty($_POST['myform']['borne_id']) ) {
 
-          if ($choix == "borne"){
 
-            if( empty($_POST['myform']['borne_id']) ) {
+      //     if ($choix == "borne"){
 
-              $erreurs[] = 'Veuillez sélectionner une borne';
-            }
-          }
-        } elseif ($choix== "adresse du donneur"){
+      //       if( empty($_POST['myform']['borne_id']) ) {
 
-            if( empty($_POST['myformd']['adresse_donneur']) || (strlen($_POST['myformd']['adresse_donneur']) <5) || (strlen($_POST['myformd']['adresse_donneur']) > 100)) {
+      //         $erreurs[] = 'Veuillez sélectionner une borne';
+      //       }
+      //     }
+      //   } elseif ($choix== "adresse du donneur"){
 
-              $erreurs[] = 'Le champ adresse doit comporter entre 5 et 100 caractères et est requis';
-            }
-          }
+      //       if( empty($_POST['myformd']['adresse_donneur']) || (strlen($_POST['myformd']['adresse_donneur']) <5) || (strlen($_POST['myformd']['adresse_donneur']) > 100)) {
 
-        // telephone
-        if( (strlen($_POST['myformd']['telephone'] <> 10) ) ) {
-          if( (strlen($_POST['myformd']['telephone'] <> 10) ) ) {
-            $erreurs[] = 'Le champ numéro de téléphone doit comporte 10 chiffres';
-          }
-        }
-      }
+      //         $erreurs[] = 'Le champ adresse doit comporter entre 5 et 100 caractères et est requis';
+      //       }
+      //     }
+
+      //   // telephone
+      //   if( (strlen($_POST['myformd']['telephone'] <> 10) ) ) {
+      //     if( (strlen($_POST['myformd']['telephone'] <> 10) ) ) {
+      //       $erreurs[] = 'Le champ numéro de téléphone doit comporte 10 chiffres';
+      //     }
+      //   }
+      // }
 
         // image
         // if (empty($_POST['myform']['image']) ) {
@@ -96,18 +97,18 @@ class OffreController extends Controller
           $don->insert($_POST['myform']);
 
           // Ici il faut recuperer l'id du donneur avec $_SESSION
-          $donneur = new DonneurManager();
-          $donneur->update($_POST['myformd']);
+          // $donneur = new DonneurManager();
+          // $donneur->update($_POST['myformd']);
 
 
           $this->redirectToRoute('home');
         }
 
-        $this->show('page/creation_don', ['erreurs' => $erreurs, 'liste_borne' => $liste_borne, 'liste_date' => $liste_date, 'don' => $don]);
+        $this->show('page/creation_don', ['erreurs' => $erreurs, 'liste_borne' => $liste_borne, 'liste_date' => $liste_date]);
         // Fin Validation et Filtrage
 
     } else {
-        $this->show('page/creation_don', ['erreurs' => $erreurs, 'liste_borne' => $liste_borne, 'liste_date' => $liste_date, 'don' => $don]);
+        $this->show('page/creation_don', ['erreurs' => $erreurs, 'liste_borne' => $liste_borne, 'liste_date' => $liste_date]);
       }
   }
 
