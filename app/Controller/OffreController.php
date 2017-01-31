@@ -25,7 +25,9 @@ class OffreController extends Controller
 
 
     $donneur_manager = new DonneurManager();
-    $donneur = $donneur_manager->findDonneurByUserId($_SESSION['user']['id']);
+    $donneur_manager->setTable('donneur');
+    $donneur = $liste_date_manager->findAll();
+
 
     $erreurs = [];
     if ( isset($_POST['donner']) ) {
@@ -92,7 +94,7 @@ class OffreController extends Controller
         // Ajouter l'id $_SESSIONS du donneur
 
         // Envoie de données vers la table dons
-        $_POST['myform']['donneur_id'] = $_SESSION['user']['id'];
+        // $_POST['myform']['donneur_id'] = $_SESSION['user']['id'];
 
         $don = new DonManager();
         $don->insert($_POST['myform'], ['image' => $name]);

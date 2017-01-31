@@ -4,7 +4,7 @@
 
 <section class="padding">
 
-
+ <?= var_dump($erreurs)?>
   <div class="container">
 
     <h2 class="">Je fais un don:</h2>
