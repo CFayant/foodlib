@@ -11,8 +11,10 @@
 		['GET', '/profil_d/', 'Profil#profil_d', 'profil_d'],
 		['GET', '/edition_p/', 'Profil#edition_p', 'edition_p'],
     ['GET|POST', '/creationDon/', 'Offre#creationDon', 'creationDon'],
-		['GET', '/detailOffre/', 'Offre#detailOffre', 'detailOffre'],
 		['GET|POST', '/listeOffres/', 'Offre#listeOffres', 'listeOffres'],
-		['GET', '/cgu/', 'Default#cgu', 'cgu']
+		['GET', '/detailOffre/', 'Offre#detailOffre', 'detailOffre'],
+		['GET', '/cgu/', 'Default#cgu', 'cgu'],
+		['GET|POST', '/login/', 'Connexion#login', 'login']
+
 
 	);

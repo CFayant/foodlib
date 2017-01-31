@@ -19,18 +19,14 @@ class OffreController extends Controller
     $liste_borne_manager->setTable('bornes');
     $liste_borne = $liste_borne_manager->findAll();
 
-    $liste_date_manager = new BorneManager();
+    $liste_date_manager =  new TypeDateManager();
     $liste_date_manager->setTable('type_date');
     $liste_date = $liste_date_manager->findAll();
-
 
     $dons_manager = new DonManager();
     $dons_manager->setTable('dons');
     $dons = $dons_manager->findAll();
 
-    foreach ($dons as $don) {
-      $don;
-    }
 
     $erreurs = [];
     if ( isset($_POST['donner']) ) {
@@ -44,8 +40,10 @@ class OffreController extends Controller
 
         }
 
-
         if ( isset( $_POST['myform']['adresse_retrait'] ) ){
+
+      // borne_id
+      if( empty($_POST['myform']['borne_id']) ) {
 
           $choix = $_POST['myform']['adresse_retrait'];
 
@@ -63,24 +61,23 @@ class OffreController extends Controller
               $erreurs[] = 'Le champ adresse doit comporter entre 5 et 100 caractères et est requis';
             }
 
-            // if( (strlen($_POST['myformd']['telephone'] <> 10) ) ) {
-
-            //   $erreurs[] = 'Le champ numéro de téléphone doit comporte 10 chiffres';
-            // }
+            // telephone
+            if( (strlen($_POST['myformd']['telephone'] <> 10) ) ) {
+              if( (strlen($_POST['myformd']['telephone'] <> 10) ) ) {
+                $erreurs[] = 'Le champ numéro de téléphone doit comporte 10 chiffres';
+              }
+            }
           }
-        }
 
         // image
         // if (empty($_POST['myform']['image']) ) {
         //   $erreurs[] = "Veuillez ajouter une photo";
         // }
 
-
         // type_id
         if (empty($_POST['myform']['type_id']) ) {
           $erreurs[] = "Veuillez sélectionner le type de date de consommation";
         }
-
 
         // date_consommation
         if (empty($_POST['myform']['date_consommation']) ) {
@@ -88,7 +85,7 @@ class OffreController extends Controller
         }
 
         // Si $erreurs vide, Validation OK
-       if ( empty($erreurs)) {
+        if ( empty($erreurs)) {
 
           // Envoie de données vers la table dons
           // Ajouter l'id $_SESSIONS du donneur
@@ -111,6 +108,7 @@ class OffreController extends Controller
     } else {
       $this->show('page/creation_don', ['erreurs' => $erreurs, 'liste_borne' => $liste_borne, 'liste_date' => $liste_date, 'don' => $don]);
     }
+
   }
 
 

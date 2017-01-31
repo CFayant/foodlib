@@ -16,6 +16,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 	<!-- Theme CSS -->
 	<link href="<?= $this->assetUrl('css/freelancer.css') ?>" rel="stylesheet">
+	<?php echo $this->section('style'); ?>
 
 </head>
 <body id="page-top" class="index">
@@ -48,7 +49,7 @@
 						<a href="<?= $this->url("inscription") ?>">Inscription</a>
 					</li>
 					<li class="page-scroll">
-						<a href="#" data-toggle="modal" data-target="#connexion">Connexion</a>
+						<a href="<?= $this->url("login") ?>" >Connexion</a>
 					</li>
 					<li class="page-scroll">
 						<a href="#" data-toggle="modal" data-target="#deconnecter">Deconnexion</a>
@@ -174,7 +175,7 @@
 			        </div>
 
 		        	<div class="form-group form_center">
-			        	<label for="message">Je Signal</label>
+			        	<label for="message">Je Signale</label>
 			        		<textarea name="message" class="form-control" placeholder="Votre message"></textarea>
 			        </div>
 
@@ -189,74 +190,9 @@
   </div>
 </div><!-- /.modal -->
 
-
-<!-- Connexion Modals -->
-<div class="modal fade" tabindex="-1" role="dialog" id="connexion" aria-labelledby="myModalLabel">
-	<div class="vertical-alignment-helper ">
-	  <div class="modal-dialog vertical-align-center" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header fond">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">Connexion</h4>
-	      </div>
-	      <div class="modal-body">
-
-		        <form method="POST" class="col-lg-6 margin-auto">
-
-		        	<div class="form-group form_center">
-			        	<label for="pseudo">Pseudo</label>
-			        	<input type="text" name="pseudo" class="form-control" placeholder="Votre pseudo">
-			        </div>
-
-		        	<div class="form-group form_center">
-			        	<label for="mdp">Password</label>
-			        	<input type="password" name="mdp" class="form-control" placeholder="Mot de passe">
-			        </div>
-
-							<div class="text-center">
-		        		<input type="submit" name="Connecter" class="btn btn-default donner" value="Se connecter">
-		        	</div>
-		        </form>
-
-	      </div>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-  </div>
-</div><!-- /.modal -->
-
-
-<!-- deconnexion Modals -->
-<div class="modal fade" tabindex="-1" role="dialog" id="deconnecter" aria-labelledby="myModalLabel">
-	<div class="vertical-alignment-helper ">
-	  <div class="modal-dialog vertical-align-center" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header fond">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">Connexion</h4>
-	      </div>
-	      <div class="modal-body">
-
-		        <form method="POST" class="col-lg-6 margin-auto">
-
-		        	<div class="text-center">
-								<h4>Je me deconnecte !</h4>
-			        </div>
-
-							<div class="text-center">
-		        		<input type="submit" name="deconnecter" class="btn btn-default donner" value="Se deconnecter">
-		        	</div>
-		        </form>
-
-	      </div>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-  </div>
-</div><!-- /.modal -->
-
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+
 <?php echo $this->section('script'); ?>
 
 </body>

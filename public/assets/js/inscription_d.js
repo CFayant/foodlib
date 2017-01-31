@@ -6,7 +6,7 @@ $(document).ready(function() {
 	    // Pour que les span soit en display none
 	    $('span').fadeOut();
 
-	    // Pour que les bordures rouges soient retirés
+	    // Pour que les bordures rouges soient retirées
 	    $(this).removeClass('bordureRouge');
 
   	});
@@ -95,7 +95,7 @@ $(document).ready(function() {
 			formScore ++;
 		};
 
-		// Validation du moyen du moyen d'accès
+		// Validation du moyen d'accès
 		if($('#access_i_d').val().length < 6 || $('#access_i_d').val().length > 200) {
 
 			$('[for="access"] span').text('Entre 6 et 200 caractères requis').css("color", "red").fadeIn();
@@ -121,7 +121,7 @@ $(document).ready(function() {
 			formScore ++;
 		};
 
-		// Validation des horaires d'accès
+		// Validation des commentaires
 		if($('#comment_i_d').val().length < 6 || $('#comment_i_d').val().length > 200) {
 
 			$('[for="comment"] span').text('Entre 6 et 200 caractères requis').css("color", "red").fadeIn();
@@ -159,6 +159,20 @@ $(document).ready(function() {
 
 			formScore ++;
 		};
+
+		console.log(formScore);
+
+		// Validation finale du formulaire
+    	if( formScore == 11 ){
+
+      	// On vide le champ message
+      	$('input:not([type="submit"])').val('');
+      	$('textarea').val("");
+
+      	// Redirection vers la page de connexion
+      	// <?php $this->redirectToRoute('/home/') ?> 
+
+    	};
 
 	});
 

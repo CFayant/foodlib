@@ -11,17 +11,16 @@ use \Manager\DetailTitreManager;
 use \Manager\PhotoManager;
 use \GUMP;
 
-class DefaultController extends Controller
-{
+class DefaultController extends Controller {
 
 	/* Page d'accueil par défaut */
-	public function home()
-	{
+	public function home() {
+
 		$this->show('page/home');
 	}
 
-	public function cgu()
-	{
+	public function cgu() {
+
 	$this->show('page/cgu');
 	}
 
