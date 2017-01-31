@@ -5,6 +5,7 @@ namespace Controller;
 use \W\Controller\Controller;
 use \W\Manager\UserManager;
 use \Manager\DonneurManager;
+use \W\Security\AuthentificationManager;
 
 class InscriptionController extends Controller
 {
@@ -49,7 +50,14 @@ class InscriptionController extends Controller
                   'password' => password_hash($_POST['myform']['password'], PASSWORD_DEFAULT)]);
           // $_POST['myform']['user_id'] = $wuser['id'];
 
-          $this->redirectToRoute('home');
+      $auth = new AuthentificationManager();
+      $userManager = new UserManager();
+
+      if($auth->isValidLoginInfo($_POST['myform']['username'], $_POST['myform']['password'])) {
+        $user = $userManager->getUserByUsernameOrEmail($_POST['myform']['username']);
+        $auth->logUserIn($user);
+        $this->redirectToRoute('home');
+      }
 
     }
 
@@ -136,7 +144,14 @@ class InscriptionController extends Controller
         $donneurs = new DonneurManager();
         $donneurs->insert($_POST['myformi']);
 
+        $auth = new AuthentificationManager();
+        $userManager = new UserManager();
+
+      if($auth->isValidLoginInfo($_POST['myform']['username'], $_POST['myform']['password'])) {
+        $user = $userManager->getUserByUsernameOrEmail($_POST['myform']['username']);
+        $auth->logUserIn($user);
         $this->redirectToRoute('home');
+      }
 
       }
         $this->show('page/inscription_d', ['erreurs' => $erreurs]);
