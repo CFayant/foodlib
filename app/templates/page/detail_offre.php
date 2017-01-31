@@ -14,10 +14,6 @@
       <img src="<?= $this->assetUrl('uploads/'.$don["image"]) ?>" class="img-responsive" alt="<?= $don['titre'] ?>">
     </div>
 
-    <pre>
-    <?php var_dump($don)?>
-    </pre>
-
     <div class="col-sm-9 relative">
       <!-- Affichage du titre du dons -->
       <div class="col-sm-5 descriptif">
