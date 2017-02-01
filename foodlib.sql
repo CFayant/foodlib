@@ -54,17 +54,15 @@ CREATE TABLE IF NOT EXISTS `donneurs` (
   `photo_profil` varchar(255) DEFAULT NULL,
   `commentaire` text,
   PRIMARY KEY (`id`),
-  KEY `FK_donneurs_structures` (`type_donneur_id`),
   KEY `FK_donneurs_wusers` (`wuser_id`),
-  CONSTRAINT `FK_donneurs_structures` FOREIGN KEY (`type_donneur_id`) REFERENCES `structures` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_donneurs_wusers` FOREIGN KEY (`wuser_id`) REFERENCES `wusers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  CONSTRAINT `FK_donneurs_wusers` FOREIGN KEY (`wuser_id`) REFERENCES `wusers` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- Export de données de la table foodlib.donneurs : ~2 rows (environ)
 DELETE FROM `donneurs`;
 /*!40000 ALTER TABLE `donneurs` DISABLE KEYS */;
 INSERT INTO `donneurs` (`id`, `wuser_id`, `type_donneur_id`, `nom`, `prenom`, `denomination_sociale`, `adresse_donneur`, `cp_donneur`, `mail`, `telephone`, `acces`, `horaires`, `photo_profil`, `commentaire`) VALUES
-	(1, 1, 2, 'Martin', 'Marc', 'Restaurant Pizzeria Michel-Angelo', '4 rue de la Chine', '75020', '', '0667980812', 'Métro Place des Fêtes', 'L 10h-17h, Ma 9h-18h', NULL, NULL),
+	(1, 6, 2, 'Martin', 'Marc', 'Restaurant Pizzeria Michel-Angelo', '4 rue de la Chine ', '75020', '', '0667980812', 'Métro Place des Fêtes', 'L 10h-17h, Ma 9h-18h', NULL, NULL),
 	(2, 2, 3, 'Dupont', 'Luc', 'Resto du coeur Nation', '11 place de la Nation', '75011', '', '0102030405', 'RER A', 'L 9h-17h, Ma 9h-18h, Me 12h30-17h45', NULL, NULL);
 /*!40000 ALTER TABLE `donneurs` ENABLE KEYS */;
 
@@ -78,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `dons` (
   `date_consommation` date NOT NULL,
   `type_id` int(11) NOT NULL,
   `beneficiaire_id` int(11) DEFAULT NULL,
-  `adresse_retrait` tinyint(4) NOT NULL,
+  `adresse_retrait` varchar(50) NOT NULL,
   `borne_id` int(5) DEFAULT NULL,
   `code_pin` varchar(4) DEFAULT NULL,
   `heure_resa` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -91,19 +89,21 @@ CREATE TABLE IF NOT EXISTS `dons` (
   KEY `FK_dons_wusers` (`beneficiaire_id`),
   KEY `FK_dons_bornes` (`borne_id`),
   CONSTRAINT `FK_dons_bornes` FOREIGN KEY (`borne_id`) REFERENCES `bornes` (`id`),
-  CONSTRAINT `FK_dons_donneurs` FOREIGN KEY (`donneur_id`) REFERENCES `donneurs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_dons_type_date` FOREIGN KEY (`type_id`) REFERENCES `typeDates` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_dons_wusers` FOREIGN KEY (`beneficiaire_id`) REFERENCES `wusers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+  CONSTRAINT `FK_dons_donneurs` FOREIGN KEY (`donneur_id`) REFERENCES `donneurs` (`id`),
+  CONSTRAINT `FK_dons_type_date` FOREIGN KEY (`type_id`) REFERENCES `typeDates` (`id`),
+  CONSTRAINT `FK_dons_wusers` FOREIGN KEY (`beneficiaire_id`) REFERENCES `wusers` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
--- Export de données de la table foodlib.dons : ~4 rows (environ)
+-- Export de données de la table foodlib.dons : ~8 rows (environ)
 DELETE FROM `dons`;
 /*!40000 ALTER TABLE `dons` DISABLE KEYS */;
 INSERT INTO `dons` (`id`, `donneur_id`, `disponible`, `enleve`, `titre`, `date_consommation`, `type_id`, `beneficiaire_id`, `adresse_retrait`, `borne_id`, `code_pin`, `heure_resa`, `note`, `signalement`, `image`) VALUES
-	(3, 1, 1, 0, '2 parts d\'un framboisier fait maison', '2017-01-01', 1, NULL, 1, 2, NULL, '2017-01-29 10:59:24', NULL, 0, 'framboisier.jpg'),
-	(4, 2, 1, 0, '3 tomates', '2017-02-10', 2, NULL, 1, 1, NULL, '2017-01-31 08:42:56', NULL, 0, 'tomates.jpg'),
-	(6, 2, 1, 0, 'des oeufs', '2017-02-02', 2, NULL, 1, 4, NULL, '2017-01-31 08:32:07', NULL, 0, 'oeufs.jpg'),
-	(7, 1, 1, 0, 'du lait', '2017-02-03', 2, NULL, 0, 3, NULL, '2017-01-31 09:46:29', NULL, 0, '');
+	(3, 1, 1, 0, '2 parts d\'un framboisier fait maison', '2017-01-01', 1, NULL, '', 2, NULL, '2017-01-31 15:04:58', NULL, 0, 'framboisier.jpg'),
+	(4, 2, 1, 0, '3 tomates', '2017-02-10', 2, NULL, '', 1, NULL, '2017-01-31 15:05:00', NULL, 0, 'tomates.jpg'),
+	(6, 2, 1, 0, 'des oeufs', '2017-02-02', 2, NULL, '', 4, NULL, '2017-01-31 15:05:01', NULL, 0, 'oeufs.jpg'),
+	(7, 1, 1, 0, 'du lait', '2017-02-03', 2, NULL, '', 3, NULL, '2017-01-31 15:05:02', NULL, 0, ''),
+	(9, 1, 1, 0, 'patate', '2017-01-31', 2, NULL, 'borne', 2, NULL, '2017-01-31 15:24:23', NULL, 0, ''),
+	(10, 1, 1, 0, 'fraise', '2017-02-15', 2, NULL, 'borne', 1, NULL, '2017-01-31 15:44:52', NULL, 0, '');
 /*!40000 ALTER TABLE `dons` ENABLE KEYS */;
 
 -- Export de la structure de la table foodlib. structures
@@ -142,16 +142,29 @@ INSERT INTO `typeDates` (`id`, `libelle_date`) VALUES
 CREATE TABLE IF NOT EXISTS `wusers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `role` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
--- Export de données de la table foodlib.wusers : ~2 rows (environ)
+-- Export de données de la table foodlib.wusers : ~12 rows (environ)
 DELETE FROM `wusers`;
 /*!40000 ALTER TABLE `wusers` DISABLE KEYS */;
-INSERT INTO `wusers` (`id`, `username`, `password`) VALUES
-	(1, 'mm', 'mm'),
-	(2, 'ld', 'ld');
+INSERT INTO `wusers` (`id`, `username`, `password`, `email`, `role`) VALUES
+	(1, 'mm', 'mm', '', ''),
+	(2, 'ld', 'ld', '', ''),
+	(6, 'faizan', '$2y$10$CZorFABp2Y8kCQYt0qmkzOStOhngedgEQO2Zgdj6F.Xj.tLuTmi4G', '', ''),
+	(7, 'aboudou', '$2y$10$3YTyhvNKwbrcW8YlY2l5d.BD8QjHzRgwHK8LBQYL.c1GWjgBAH30q', '', ''),
+	(8, 'doudlko', '$2y$10$mDylc0lVttDaKdHNCp0QaejB5/v./7RPzeKhF2GgTX7WkK0qRbH36', '', ''),
+	(9, 'faizan', '$2y$10$QtkYT5vwFkJ0Ra9YBFk8D.JUPmc7evUh/Iu24Mlz2JK2B3ukzZY7y', '', ''),
+	(10, 'hgvvjvhvgvjgc', '$2y$10$7zkJOHLrafDwmWR.bXPrh.pWT0ftE37PxpFVW.xxmMbsGbfsgb/oO', '', ''),
+	(11, 'kbbfdvdv', '$2y$10$9Y13y0G9YbMeYRa44NpDFOjS82w8P.8kjcxxuB9P2Gv4G8QaKo.YS', '', ''),
+	(12, 'zaaaaaaaaaaaaaaa', '$2y$10$h4znmpe4zPtNyKeNcVNL2OMvIkjgiYoMNEIEedFav7il0BAA1g3nC', '', ''),
+	(13, 'zaaaaaaaaaaaaaaa', '$2y$10$UBkEGVnqvMKkyMK5RJfsguqM3iMrV.bQx1vGYPI9LOsB5Pis7RPmy', '', ''),
+	(14, 'faizan', '$2y$10$hm4tV9e524Y2Xg50Xf99aO770P6RuJTYNJoWFHFXdcYyTTPb8ta.m', '', ''),
+	(15, 'zaaaaaaaaaaaaaaa', '$2y$10$5SyxMAhLBdrCvdEuyAPOG.bmk922LzBASZpTmg4dycKn8acNw95da', '', ''),
+	(16, 'zaaaaaaaaaaaaaaa', '$2y$10$.Ub3ulC32HhlWWHlUMPnCeaDorwsgpLEfvb2XLsUuyF2Zsi3HeEti', '', '');
 /*!40000 ALTER TABLE `wusers` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

@@ -5,13 +5,13 @@
 <section class="container padding">
   
   <div class="text-center">
-    <h2>Conditions Générales d'Utilisation</h2>
+    <h2 class="">Conditions Générales d'Utilisation</h2>
   </div>
 
   <div class="padding text-left">
     
     <div>
-      <p>Les Conditions Générales d'Utilisation (CGU) s'applique à tout utilisateur, à savoir toute personne qui s'est inscrite sur la présente application web, nommée "FoodLib" :</p>
+      <p class="padding">Les Conditions Générales d'Utilisation (CGU) s'applique à tout utilisateur, à savoir toute personne qui s'est inscrite sur la présente application web, nommée "FoodLib" :</p>
     </div>  
 
     <div class="col-xs-12">
@@ -31,3 +31,7 @@
 </section>
 
 <?php $this->stop('main_content') ?>
+
+<?php $this->start('style') ?>
+<link href="<?= $this->assetUrl('css/cgu.css') ?>" rel="stylesheet">
+<?php $this->stop('style') ?>
