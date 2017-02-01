@@ -4,15 +4,15 @@
 
 
 <section class="padding container">
-	
+
 	<form method="POST" class="col-lg-6 margin-auto" enctype="multipart/form-data" id="form_i_d">
 
 		<div class=" text-center row">
 			<label for="type_donneur_id">Vous êtes : </label>
-			<input type="radio" name="myformi[type_donneur_id]" value="particulier" class="form-check" checked> Un particulier
-			<input type="radio" name="myformi[type_donneur_id]" value="restaurant" class="form-check"> Un restaurant
-			<input type="radio" name="myformi[type_donneur_id]" value="association" class="form-check"> Une association
-			<input type="radio" name="myformi[type_donneur_id]" value="entreprise" class="form-check"> Une entreprise
+			<input type="radio" name="type_donneur_id" value="particulier" class="form-check" checked> Un particulier
+			<input type="radio" name="type_donneur_id" value="restaurant" class="form-check"> Un restaurant
+			<input type="radio" name="type_donneur_id" value="association" class="form-check"> Une association
+			<input type="radio" name="type_donneur_id" value="entreprise" class="form-check"> Une entreprise
 		</div><br>
 
 		<div class="form-group">
@@ -21,13 +21,13 @@
 		</div>
 
 		<div class="form-group">
-			<label for="last_name">Votre nom <span class="red"><?= (isset($erreurs['last_name'])) ? $erreurs['last_name'] : '' ?></span></label>
-			<input type="text" name="myformi[last_name]" class="form-control" id="last_name_i_d">
+			<label for="nom">Votre nom <span class="red"><?= (isset($erreurs['nom'])) ? $erreurs['nom'] : '' ?></span></label>
+			<input type="text" name="myformi[nom]" class="form-control" id="last_name_i_d">
 		</div>
 
 		<div class="form-group">
-			<label for="first_name">Votre prénom <span class="red"><?= (isset($erreurs['first_name'])) ? $erreurs['first_name'] : '' ?></span></label>
-			<input type="text" name="myformi[first_name]" class="form-control" id="first_name_i_d">
+			<label for="prenom">Votre prénom <span class="red"><?= (isset($erreurs['prenom'])) ? $erreurs['prenom'] : '' ?></span></label>
+			<input type="text" name="myformi[prenom]" class="form-control" id="first_name_i_d">
 		</div>
 
 		<div class="form-group">
@@ -36,8 +36,8 @@
 		</div>
 
 		<div class="form-group">
-			<label for="email">Votre email <span class="red"><?= (isset($erreurs['email'])) ? $erreurs['email'] : '' ?></span></label>
-			<input type="email" name="myformi[email]" class="form-control" id="mail">
+			<label for="mail">Votre email <span class="red"><?= (isset($erreurs['email'])) ? $erreurs['email'] : '' ?></span></label>
+			<input type="email" name="myformi[mail]" class="form-control" id="mail">
 		</div>
 
 		<div class="form-group">

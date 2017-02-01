@@ -16,18 +16,15 @@ class OffreController extends Controller
   public function creationDon()
   {
     $liste_borne_manager = new BorneManager();
-    $liste_borne_manager->setTable('bornes');
     $liste_borne = $liste_borne_manager->findAll();
 
     $liste_date_manager =  new TypeDateManager();
     $liste_date_manager->setTable('typeDates');
     $liste_date = $liste_date_manager->findAll();
 
+
     $donneur_manager = new DonneurManager();
     $donneur = $donneur_manager->findDonneurByUserId($_SESSION['user']['id']);
-
-
-
 
     $erreurs = [];
     if ( isset($_POST['donner']) ) {
@@ -65,16 +62,10 @@ class OffreController extends Controller
           }
 
         // telephone
-        if( (strlen($_POST['myformd']['telephone'] <> 10) ) ) {
-          if( (strlen($_POST['myformd']['telephone'] <> 10) ) ) {
-            $erreurs[] = 'Le champ numéro de téléphone doit comporte 10 chiffres';
-          }
-        }
-      }
+        if( (strlen($_POST['myformd']['telephone']) < 10) || (strlen($_POST['myformd']['telephone']) > 10)) {
 
-        // image
-      if (empty($_FILES['myform']['image']) ) {
-        $erreurs[] = "Veuillez ajouter une photo";
+          $erreurs[] = 'Le champ numéro de téléphone doit comporter 10 chiffres';
+        }
       }
 
         // type_id
@@ -90,17 +81,18 @@ class OffreController extends Controller
         // Si $erreurs vide, Validation OK
       if ( empty($erreurs)) {
 
-          // Envoie de données vers la table dons
-          // Ajouter l'id $_SESSIONS du donneur
-        $_POST['myform']['donneur_id'] = 1;
+        $uploads_dir = '/var/www/public/assets/uploads';
+        $tmp_name = $_FILES["image"]["tmp_name"];
+        $name = $_FILES["image"]["name"];
+        move_uploaded_file($tmp_name, "$uploads_dir/$name");
 
+
+        // Envoie de données vers la table dons
         $don = new DonManager();
-        $don->insert($_POST['myform']);
+        $don->insert(array_merge($_POST['myform'], ['image' => $name]));
 
-          // Ici il faut recuperer l'id du donneur avec $_SESSION
-          // $donneur = new DonneurManager();
-          // $donneur->update($_POST['myformd']);
-
+        // Update de la table donneurs
+        $donneur_manager->updateByUserId($_POST['myformd'], $_SESSION['user']['id']);
 
         $this->redirectToRoute('home');
       }
@@ -112,6 +104,7 @@ class OffreController extends Controller
       $this->show('page/creation_don', ['erreurs' => $erreurs, 'liste_borne' => $liste_borne, 'liste_date' => $liste_date, 'donneur' => $donneur]);
     }
   }
+
 
   public function listeOffres()
   {

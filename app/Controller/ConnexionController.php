@@ -9,9 +9,8 @@ use \W\Manager\UserManager;
 class ConnexionController extends Controller {
 
 	public function login() {
-
+		$erreurs= [];
 		if(isset($_POST['connect'])) {
-
 			$auth = new AuthentificationManager();
 			$userManager = new UserManager();
 
@@ -35,7 +34,7 @@ class ConnexionController extends Controller {
 
 		}
 
-	$this->show('page/login');
+		$this->show('page/login', ['erreurs' => $erreurs]);
 
 	}
 
