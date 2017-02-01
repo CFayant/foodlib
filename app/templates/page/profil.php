@@ -14,7 +14,7 @@
 
 </section>
 
-<?php if(empty($donneur) ) : ?>
+<?php if(isset($donneur) ) : ?>
 	<section class="container text-center">
 
 		<h3>Mes Dons</h3><br>
@@ -45,7 +45,7 @@
 <?php endif ?>
 
 
-<?php if(empty($don) ) : ?>
+<?php if(isset($don) ) : ?>
 	<section class="container text-center">
 
 		<h3>Mes Offres Acquises</h3><br>
@@ -76,3 +76,9 @@
 <?php endif ?>
 
 <?php $this->stop('main_content') ?>
+
+<?php $this->start('style') ?>
+
+<link href="<?= $this->assetUrl('css/profil.css') ?>" rel="stylesheet">
+
+<?php $this->stop('style') ?>
