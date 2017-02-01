@@ -30,15 +30,30 @@ class DonneurManager extends \W\Manager\Manager
 	}
 
 
-	public function updateByUserId($id)
+	public function updateByUserId(array $data, $id, $stripTags = true)
 	{
-		$sql = "UPDATE donneurs SET adresse_donneur = :adresse WHERE wusers_id = :id";
+		if (!is_numeric($id)){
+			return false;
+		}
 
+		$sql = "UPDATE " . $this->table . " SET ";
+		foreach($data as $key => $value){
+			$sql .= "$key = :$key, ";
+		}
+		$sql = substr($sql, 0, -2);
+		$sql .= " WHERE wuser_id = :id";
 
 		$sth = $this->dbh->prepare($sql);
-		$sth->bindValue('adresse', $POST['adresse_donneur']);
-		$sth->execute();
-		return $this->find($id);
+		foreach($data as $key => $value){
+			$value = ($stripTags) ? strip_tags($value) : $value;
+			$sth->bindValue(":".$key, $value);
+		}
+		$sth->bindValue(":id", $id);
 
+		if (!$sth->execute()){
+			return false;
+		}
+		return $this->find($id);
 	}
+
 }

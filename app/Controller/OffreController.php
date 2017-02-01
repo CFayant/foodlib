@@ -16,7 +16,6 @@ class OffreController extends Controller
   public function creationDon()
   {
     $liste_borne_manager = new BorneManager();
-    $liste_borne_manager->setTable('bornes');
     $liste_borne = $liste_borne_manager->findAll();
 
     $liste_date_manager =  new TypeDateManager();
@@ -25,9 +24,9 @@ class OffreController extends Controller
 
 
     $donneur_manager = new DonneurManager();
-    $donneur_manager->setTable('donneur');
-    $donneur = $liste_date_manager->findAll();
+    $donneur = $donneur_manager->findDonneurByUserId($_SESSION['user']['id']);
 
+    print_r($donneur);
 
     $erreurs = [];
     if ( isset($_POST['donner']) ) {
@@ -64,11 +63,11 @@ class OffreController extends Controller
             }
           }
 
-        // // telephone
-        // if( (strlen($_POST['myformd']['telephone']) < 10) || (strlen($_POST['myformd']['telephone']) > 10)) {
+        // telephone
+        if( (strlen($_POST['myformd']['telephone']) < 10) || (strlen($_POST['myformd']['telephone']) > 10)) {
 
-        //   $erreurs[] = 'Le champ numéro de téléphone doit comporter 10 chiffres';
-        // }
+          $erreurs[] = 'Le champ numéro de téléphone doit comporter 10 chiffres';
+        }
       }
 
         // type_id
@@ -84,25 +83,18 @@ class OffreController extends Controller
         // Si $erreurs vide, Validation OK
       if ( empty($erreurs)) {
 
-
         $uploads_dir = '/var/www/public/assets/uploads';
-        $tmp_name = $_FILES["myform"]["tmp_name"];
-        $name = $_FILES["myform"]["name"];
+        $tmp_name = $_FILES["image"]["tmp_name"];
+        $name = $_FILES["image"]["name"];
         move_uploaded_file($tmp_name, "$uploads_dir/$name");
 
-        // Envoie de données vers la table dons
-        // Ajouter l'id $_SESSIONS du donneur
 
         // Envoie de données vers la table dons
-        // $_POST['myform']['donneur_id'] = $_SESSION['user']['id'];
-
         $don = new DonManager();
-        $don->insert($_POST['myform'], ['image' => $name]);
+        $don->insert(array_merge($_POST['myform'], ['image' => $name]));
 
-        // Ici il faut recuperer l'id du donneur avec $_SESSION A VOIR AVEC LAURENT
-        $donneurUp = new DonneurManager();
-        $donneurUP->updateByUserId($_SESSION['user']['id']);
-
+        // Update de la table donneurs
+        $donneur_manager->updateByUserId($_POST['myformd'], $_SESSION['user']['id']);
 
         $this->redirectToRoute('home');
       }

@@ -4,7 +4,6 @@
 
 <section class="padding">
 
- <?= var_dump($erreurs)?>
   <div class="container">
 
     <h2 class="">Je fais un don:</h2>
@@ -68,7 +67,7 @@
 
       <div class="form-group form_center">
         <label for="image">Charger une image du produit: <span class="text-danger"></span></label>
-        <input type="file" id="image" name="myform[image]">
+        <input type="file" id="image" name="image">
       </div>
 
       <div class="form-group form_center">
