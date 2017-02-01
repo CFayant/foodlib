@@ -88,6 +88,8 @@ class OffreController extends Controller
 
 
         // Envoie de données vers la table dons
+        $_POST['myform']['donneur_id'] = $donneur['id'];
+        
         $don = new DonManager();
         $don->insert(array_merge($_POST['myform'], ['image' => $name]));
 

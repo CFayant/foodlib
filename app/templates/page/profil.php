@@ -14,7 +14,7 @@
 
 </section>
 
-<?php if(isset($donneur) ) : ?>
+<?php if(!empty($don_donneur) ) : ?>
 	<section class="container text-center">
 
 		<h3>Mes Dons</h3><br>
@@ -45,7 +45,7 @@
 <?php endif ?>
 
 
-<?php if(isset($don) ) : ?>
+<?php if(!empty($dons) ) : ?>
 	<section class="container text-center">
 
 		<h3>Mes Offres Acquises</h3><br>
