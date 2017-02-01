@@ -130,12 +130,6 @@ class InscriptionController extends Controller
         $erreurs['horaires'] = 'Le champ horaires d\'acces doit comporter entre 20 et 100';
       }
 
-      // Horaires d'acces
-      if( (strlen($_POST['myformi']['commentaire']) < 20) || (strlen($_POST['myformi']['commentaire']) > 100)) {
-
-        $erreurs['commentaire'] = 'Le champ commentaire doit comporter entre 20 et 100';
-      }
-
       // Password
       if (empty($_POST['myform']['password']) ||
         strlen($_POST['myform']['password']) > 300) {
@@ -167,6 +161,7 @@ class InscriptionController extends Controller
       if($auth->isValidLoginInfo($_POST['myform']['username'], $_POST['myform']['password'])) {
         $user = $userManager->getUserByUsernameOrEmail($_POST['myform']['username']);
         $auth->logUserIn($user);
+
         $this->redirectToRoute('home');
       }
 

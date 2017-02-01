@@ -18,16 +18,42 @@ class DonneurManager extends \W\Manager\Manager
 		return $sth->fetch();
 	}
 
-	public function findDonneesDon($id)
+
+	public function findDataDonneur($id)
 	{
-	$sql = "SELECT DISTINCT dons.id, dons.titre, dons.image, dons.date_consommation, typeDates.libelle_date, donneurs.denomination_sociale, donneurs.adresse_donneur, donneurs.cp_donneur,
-	donneurs.acces, donneurs.horaires, donneurs.telephone, wusers.username, bornes.adresse_borne, bornes.cp_borne FROM dons, typeDates, donneurs, wusers, bornes
-	WHERE dons.type_id = typeDates.id AND dons.donneur_id = donneurs.id AND donneurs.wuser_id = wusers.id AND dons.borne_id = bornes.id AND dons.disponible = 1 and dons.id = :id";
+		$sql = "SELECT * FROM donneurs, dons, wusers WHERE wusers.id = :id";
 
-		$dons = $this->dbh->prepare($sql);
-		$dons->bindValue('id', $id);
-		$dons->execute();
-
-		return $dons->fetch();
+		$sth = $this->dbh->prepare($sql);
+		$sth->bindValue('id', $id);
+		$sth->execute();
+		return $sth->fetch();
 	}
+
+
+	public function updateByUserId(array $data, $id, $stripTags = true)
+	{
+		if (!is_numeric($id)){
+			return false;
+		}
+
+		$sql = "UPDATE " . $this->table . " SET ";
+		foreach($data as $key => $value){
+			$sql .= "$key = :$key, ";
+		}
+		$sql = substr($sql, 0, -2);
+		$sql .= " WHERE wuser_id = :id";
+
+		$sth = $this->dbh->prepare($sql);
+		foreach($data as $key => $value){
+			$value = ($stripTags) ? strip_tags($value) : $value;
+			$sth->bindValue(":".$key, $value);
+		}
+		$sth->bindValue(":id", $id);
+
+		if (!$sth->execute()){
+			return false;
+		}
+		return $this->find($id);
+	}
+
 }

@@ -13,8 +13,8 @@
     <div class="padding container well paddingPlus">
 
       <!-- Affichage de l'image du don résolu -->
-      <div class="img-responsive" id="div1">
-        <img src="<?php echo $this->assetUrl('uploads/'.$don["image"]) ?>" alt="<?= $don['titre'] ?>">
+      <div class="img-responsive">
+        <img src="<?= $this->assetUrl('uploads/'.$don["image"]) ?>" alt="<?= $don['titre'] ?>">
       </div>
 
       <!-- Affichage du titre du don -->

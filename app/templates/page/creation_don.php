@@ -5,7 +5,7 @@
 <section class="padding">
 
   <div class="container">
-  
+
     <h2 class="">Je fais un don:</h2>
 
     <form method="POST" class="col-lg-6 margin-auto" enctype="multipart/form-data">
@@ -49,25 +49,25 @@
 
         <div class="form-group form_center">
           <label for="acces">acces:</label>
-          <textarea type="text" name="myformd[acces]" class="form-control" id="acces" value="<?= $don['donneur']['acces'] ?>"><?= $don['donneur']['acces'] ?></textarea>
+          <textarea type="text" name="myformd[acces]" class="form-control" id="acces" value="<?= $donneur['acces'] ?>"><?= $donneur['acces'] ?></textarea>
         </div>
 
         <div class="form-group form_center">
           <label for="horaires">Jours et horaires:</label>
-          <textarea type="text" name="myformd[horaires]" class="form-control" id="horaires" value="<?= $don['donneur']['horaires'] ?>"><?= $don['donneur']['horaires'] ?></textarea>
+          <textarea type="text" name="myformd[horaires]" class="form-control" id="horaires" value="<?= $donneur['horaires'] ?>"><?= $donneur['horaires'] ?></textarea>
         </div>
 
         <div class="form-group form_center">
           <label for="telephone">Numéro de téléphone:</label>
-          <input type="text" name="myformd[telephone]" class="form-control" id="telephone" value="<?= $don['donneur']['telephone'] ?>">
+          <input type="text" name="myformd[telephone]" class="form-control" id="telephone" value="<?= $donneur['telephone'] ?>">
         </div>
 
       </div>
 
 
       <div class="form-group form_center">
-        <label for="image">Charger une image du produit: <span class="red"></span></label>
-        <input type="file" id="image" name="myform[image]">
+        <label for="image">Charger une image du produit: <span class="text-danger"></span></label>
+        <input type="file" id="image" name="image">
       </div>
 
       <div class="form-group form_center">
