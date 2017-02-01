@@ -15,6 +15,4 @@
 		['GET|POST', '/login/', 'Connexion#login', 'login'],
 		['GET', '/logout/', 'Connexion#logout', 'logout']
 
-
-
 	);
