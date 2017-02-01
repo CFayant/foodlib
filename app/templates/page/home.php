@@ -2,34 +2,29 @@
 
 <?php $this->start('main_content') ?>
 
-    <!-- Section 1 -->
-    <section id="portfolio" class="padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>A propos de FoodLib</h2>
-                    <hr class="star-primary">
-                </div>
+<!-- Section 1 -->
+<section id="portfolio" class="padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>A propos de FoodLib</h2>
+                <hr class="star-primary">
             </div>
-            <div class="row">
-                <div class="col-sm-4 portfolio-item">
-                        <img src="<?= $this->assetUrl('img/portfolio/cabin.png') ?>" class="img-responsive" id="hide" alt="">
-                </div>
+        </div>
+        <div class="row">
+            
 
-                <div class="col-sm-4 portfolio-item">
+                    <div class="col-sm-4 col-sm-offset-4">
                         <img src="<?= $this->assetUrl('img/portfolio/cake.png') ?>" class="img-responsive" alt="">
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-12">
 
-                <div class="col-sm-4 portfolio-item" >
-                        <img src="<?= $this->assetUrl('img/portfolio/circus.png') ?>" class="img-responsive" id="hide" alt="">
+                        <p class="text-center padding">Foodlib est un site à but non lucratif crée pour mettre en relation des donneurs avec des individus en situation précaire pour leur proposer une aide alimentaire.</p>
+
+                    </div>
                 </div>
-
-                <div class="col-lg-12">
-
-                    <p class="text-center">Foodlib est un site à but non lucratif crée pour mettre en relation des donneurs avec des individus en situation précaire pour leur proposer une aide alimentaire.</p>
-
-                </div>
-
             </div>
         </div>
     </section>
@@ -39,27 +34,27 @@
     <section class="section2">
 
         <div class="container">
-                <div class="row display_inline_block col-lg-6" >
+            <div class="row display_inline_block col-lg-6" >
 
-                        <h3><a href="<?= $this->url("creationDon") ?>" class="btn_cherche  text-center">Je donne</a></h3>
-                        <p>Vous êtes donneur ? Foodlib vous permet de créer vos annonces personnalisées afin de mettre les denrées de votre choix à disposition des bénéficiaires. Cliquez sur "Je donne" pour commencer à créer vos annonces !</p>
+                <h3><a href="<?= $this->url("creationDon") ?>" class="btn_cherche  text-center">Je donne</a></h3>
+                <p>Vous êtes donneur ? Foodlib vous permet de créer vos annonces personnalisées afin de mettre les denrées de votre choix à disposition des bénéficiaires. Cliquez sur "Je donne" pour commencer à créer vos annonces !</p>
 
-                </div>
+            </div>
 
-                <div class="row display_inline_block col-lg-6">
+            <div class="row display_inline_block col-lg-6">
 
-                        <h3><a href="<?= $this->url("listeOffres") ?>" class="btn_cherche  text-center">Je recherche</a></h3>
-                        <p>Vous êtes bénéficiaires ? Foodlib vous permet de profiter des nombreuses denrées alimentaires déposées par nos donneurs. Cliquez sur "Je recherche" pour commencer à consulter les annonces</p>
+                <h3><a href="<?= $this->url("listeOffres") ?>" class="btn_cherche  text-center">Je recherche</a></h3>
+                <p>Vous êtes bénéficiaires ? Foodlib vous permet de profiter des nombreuses denrées alimentaires déposées par nos donneurs. Cliquez sur "Je recherche" pour commencer à consulter les annonces</p>
 
-                </div>
+            </div>
         </div>
 
     </section>
 
-<?php $this->stop('main_content') ?>
+    <?php $this->stop('main_content') ?>
 
-<?php $this->start('style') ?>
+    <?php $this->start('style') ?>
 
-<link href="<?= $this->assetUrl('css/home.css') ?>" rel="stylesheet">
+    <link href="<?= $this->assetUrl('css/home.css') ?>" rel="stylesheet">
 
-<?php $this->stop('style') ?>
+    <?php $this->stop('style') ?>
