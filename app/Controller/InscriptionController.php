@@ -82,16 +82,16 @@ class InscriptionController extends Controller
 
       }
 
-      // last_name
-      if( empty($_POST['myformi']['last_name']) || (strlen($_POST['myformi']['last_name']) < 5) || (strlen($_POST['myformi']['last_name']) > 50) ) {
+      // nom
+      if( empty($_POST['myformi']['nom']) || (strlen($_POST['myformi']['nom']) < 5) || (strlen($_POST['myformi']['nom']) > 50) ) {
 
-            $erreurs['last_name'] = 'Le champ Nom doit obligatoirement comporter entre 5 et 50 caractères et est requis';
+            $erreurs['nom'] = 'Le champ Nom doit obligatoirement comporter entre 5 et 50 caractères et est requis';
       }
 
-      // first_name
-      if( empty($_POST['myformi']['first_name']) || (strlen($_POST['myformi']['first_name']) < 5) || (strlen($_POST['myformi']['first_name']) > 50) ) {
+      // prenom
+      if( empty($_POST['myformi']['prenom']) || (strlen($_POST['myformi']['prenom']) < 5) || (strlen($_POST['myformi']['prenom']) > 50) ) {
 
-          $erreurs['first_name'] = 'Le champ prénom doit obligatoirement comporter entre 5 et 50 caractères et est requis';
+          $erreurs['prenom'] = 'Le champ prénom doit obligatoirement comporter entre 5 et 50 caractères et est requis';
       }
 
       // adresse_donneur
@@ -101,13 +101,13 @@ class InscriptionController extends Controller
       }
 
       // Email
-      if ( empty($_POST['myformi']['email']) || strlen($_POST['myformi']['email']) > 255 || !filter_var($_POST['myformi']['email'], FILTER_VALIDATE_EMAIL)) {
-        $erreurs['email'] = 'Votre email n\'est pas valide';
+      if ( empty($_POST['myformi']['mail']) || strlen($_POST['myformi']['mail']) > 255 || !filter_var($_POST['myformi']['mail'], FILTER_VALIDATE_EMAIL)) {
+        $erreurs['mail'] = 'Votre email n\'est pas valide';
         //print_r("Votre email n'est pas valide");
 
       }
-      elseif ($manager->emailExists($_POST['myformi']['email'])) {
-        $erreurs['email'] = 'Cet email existe déja';
+      elseif ($manager->emailExists($_POST['myformi']['mail'])) {
+        $erreurs['mail'] = 'Cet email existe déja';
         //print_r("Cet email existe déja");
 
       }
@@ -154,16 +154,17 @@ class InscriptionController extends Controller
         // Envoie de données vers la table donneurs
         $donneurs = new DonneurManager();
         $donneurs->insert($_POST['myformi']);
+        $_POST['myformi']['type_donneur_id'] = 1;
 
         $auth = new AuthentificationManager();
         $userManager = new UserManager();
 
-      if($auth->isValidLoginInfo($_POST['myform']['username'], $_POST['myform']['password'])) {
-        $user = $userManager->getUserByUsernameOrEmail($_POST['myform']['username']);
-        $auth->logUserIn($user);
+        if($auth->isValidLoginInfo($_POST['myform']['username'], $_POST['myform']['password'])) {
+          $user = $userManager->getUserByUsernameOrEmail($_POST['myform']['username']);
+          $auth->logUserIn($user);
 
-        $this->redirectToRoute('home');
-      }
+          $this->redirectToRoute('home');
+        }
 
       }
         $this->show('page/inscription_d', ['erreurs' => $erreurs]);

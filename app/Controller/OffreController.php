@@ -26,8 +26,6 @@ class OffreController extends Controller
     $donneur_manager = new DonneurManager();
     $donneur = $donneur_manager->findDonneurByUserId($_SESSION['user']['id']);
 
-    print_r($donneur);
-
     $erreurs = [];
     if ( isset($_POST['donner']) ) {
 
